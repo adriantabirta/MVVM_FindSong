@@ -13,6 +13,13 @@
 		844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844823B11D2FEA4C00EDB678 /* Assets.xcassets */; };
 		844823B51D2FEA4C00EDB678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823B31D2FEA4C00EDB678 /* LaunchScreen.storyboard */; };
 		844823C01D2FEA4C00EDB678 /* MVVM_FindSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */; };
+		844823CE1D2FEB4400EDB678 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CD1D2FEB4400EDB678 /* Song.swift */; };
+		844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */; };
+		844823D21D2FEEC500EDB678 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 844823D11D2FEEC500EDB678 /* File */; };
+		844823D41D2FF0C700EDB678 /* AppleSongsSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */; };
+		844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */; };
+		844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823D71D2FF44600EDB678 /* ListViewController.xib */; };
+		844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D91D2FF47B00EDB678 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,13 @@
 		844823BB1D2FEA4C00EDB678 /* MVVM_FindSongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVM_FindSongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_FindSongTests.swift; sourceTree = "<group>"; };
 		844823C11D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		844823CD1D2FEB4400EDB678 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearch.swift; sourceTree = "<group>"; };
+		844823D11D2FEEC500EDB678 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongsSearchResults.swift; sourceTree = "<group>"; };
+		844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearchImpl.swift; sourceTree = "<group>"; };
+		844823D71D2FF44600EDB678 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		844823D91D2FF47B00EDB678 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +73,7 @@
 		8448239E1D2FEA4C00EDB678 = {
 			isa = PBXGroup;
 			children = (
+				844823D11D2FEEC500EDB678 /* File */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				844823BE1D2FEA4C00EDB678 /* MVVM_FindSongTests */,
 				844823A81D2FEA4C00EDB678 /* Products */,
@@ -77,6 +92,9 @@
 		844823A91D2FEA4C00EDB678 /* MVVM_FindSong */ = {
 			isa = PBXGroup;
 			children = (
+				844823CA1D2FEB0300EDB678 /* Model */,
+				844823CB1D2FEB1000EDB678 /* ViewModel */,
+				844823CC1D2FEB1A00EDB678 /* View */,
 				844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */,
 				844823AC1D2FEA4C00EDB678 /* ViewController.swift */,
 				844823AE1D2FEA4C00EDB678 /* Main.storyboard */,
@@ -94,6 +112,33 @@
 				844823C11D2FEA4C00EDB678 /* Info.plist */,
 			);
 			path = MVVM_FindSongTests;
+			sourceTree = "<group>";
+		};
+		844823CA1D2FEB0300EDB678 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				844823CD1D2FEB4400EDB678 /* Song.swift */,
+				844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */,
+				844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */,
+				844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		844823CB1D2FEB1000EDB678 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				844823D91D2FF47B00EDB678 /* ListViewController.swift */,
+				844823D71D2FF44600EDB678 /* ListViewController.xib */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		844823CC1D2FEB1A00EDB678 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +222,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844823D21D2FEEC500EDB678 /* File in Resources */,
+				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
 				844823B51D2FEA4C00EDB678 /* LaunchScreen.storyboard in Resources */,
 				844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */,
 				844823B01D2FEA4C00EDB678 /* Main.storyboard in Resources */,
@@ -197,8 +244,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844823D41D2FF0C700EDB678 /* AppleSongsSearchResults.swift in Sources */,
+				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
 				844823AD1D2FEA4C00EDB678 /* ViewController.swift in Sources */,
+				844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */,
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
+				844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */,
+				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
