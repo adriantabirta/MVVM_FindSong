@@ -15,7 +15,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
+//        var window: UIWindow?
+//        var navigationController: UINavigationController!
+//        
+//        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+//            
+//            let vc = ListViewController()
+//            
+//            //navigationController = UINavigationController(rootViewController: vc)
+//            //navigationController.navigationBar.barTintColor = UIColor.darkGrayColor()
+//            //navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+//
+//            
+//           // let viewController = ListViewController()
+//           // navigationController.pushViewController(viewController, animated: false)
+//            
+//            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//             window?.makeKeyAndVisible()
+//            window?.rootViewController = vc
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.makeKeyAndVisible()
+        let vc = ListViewController()
+        window?.rootViewController = UINavigationController(rootViewController: vc)
+        
+        
         return true
     }
 

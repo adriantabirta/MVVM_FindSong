@@ -14,4 +14,8 @@ Project tasks:
 
 3. A cell from the list should contain Album/Song icon, Item name, Artist, Length. You should be able to delete a cell from the list, in a standard iOS style. The cell should also have a disclosure button which should open the details screen.
 
-4. Details screen should present Song image(in a full screen width size, respecting image aspect ratio) in the top most of the screen. The app should represent Artist, Album title, song length, price, Morse interpretation button. Clicking on Song image, the application should start playing the song preview. Clicking on the Artist or Album title, the app should load the link behind it. Clicking on “Morse” the application should interpret Song name into Morse code using vibration and flashlight.
+4. Details screen should present Song image(in a full screen width size, respecting image aspect ratio) in the top most of the screen.
+    The app should represent Artist, Album title, song length, price, Morse interpretation button.
+    Clicking on Song image, the application should start playing the song preview.
+    Clicking on the Artist or Album title, the app should load the link behind it.
+    Clicking on “Morse” the application should interpret Song name into Morse code using vibration and flashlight.

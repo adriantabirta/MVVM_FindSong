@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SongCell" customModule="MVVM_FindSong" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don`t Go (Cover)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRx-Xe-mKe">
+                    <rect key="frame" x="76" y="8" width="236" height="28"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="BMTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-6r-4be">
+                    <rect key="frame" x="76" y="44" width="204" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ju-Bx-IiI">
+                    <rect key="frame" x="288" y="48" width="24" height="15"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgC.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="W1r-wy-uAw">
+                    <rect key="frame" x="8" y="8" width="60" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="CZv-uN-Tay"/>
+                        <constraint firstAttribute="width" constant="60" id="gWg-Sg-32d"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="CZv-uN-Tay"/>
+                        </mask>
+                    </variation>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PRx-Xe-mKe" firstAttribute="leading" secondItem="W1r-wy-uAw" secondAttribute="trailing" constant="8" id="2rn-At-y0q"/>
+                <constraint firstAttribute="bottom" secondItem="TCc-6r-4be" secondAttribute="bottom" constant="12" id="5UX-xI-WUX"/>
+                <constraint firstAttribute="bottom" secondItem="W1r-wy-uAw" secondAttribute="bottom" constant="8" id="6Gr-tX-ffQ"/>
+                <constraint firstItem="TCc-6r-4be" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="bottom" constant="8" id="960-Gn-VhM"/>
+                <constraint firstItem="TCc-6r-4be" firstAttribute="leading" secondItem="W1r-wy-uAw" secondAttribute="trailing" constant="8" id="I5l-5n-ZwN"/>
+                <constraint firstAttribute="trailing" secondItem="PRx-Xe-mKe" secondAttribute="trailing" constant="8" id="IuH-UB-83t"/>
+                <constraint firstItem="W1r-wy-uAw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Ksd-v9-Te0"/>
+                <constraint firstAttribute="trailing" secondItem="2ju-Bx-IiI" secondAttribute="trailing" constant="8" id="LcA-LM-qGd"/>
+                <constraint firstItem="W1r-wy-uAw" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="top" id="WC9-sD-gGc"/>
+                <constraint firstAttribute="bottom" secondItem="2ju-Bx-IiI" secondAttribute="bottom" constant="12" id="WIa-Za-IJb"/>
+                <constraint firstItem="W1r-wy-uAw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="mnO-Rx-7bj"/>
+                <constraint firstItem="2ju-Bx-IiI" firstAttribute="leading" secondItem="TCc-6r-4be" secondAttribute="trailing" constant="8" id="vNJ-Kf-tjB"/>
+                <constraint firstItem="PRx-Xe-mKe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="yLn-uK-BOQ"/>
+                <constraint firstItem="2ju-Bx-IiI" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="bottom" constant="12" id="zjm-XI-sZM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6Gr-tX-ffQ"/>
+                    <exclude reference="mnO-Rx-7bj"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="coverImg" destination="W1r-wy-uAw" id="Bi9-S5-wuc"/>
+                <outlet property="price" destination="2ju-Bx-IiI" id="Bsa-Io-sDh"/>
+                <outlet property="songAlbum" destination="TCc-6r-4be" id="u0c-JT-4aR"/>
+                <outlet property="title" destination="PRx-Xe-mKe" id="yCz-ff-qeZ"/>
+            </connections>
+            <point key="canvasLocation" x="1459" y="531.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="imgC.jpg" width="60" height="60"/>
+    </resources>
+</document>

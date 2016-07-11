@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Song{
+struct Song{
 
     let title: String
     let artist: String
@@ -28,4 +28,13 @@ class Song{
         self.songLength = songLength
         self.price = price
     }
+}
+
+extension Float {
+
+    func toSting() -> String {
+    
+        return String(format: "%0.2f", self)
+    }
+
 }

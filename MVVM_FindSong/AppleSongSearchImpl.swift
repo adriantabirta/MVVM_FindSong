@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppleSongSearchImpl: AppleSongSearch{
+class AppleSongSearchImpl{
     
     
   //  private let requests: NSMutableSe
@@ -18,13 +18,76 @@ class AppleSongSearchImpl: AppleSongSearch{
     
     }
     
-    func searchSongByTitle(searchString: String) -> String {
-        // do some afnetworking async
-        return " "
-    }
+//    func searchSongByTitle(searchString: String) -> String {
+//        // do some afnetworking async
+//        
+//        let urlPath: String = "https://itunes.apple.com/search?term=jack+johnson&limit=2"
+//        let url: NSURL = NSURL(string: urlPath)!
+//        let request1: NSURLRequest = NSURLRequest(URL: url)
+//        let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+//        
+//        
+//        do{
+//            
+//            let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+//            
+//            print(response)
+//            do {
+//                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+//                    print("Synchronous\(jsonResult)")
+//                }
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//            
+//            
+//            
+//        }catch let error as NSError
+//        {
+//            print(error.localizedDescription)
+//        }
+//        
+//        return " "
+//    }
     
-    func searchSongByArtist(searchString: String) -> String {
-        // do some afnetworking async
-        return " "
-    }
+//    func searchSongByArtist(searchString: String) -> String {
+//        // do some afnetworking async
+//        return " "
+//    }
 }
+
+
+//extension AppleSongSearch{
+//    
+//    func searchSongByTitle(searchString: String) -> String{
+//    
+//        let urlPath: String = "https://itunes.apple.com/search?term=jack+johnson&limit=2"
+//        let url: NSURL = NSURL(string: urlPath)!
+//        let request1: NSURLRequest = NSURLRequest(URL: url)
+//        let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+//        
+//        
+//        do{
+//            
+//            let dataVal = try NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
+//            
+//            print(response)
+//            do {
+//                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(dataVal, options: []) as? NSDictionary {
+//                    print("Synchronous\(jsonResult)")
+//                }
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//            
+//            
+//            
+//        }catch let error as NSError
+//        {
+//            print(error.localizedDescription)
+//        }
+//    
+//    }
+//    
+//    
+//}

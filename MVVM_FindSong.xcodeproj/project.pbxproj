@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */; };
-		844823AD1D2FEA4C00EDB678 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823AC1D2FEA4C00EDB678 /* ViewController.swift */; };
-		844823B01D2FEA4C00EDB678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823AE1D2FEA4C00EDB678 /* Main.storyboard */; };
 		844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844823B11D2FEA4C00EDB678 /* Assets.xcassets */; };
-		844823B51D2FEA4C00EDB678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823B31D2FEA4C00EDB678 /* LaunchScreen.storyboard */; };
 		844823C01D2FEA4C00EDB678 /* MVVM_FindSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */; };
 		844823CE1D2FEB4400EDB678 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CD1D2FEB4400EDB678 /* Song.swift */; };
 		844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */; };
@@ -20,6 +17,12 @@
 		844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */; };
 		844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823D71D2FF44600EDB678 /* ListViewController.xib */; };
 		844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D91D2FF47B00EDB678 /* ListViewController.swift */; };
+		844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823DB1D33859E00EDB678 /* Launch Screen.storyboard */; };
+		844823E01D338B3100EDB678 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823DF1D338B3100EDB678 /* SongCell.xib */; };
+		844823E21D338B4700EDB678 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823E11D338B4700EDB678 /* SongCell.swift */; };
+		844823E61D339DBE00EDB678 /* imgC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 844823E51D339DBE00EDB678 /* imgC.jpg */; };
+		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
+		849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849322221D33CFB600A0AF97 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +38,7 @@
 /* Begin PBXFileReference section */
 		844823A71D2FEA4C00EDB678 /* MVVM_FindSong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_FindSong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		844823AC1D2FEA4C00EDB678 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		844823AF1D2FEA4C00EDB678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		844823B11D2FEA4C00EDB678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		844823B41D2FEA4C00EDB678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844823B61D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844823BB1D2FEA4C00EDB678 /* MVVM_FindSongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVM_FindSongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_FindSongTests.swift; sourceTree = "<group>"; };
@@ -50,6 +50,12 @@
 		844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearchImpl.swift; sourceTree = "<group>"; };
 		844823D71D2FF44600EDB678 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		844823D91D2FF47B00EDB678 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		844823DB1D33859E00EDB678 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		844823DF1D338B3100EDB678 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
+		844823E11D338B4700EDB678 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		844823E51D339DBE00EDB678 /* imgC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgC.jpg; sourceTree = "<group>"; };
+		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		849322221D33CFB600A0AF97 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				844823D11D2FEEC500EDB678 /* File */,
+				844823E51D339DBE00EDB678 /* imgC.jpg */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				844823BE1D2FEA4C00EDB678 /* MVVM_FindSongTests */,
 				844823A81D2FEA4C00EDB678 /* Products */,
@@ -92,15 +99,13 @@
 		844823A91D2FEA4C00EDB678 /* MVVM_FindSong */ = {
 			isa = PBXGroup;
 			children = (
+				844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */,
 				844823CA1D2FEB0300EDB678 /* Model */,
 				844823CB1D2FEB1000EDB678 /* ViewModel */,
 				844823CC1D2FEB1A00EDB678 /* View */,
-				844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */,
-				844823AC1D2FEA4C00EDB678 /* ViewController.swift */,
-				844823AE1D2FEA4C00EDB678 /* Main.storyboard */,
 				844823B11D2FEA4C00EDB678 /* Assets.xcassets */,
-				844823B31D2FEA4C00EDB678 /* LaunchScreen.storyboard */,
 				844823B61D2FEA4C00EDB678 /* Info.plist */,
+				844823DB1D33859E00EDB678 /* Launch Screen.storyboard */,
 			);
 			path = MVVM_FindSong;
 			sourceTree = "<group>";
@@ -128,8 +133,6 @@
 		844823CB1D2FEB1000EDB678 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				844823D91D2FF47B00EDB678 /* ListViewController.swift */,
-				844823D71D2FF44600EDB678 /* ListViewController.xib */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -137,6 +140,12 @@
 		844823CC1D2FEB1A00EDB678 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				844823E11D338B4700EDB678 /* SongCell.swift */,
+				844823DF1D338B3100EDB678 /* SongCell.xib */,
+				844823D91D2FF47B00EDB678 /* ListViewController.swift */,
+				844823D71D2FF44600EDB678 /* ListViewController.xib */,
+				849322201D33CFA000A0AF97 /* DetailViewController.swift */,
+				849322221D33CFB600A0AF97 /* DetailViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -223,10 +232,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				844823D21D2FEEC500EDB678 /* File in Resources */,
+				844823E61D339DBE00EDB678 /* imgC.jpg in Resources */,
+				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
+				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
-				844823B51D2FEA4C00EDB678 /* LaunchScreen.storyboard in Resources */,
+				844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */,
 				844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */,
-				844823B01D2FEA4C00EDB678 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,9 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */,
+				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
 				844823D41D2FF0C700EDB678 /* AppleSongsSearchResults.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
-				844823AD1D2FEA4C00EDB678 /* ViewController.swift in Sources */,
 				844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */,
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
 				844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */,
@@ -271,25 +283,6 @@
 			targetProxy = 844823BC1D2FEA4C00EDB678 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		844823AE1D2FEA4C00EDB678 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				844823AF1D2FEA4C00EDB678 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		844823B31D2FEA4C00EDB678 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				844823B41D2FEA4C00EDB678 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		844823C21D2FEA4D00EDB678 /* Debug */ = {
@@ -440,6 +433,7 @@
 				844823C61D2FEA4D00EDB678 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		844823C71D2FEA4D00EDB678 /* Build configuration list for PBXNativeTarget "MVVM_FindSongTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +442,7 @@
 				844823C91D2FEA4D00EDB678 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
