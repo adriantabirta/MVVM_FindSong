@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MediaPlayer
 import Foundation
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, Player {
 
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
     @IBOutlet weak var coverImage: UIImageView!
@@ -19,14 +21,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceLbl: UILabel!
     
     var song: Song
+    var delegate: Player?
     
     init(song: Song) {
-        
         self.song = song
         super.init(nibName: "DetailViewController", bundle: nil)
         edgesForExtendedLayout = .None
-       
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,14 +35,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.titleLbl?.text = song.title
         self.albumLbl?.text = song.album
-        self.priceLbl?.text = song.price.toSting()
-        self.coverImage.imageFromUrl(song.coverUrl)
-        
-        
+        self.priceLbl?.text = song.price!.toSting()
+        self.coverImage?.image = song.coverImage
+        self.coverImage.downloadImage(NSURL(string:song.coverUrl! as String )!)
     }
     
+    @IBAction func playTapped(sender: AnyObject) {
+     playSong(self.song)
+    }
+
+ 
 
 }

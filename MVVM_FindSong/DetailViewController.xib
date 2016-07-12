@@ -12,6 +12,7 @@
                 <outlet property="playBtn" destination="zic-sK-a0G" id="xCh-5a-Msg"/>
                 <outlet property="playMorseBtn" destination="UVf-35-SVt" id="w6g-Hf-dXl"/>
                 <outlet property="priceLbl" destination="nkF-mW-vFp" id="BiD-P6-hzp"/>
+                <outlet property="progressView" destination="uv5-KU-3kW" id="NpY-0e-3ge"/>
                 <outlet property="titleLbl" destination="EwJ-vK-Nup" id="lq4-bA-zEJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MkO-20-kKI"/>
             </connections>
@@ -21,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgC.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4iY-vd-jZ0">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultCover200.png" translatesAutoresizingMaskIntoConstraints="NO" id="4iY-vd-jZ0">
                     <rect key="frame" x="200" y="8" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="VsQ-MG-zTh"/>
@@ -76,16 +77,25 @@
                     <state key="normal" title="PLAY">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="playTapped:" destination="-1" eventType="touchUpInside" id="mvc-bx-sGf"/>
+                    </connections>
                 </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="uv5-KU-3kW">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="2"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="0.95749056177680558" green="0.98509080497382195" blue="0.90736134661930834" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="UVf-35-SVt" secondAttribute="bottom" constant="8" id="6CN-21-HtA"/>
                 <constraint firstItem="78L-qQ-D9Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="BD8-se-pdK"/>
+                <constraint firstItem="uv5-KU-3kW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BZU-Eq-Hse"/>
                 <constraint firstAttribute="trailing" secondItem="78L-qQ-D9Z" secondAttribute="trailing" constant="8" id="S0u-F5-FFe"/>
                 <constraint firstAttribute="trailing" secondItem="EwJ-vK-Nup" secondAttribute="trailing" constant="8" id="UVK-cU-H4Y"/>
+                <constraint firstAttribute="trailing" secondItem="uv5-KU-3kW" secondAttribute="trailing" id="UhL-op-pBs"/>
                 <constraint firstItem="UVf-35-SVt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="afH-bu-gzd"/>
                 <constraint firstItem="zic-sK-a0G" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="cyx-dp-TtP"/>
+                <constraint firstItem="uv5-KU-3kW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWZ-ml-PEN"/>
                 <constraint firstItem="zic-sK-a0G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gV5-fj-nHQ"/>
                 <constraint firstItem="4iY-vd-jZ0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="iEs-Vm-kLT"/>
                 <constraint firstAttribute="trailing" secondItem="nkF-mW-vFp" secondAttribute="trailing" constant="8" id="nxH-qF-JHE"/>
@@ -96,10 +106,10 @@
                 <constraint firstItem="78L-qQ-D9Z" firstAttribute="top" secondItem="EwJ-vK-Nup" secondAttribute="bottom" constant="8" id="yEm-2B-qu9"/>
                 <constraint firstItem="nkF-mW-vFp" firstAttribute="leading" secondItem="zic-sK-a0G" secondAttribute="trailing" constant="8" id="zAC-u4-025"/>
             </constraints>
-            <point key="canvasLocation" x="598" y="419"/>
+            <point key="canvasLocation" x="768" y="418"/>
         </view>
     </objects>
     <resources>
-        <image name="imgC.jpg" width="60" height="60"/>
+        <image name="defaultCover200.png" width="200" height="200"/>
     </resources>
 </document>

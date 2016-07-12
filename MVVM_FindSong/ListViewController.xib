@@ -7,10 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListViewController" customModule="MVVM_FindSong" customModuleProvider="target">
             <connections>
-                <outlet property="findBtn" destination="K23-uY-rMH" id="eAB-mj-t7B"/>
-                <outlet property="loadingIndicator" destination="LLy-DM-139" id="3ua-XV-e7H"/>
                 <outlet property="myTable" destination="Grs-gT-Ev0" id="xk6-S5-KeA"/>
-                <outlet property="searchTextField" destination="QF9-ZK-agp" id="nCc-q9-fV0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Nhj-zl-nfU"/>
             </connections>
         </placeholder>
@@ -19,48 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search song" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-ZK-agp">
-                    <rect key="frame" x="36" y="8" width="468" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="LLy-DM-139">
-                    <rect key="frame" x="8" y="13" width="20" height="20"/>
-                </activityIndicatorView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Grs-gT-Ev0">
-                    <rect key="frame" x="0.0" y="46" width="600" height="554"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="EG2-Ea-WZ7"/>
                         <outlet property="delegate" destination="-1" id="T59-hO-Wyx"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K23-uY-rMH">
-                    <rect key="frame" x="512" y="8" width="80" height="30"/>
-                    <color key="backgroundColor" red="0.31307423934800993" green="0.59189263314862917" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="7Wk-uT-kIr"/>
-                        <constraint firstAttribute="width" constant="80" id="NO8-hi-6QS"/>
-                    </constraints>
-                    <state key="normal" title="Find">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Grs-gT-Ev0" secondAttribute="trailing" id="8KA-TJ-wr6"/>
-                <constraint firstItem="K23-uY-rMH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="FdX-4o-Bgf"/>
-                <constraint firstAttribute="trailing" secondItem="K23-uY-rMH" secondAttribute="trailing" constant="8" id="FkU-Tf-UfG"/>
-                <constraint firstItem="QF9-ZK-agp" firstAttribute="leading" secondItem="LLy-DM-139" secondAttribute="trailing" constant="8" id="MWx-Sm-sWR"/>
-                <constraint firstItem="Grs-gT-Ev0" firstAttribute="top" secondItem="K23-uY-rMH" secondAttribute="bottom" constant="8" id="N0Q-cZ-NlM"/>
                 <constraint firstItem="Grs-gT-Ev0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OFf-DF-TLF"/>
-                <constraint firstItem="LLy-DM-139" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="OKX-rk-aPu"/>
                 <constraint firstAttribute="bottom" secondItem="Grs-gT-Ev0" secondAttribute="bottom" id="Plc-sa-Dfr"/>
-                <constraint firstItem="K23-uY-rMH" firstAttribute="leading" secondItem="QF9-ZK-agp" secondAttribute="trailing" constant="8" id="RTR-dg-Pj8"/>
-                <constraint firstItem="QF9-ZK-agp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="V61-UJ-Sln"/>
-                <constraint firstAttribute="trailing" secondItem="K23-uY-rMH" secondAttribute="trailing" constant="8" id="Z6v-hu-Z9t"/>
-                <constraint firstItem="LLy-DM-139" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="ab7-we-Ve0"/>
+                <constraint firstItem="Grs-gT-Ev0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yhm-Jb-X81"/>
             </constraints>
             <point key="canvasLocation" x="597" y="374"/>
         </view>

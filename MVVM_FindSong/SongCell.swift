@@ -17,6 +17,9 @@ class SongCell: UITableViewCell  {
     @IBOutlet weak var songAlbum: UILabel!
     @IBOutlet weak var price: UILabel!
     
-  
+    @IBAction func playSong(sender: AnyObject) {
+    
+        
+    }
 
 }

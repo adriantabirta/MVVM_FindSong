@@ -7,22 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */; };
+		841C0FCA1D35135900110803 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC91D35135900110803 /* Download.swift */; };
+		841C0FCC1D351B8200110803 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FCB1D351B8200110803 /* Player.swift */; };
 		844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */; };
 		844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844823B11D2FEA4C00EDB678 /* Assets.xcassets */; };
 		844823C01D2FEA4C00EDB678 /* MVVM_FindSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */; };
 		844823CE1D2FEB4400EDB678 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CD1D2FEB4400EDB678 /* Song.swift */; };
 		844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */; };
 		844823D21D2FEEC500EDB678 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 844823D11D2FEEC500EDB678 /* File */; };
-		844823D41D2FF0C700EDB678 /* AppleSongsSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */; };
-		844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */; };
 		844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823D71D2FF44600EDB678 /* ListViewController.xib */; };
 		844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D91D2FF47B00EDB678 /* ListViewController.swift */; };
 		844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823DB1D33859E00EDB678 /* Launch Screen.storyboard */; };
 		844823E01D338B3100EDB678 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823DF1D338B3100EDB678 /* SongCell.xib */; };
 		844823E21D338B4700EDB678 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823E11D338B4700EDB678 /* SongCell.swift */; };
-		844823E61D339DBE00EDB678 /* imgC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 844823E51D339DBE00EDB678 /* imgC.jpg */; };
 		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
 		849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849322221D33CFB600A0AF97 /* DetailViewController.xib */; };
+		84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C31D34DDA6003FCD2B /* defaultCover60.png */; };
+		84AE51C61D34DDA6003FCD2B /* defaultCover200.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C41D34DDA6003FCD2B /* defaultCover200.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsHelper.swift; sourceTree = "<group>"; };
+		841C0FC91D35135900110803 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		841C0FCB1D351B8200110803 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		844823A71D2FEA4C00EDB678 /* MVVM_FindSong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_FindSong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844823B11D2FEA4C00EDB678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,16 +51,15 @@
 		844823CD1D2FEB4400EDB678 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearch.swift; sourceTree = "<group>"; };
 		844823D11D2FEEC500EDB678 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
-		844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongsSearchResults.swift; sourceTree = "<group>"; };
-		844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearchImpl.swift; sourceTree = "<group>"; };
 		844823D71D2FF44600EDB678 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		844823D91D2FF47B00EDB678 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		844823DB1D33859E00EDB678 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		844823DF1D338B3100EDB678 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		844823E11D338B4700EDB678 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
-		844823E51D339DBE00EDB678 /* imgC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgC.jpg; sourceTree = "<group>"; };
 		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		849322221D33CFB600A0AF97 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		84AE51C31D34DDA6003FCD2B /* defaultCover60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover60.png; sourceTree = "<group>"; };
+		84AE51C41D34DDA6003FCD2B /* defaultCover200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover200.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				844823D11D2FEEC500EDB678 /* File */,
-				844823E51D339DBE00EDB678 /* imgC.jpg */,
+				84AE51C31D34DDA6003FCD2B /* defaultCover60.png */,
+				84AE51C41D34DDA6003FCD2B /* defaultCover200.png */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				844823BE1D2FEA4C00EDB678 /* MVVM_FindSongTests */,
 				844823A81D2FEA4C00EDB678 /* Products */,
@@ -123,9 +128,10 @@
 			isa = PBXGroup;
 			children = (
 				844823CD1D2FEB4400EDB678 /* Song.swift */,
+				841C0FCB1D351B8200110803 /* Player.swift */,
+				841C0FC91D35135900110803 /* Download.swift */,
 				844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */,
-				844823D51D2FF16D00EDB678 /* AppleSongSearchImpl.swift */,
-				844823D31D2FF0C700EDB678 /* AppleSongsSearchResults.swift */,
+				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -200,6 +206,7 @@
 				TargetAttributes = {
 					844823A61D2FEA4C00EDB678 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = MXHD4G8GB5;
 					};
 					844823BA1D2FEA4C00EDB678 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -232,12 +239,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				844823D21D2FEEC500EDB678 /* File in Resources */,
-				844823E61D339DBE00EDB678 /* imgC.jpg in Resources */,
 				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
 				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
 				844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */,
+				84AE51C61D34DDA6003FCD2B /* defaultCover200.png in Resources */,
 				844823B21D2FEA4C00EDB678 /* Assets.xcassets in Resources */,
+				84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,12 +264,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */,
+				841C0FCA1D35135900110803 /* Download.swift in Sources */,
 				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
-				844823D41D2FF0C700EDB678 /* AppleSongsSearchResults.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
-				844823D61D2FF16D00EDB678 /* AppleSongSearchImpl.swift in Sources */,
+				841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */,
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
 				844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */,
+				841C0FCC1D351B8200110803 /* Player.swift in Sources */,
 				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MVVM_FindSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adriantabirta.MVVM-FindSong";
@@ -383,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MVVM_FindSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adriantabirta.MVVM-FindSong";
