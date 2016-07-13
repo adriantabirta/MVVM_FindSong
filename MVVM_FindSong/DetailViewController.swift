@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import MediaPlayer
 import Foundation
 import AudioToolbox
+import MediaPlayer
 
-class DetailViewController: UIViewController, Player {
+
+
+class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
 
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
@@ -107,8 +109,59 @@ class DetailViewController: UIViewController, Player {
     
     func morse() {
     
-    
+    //
+        for(var i=0; i<song.title?.characters.count; i+=1) {
+        
+            let str: String = morseCodeDict.objectForKey("a") as! String
+            for char in str.characters {
+                print(char)
+                switch char {
+                case " " :
+                    print("space")
+                    
+                    
+                case ".":
+                    print("dot")
+                    
+                    
+                case "-":
+                    print("line")
+                    
+                    
+                default: break
+                    
+                    
+                    
+                }
+                
+            }
+            
+          /*
+            switch song.title?.startIndex.advancedBy(i) {
+            case " ": {
+                
+                }
+                
+            case ".": {
+                
+                }
+            default: {
+                
+                }
+                
+            }
+            
+            */
+        }
+        
     }
+    
+    
+    func playDot() {}
+    
+    func playLine() {}
+    
+    func playSpace() {}
     
 
 }

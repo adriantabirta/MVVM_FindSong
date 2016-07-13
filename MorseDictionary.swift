@@ -8,7 +8,8 @@
 
 import Foundation
 
-var morseCodeDict = [  " ": "  ",
+public var morseCodeDict: NSMutableDictionary =
+                    [  " ": "  ",
                        "a": ".-",
                        "b": "-...",
                        "c": "-.-.",
@@ -45,5 +46,4 @@ var morseCodeDict = [  " ": "  ",
                        "7": "--...",
                        "8": "---..",
                        "9": "----.",
-                       "0": "-----"
-]
+                       "0": "-----"]
