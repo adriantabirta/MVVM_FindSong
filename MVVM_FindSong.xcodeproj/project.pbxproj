@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */; };
 		841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */; };
 		841C0FCA1D35135900110803 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC91D35135900110803 /* Download.swift */; };
 		841C0FCC1D351B8200110803 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FCB1D351B8200110803 /* Player.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseDictionary.swift; sourceTree = "<group>"; };
 		841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsHelper.swift; sourceTree = "<group>"; };
 		841C0FC91D35135900110803 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		841C0FCB1D351B8200110803 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		8448239E1D2FEA4C00EDB678 = {
 			isa = PBXGroup;
 			children = (
+				33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */,
 				844823D11D2FEEC500EDB678 /* File */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				845DDAF51D36586800477F71 /* images */,
@@ -293,6 +296,7 @@
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
 				844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */,
 				841C0FCC1D351B8200110803 /* Player.swift in Sources */,
+				33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */,
 				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
