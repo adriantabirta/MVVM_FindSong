@@ -70,8 +70,8 @@
             </variation>
             <connections>
                 <outlet property="coverImg" destination="W1r-wy-uAw" id="Bi9-S5-wuc"/>
-                <outlet property="price" destination="2ju-Bx-IiI" id="Bsa-Io-sDh"/>
                 <outlet property="songAlbum" destination="TCc-6r-4be" id="u0c-JT-4aR"/>
+                <outlet property="songLength" destination="2ju-Bx-IiI" id="lPK-N6-LtF"/>
                 <outlet property="title" destination="PRx-Xe-mKe" id="yCz-ff-qeZ"/>
             </connections>
             <point key="canvasLocation" x="1459" y="531.5"/>

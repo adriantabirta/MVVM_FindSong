@@ -10,9 +10,9 @@ import Foundation
 
 extension Float {
     
-    func toSting() -> String {
+    func toStingAndDolarSing() -> String {
         
-        return String(format: "%0.2f", self)
+        return String(format: "%0.2f $", self)
     }
     
 }
@@ -38,3 +38,26 @@ extension UIImageView {
     }
 }
 
+extension UIButton  {
+
+    public func nsDownloadImage(url: NSURL)  {
+        
+        let session = NSURLSession.sharedSession()
+        var imageDonloaded: UIImage = UIImage()
+        let task = session.downloadTaskWithURL(url) {
+            
+            (url: NSURL?, res: NSURLResponse?, e:NSError?) in
+            let data = NSData(contentsOfURL:url!)
+             imageDonloaded = UIImage(data: data!)!
+            print(" imagine descarcata")
+            
+            dispatch_async(dispatch_get_main_queue()) {
+             self.setImage(imageDonloaded, forState: UIControlState.Normal)
+            
+            }
+            
+        }
+        task.resume()
+      
+    }
+}

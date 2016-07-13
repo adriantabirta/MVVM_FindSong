@@ -9,7 +9,7 @@ import MediaPlayer
 import AVFoundation
 import Foundation
 
-protocol Player: class, UIViewController, NSURLSessionDelegate, AVAudioPlayerDelegate {
+protocol Player: NSURLSessionDelegate, AVAudioPlayerDelegate {
     
 //   private var activeDownloads: [String: Download] = [:]// {get set }
 //   private var downloadsSession: NSURLSession // {get set}
@@ -130,7 +130,7 @@ extension Player {
                                 do {
                                     
 //                                    var player : AVPlayer
-                                   let fileURL = NSURL(fileURLWithPath: destinationUrl.path!)
+                                //   let fileURL = NSURL(fileURLWithPath: destinationUrl.path!)
 //                                   try  player = AVPlayer(URL: fileURL)
 //                                   // player.prepareToPlay()
 //                                   // player.delegate = self

@@ -15,11 +15,6 @@ class SongCell: UITableViewCell  {
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var songAlbum: UILabel!
-    @IBOutlet weak var price: UILabel!
-    
-    @IBAction func playSong(sender: AnyObject) {
-    
-        
-    }
+    @IBOutlet weak var songLength: UILabel!
 
 }

@@ -16,8 +16,7 @@ struct Song{
     var album: String?
     var songUrl: String?
     var coverUrl: String?
-    var coverImage: UIImage?
-    var songLength: Float?
+    var songLength: String?
     var price: Float?
 
 }

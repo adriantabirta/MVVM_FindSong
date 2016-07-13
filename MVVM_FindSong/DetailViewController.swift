@@ -9,24 +9,31 @@
 import UIKit
 import MediaPlayer
 import Foundation
+import AudioToolbox
 
 class DetailViewController: UIViewController, Player {
 
-    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
-    @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var albumLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var songLength: UILabel!
     
     var song: Song
     var delegate: Player?
+    var torchOn: Bool = false
+    var isPlaying: Bool = false
+    private var audioPlayer: AVAudioPlayer
+    private  let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+ 
     
     init(song: Song) {
         self.song = song
+        self.audioPlayer =  AVAudioPlayer()
         super.init(nibName: "DetailViewController", bundle: nil)
         edgesForExtendedLayout = .None
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,17 +42,74 @@ class DetailViewController: UIViewController, Player {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initPlayer()
         self.titleLbl?.text = song.title
         self.albumLbl?.text = song.album
-        self.priceLbl?.text = song.price!.toSting()
-        self.coverImage?.image = song.coverImage
-        self.coverImage.downloadImage(NSURL(string:song.coverUrl! as String )!)
+        self.priceLbl?.text = song.price!.toStingAndDolarSing()
+        self.songLength?.text = song.songLength
+        self.playBtn.nsDownloadImage(NSURL(string:song.coverUrl! as String )!)
     }
     
     @IBAction func playTapped(sender: AnyObject) {
-     playSong(self.song)
+
+        if isPlaying {
+            audioPlayer.pause()
+            isPlaying = false
+        }else {
+            audioPlayer.play()
+            isPlaying = true
+        }
+ 
     }
+    
+    @IBAction func playMorse(sender: AnyObject) {
+        
+        print("tap morse")
+        
+            if (device.hasTorch) {
+                do {
+                    try device.lockForConfiguration()
+                    try device.setTorchModeOnWithLevel(1.0)
+                    if torchOn {
+                        device.torchMode = AVCaptureTorchMode.Off
+                        torchOn = false
+                        print("OFF")
+                    } else {
+                        device.torchMode == AVCaptureTorchMode.On
+                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        torchOn = true
+                        print("ON")
+                    }
+                    device.unlockForConfiguration()
+                }
+                catch {
+                 print("error flash")
+                }
+        }
+    }
+    
+    func initPlayer() {
+    
+        do{
+            guard let url = self.song.songUrl,
+            fileURL = NSURL(string:url),
+            soundData = NSData(contentsOfURL:fileURL) else { return }
+            audioPlayer = try AVAudioPlayer(data: soundData)
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 1.0
+            audioPlayer.delegate = self
+            audioPlayer.play()
+        }
+        catch let error as NSError {
+            print("Error init player")
+        }
+        
+    }
+    
+
+}
+
+extension DetailViewController: AVAudioPlayerDelegate {
 
  
-
 }

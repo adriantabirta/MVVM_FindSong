@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
 
@@ -31,13 +32,12 @@ class ListViewController: UIViewController, AppleSongSearch {
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
         
+        songList  = []
         let nib = UINib(nibName: "SongCell", bundle: nil)
         self.myTable.registerNib(nib, forCellReuseIdentifier: "Cell1")
 
         self.myTable.delegate = self
         self.myTable.dataSource = self
-
-        songList  = searchSongByTitle(searchBar.text!)
     }
     
      override func viewDidLoad() {
@@ -49,7 +49,7 @@ class ListViewController: UIViewController, AppleSongSearch {
     func creaSearchBar() {
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter song name"
-        searchBar.text = "Carlas Dreams"
+        searchBar.text = ""
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
@@ -59,9 +59,15 @@ class ListViewController: UIViewController, AppleSongSearch {
 extension ListViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+       
         searchBar.resignFirstResponder()
         self.songList.removeAll()
-        self.songList = searchSongByTitle(searchBar.text!)
+        
+        guard let songtitle = searchBar.text else {
+            print("nil song title")
+            return
+        }
+        self.songList = searchSongByTitle(songtitle)
         self.myTable.reloadData()
     }
 }
@@ -76,8 +82,25 @@ extension ListViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
           searchBar.resignFirstResponder()
         let dvc: DetailViewController
+        
         dvc = DetailViewController(song: songList[indexPath.row])
         self.navigationController?.pushViewController(dvc, animated: true)
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete
+        {
+            songList.removeAtIndex(indexPath.row)
+            self.myTable.reloadData()
+        }
     }
 }
 
@@ -96,9 +119,26 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
         cell.title?.text = songList[indexPath.row].title
         cell.songAlbum?.text = songList[indexPath.row].album
-        cell.price?.text =  String(format: "%0.2f $", songList[indexPath.row].price!)
-        cell.coverImg.downloadImage(NSURL(string:songList[indexPath.row].coverUrl! as String)!)
-       // songList[indexPath.row].coverImage = cell.coverImg.image!
+        
+        guard let url = songList[indexPath.row].coverUrl  else {
+            return cell
+        }
+          cell.coverImg.downloadImage(NSURL(string:url)!)
+        
+        guard let some: NSString = songList[indexPath.row].songLength, sec: Int32 = some.intValue / 1000 else {
+            return cell
+        }
+        
+        //let sec = some.intValue
+        
+       // let secounds = NSString(string: songList[indexPath.row].songLength!).intValue / 1000
+       let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([ .Minute, .Second], fromDate: date)
+        print(components)
+        cell.songLength?.text =  String(format: "%d:%d", components.minute, components.second)
+
+        
  
         return cell
     }
