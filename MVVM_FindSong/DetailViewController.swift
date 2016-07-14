@@ -13,7 +13,7 @@ import MediaPlayer
 
 
 
-class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
+class DetailViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
@@ -23,7 +23,6 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     @IBOutlet weak var songLength: UILabel!
     
     var song: SongItem
-    var delegate: Player?
     var torchOn: Bool = false
     var isPlaying: Bool = false
     private var audioPlayer: AVAudioPlayer
@@ -35,7 +34,6 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
         self.audioPlayer =  AVAudioPlayer()
         super.init(nibName: "DetailViewController", bundle: nil)
         edgesForExtendedLayout = .None
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,10 +43,12 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     override func viewDidLoad() {
         super.viewDidLoad()
         initPlayer()
-        self.titleLbl?.text = song.title
+       
+        guard ((self.titleLbl?.text = song.title) != nil) else { return }
         self.albumLbl?.text = song.album
-        self.priceLbl?.text = song.price
-        self.songLength?.text = song.songLength
+        self.priceLbl?.text = song.price?.converWithDollarSign()
+        self.songLength?.text = song.songLength?.conevrtToTime()
+        
       //  self.playBtn.nsDownloadImage(song.coverUrl!)
     }
     
@@ -65,36 +65,36 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     }
     
     @IBAction func playMorse(sender: AnyObject) {
-        
+        morse()
         print("tap morse")
         
-            if (device.hasTorch) {
-                do {
-                    try device.lockForConfiguration()
-                    try device.setTorchModeOnWithLevel(1.0)
-                    if torchOn {
-                        device.torchMode = AVCaptureTorchMode.Off
-                        torchOn = false
-                        print("OFF")
-                    } else {
-                        device.torchMode == AVCaptureTorchMode.On
-                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                        torchOn = true
-                        print("ON")
-                    }
-                    device.unlockForConfiguration()
-                }
-                catch {
-                 print("error flash")
-                }
-        }
+//            if (device.hasTorch) {
+//                do {
+//                    try device.lockForConfiguration()
+//                    try device.setTorchModeOnWithLevel(1.0)
+//                    if torchOn {
+//                        device.torchMode = AVCaptureTorchMode.Off
+//                        torchOn = false
+//                        print("OFF")
+//                    } else {
+//                        device.torchMode == AVCaptureTorchMode.On
+//                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//                        torchOn = true
+//                        print("ON")
+//                    }
+//                    device.unlockForConfiguration()
+//                }
+//                catch {
+//                 print("error flash")
+//                }
+//        }
     }
     
     func initPlayer() {
     
         do{
-            guard let url = self.song.songUrl,
-            soundData = NSData(contentsOfURL:url) else { return }
+            guard let url =  self.song.songUrl?.toUrl(),
+            soundData =  NSData(contentsOfURL:url) else { return }
             audioPlayer = try AVAudioPlayer(data: soundData)
             audioPlayer.prepareToPlay()
             audioPlayer.volume = 1.0
@@ -108,12 +108,18 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     }
     
     func morse() {
-    
-    //
-        for var i = 0; i<song.title?.characters.count; i += 1 {
+   
+        var st: String = ""
+        print(song.title)
+        print(morseCodeDict.objectForKey("a"))
         
-    
-            let str: String = morseCodeDict.objectForKey("a") as! String
+        for i: Character in (song.title?.characters)! {
+        
+            st.append(i)
+            print(st)
+      //  st.insert(i as Character, ind: 0)           // st.append(i)
+            guard  let str: String = morseCodeDict.objectForKey(st) as? String else { return }
+            print(str)
             for char in str.characters {
                 print(char)
                 switch char {
@@ -123,7 +129,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
                     
                 case ".":
                     print("dot")
-                    
+                    playDot()
                     
                 case "-":
                     print("line")
@@ -137,28 +143,25 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
                 
             }
             
-          /*
-            switch song.title?.startIndex.advancedBy(i) {
-            case " ": {
-                
-                }
-                
-            case ".": {
-                
-                }
-            default: {
-                
-                }
-                
-            }
-            
-            */
+            st.removeAll()
+ 
         }
         
     }
     
     
-    func playDot() {}
+    func playDot() {
+        do {
+        try device.lockForConfiguration()
+        try device.setTorchModeOnWithLevel(1.0)
+            device.torchMode = AVCaptureTorchMode.On
+            sleep(1)
+            device.torchMode = AVCaptureTorchMode.Off
+        } catch {
+        
+        }
+   
+    }
     
     func playLine() {}
     

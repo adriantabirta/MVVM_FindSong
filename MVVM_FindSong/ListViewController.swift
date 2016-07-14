@@ -20,7 +20,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var myTable: UITableView!
     
     let searchBar = UISearchBar()
-    var songList: Array<Song>  = []
+    var songList: Array<SongItem>  = []
     
     var dvc: DetailViewController
     let modelView: ListVCViewModel
@@ -46,6 +46,7 @@ class ListViewController: UIViewController {
 
         self.myTable.delegate = self
         self.myTable.dataSource = self
+  
     }
     
      override func viewDidLoad() {
@@ -67,7 +68,7 @@ class ListViewController: UIViewController {
 extension ListViewController: ListVCViewModelDelegate {
 
     func updateDataInTable() {
-                print(" RELOAD MY TABLE")
+        print("TableView is reloaded")
         dispatch_async(dispatch_get_main_queue()) {
             self.myTable.reloadData()
         }
@@ -83,11 +84,16 @@ extension ListViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         self.songList.removeAll()
         
+     
+        self.modelView.getSongsByName(searchBarText())
+    }
+    
+    func searchBarText() ->String {
         guard let songtitle = searchBar.text else {
             print("nil song title")
-            return
+            return ""
         }
-        self.modelView.getSongsByName(songtitle)
+        return songtitle
     }
 }
 
@@ -100,6 +106,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
+        print(modelView.songAtIndex(indexPath.row))
         dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -116,6 +123,23 @@ extension ListViewController: UITableViewDelegate {
         {
             modelView.removeSongAtIndex(indexPath.row)
             self.myTable.reloadData()
+        }
+    }
+    
+//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
+//        footerView.backgroundColor = UIColor.blackColor()
+//        
+//        return footerView
+//    }
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.size.height + 150 {
+            modelView.getSongsByName(searchBarText())
         }
     }
 }
@@ -135,15 +159,9 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
        
         let item = modelView.songAtIndex(indexPath.row) // songs[indexPath.row]
-        cell.title?.text = item.artist
-        cell.songAlbum?.text = item.album
-        cell.songLength?.text = item.songLength
-        //cell.coverImg?.image = item.i
-        guard let url = item.coverUrl else {
-            return cell
-        }
-        //cell.coverImg?.downloadImage(url)
-
+        cell.title?.text = item.title
+        cell.songAlbum?.text = item.artist
+        //cell.songLength?.text = item.songLength
         return cell
     }
 }

@@ -15,7 +15,7 @@ protocol SearchServicesDelegate {
 
 class SearchServicesViewModel: SearchServicesDelegate {
     
-    var songs: Array<Song> = []  {
+    var songs: Array<SongItem> = []  {
         didSet {
             print(" delegate services setat !!!")
              delegate?.updateData()
@@ -31,15 +31,15 @@ class SearchServicesViewModel: SearchServicesDelegate {
 
 extension SearchServicesViewModel {
 
-    func searchSongByTitle2(searchString: String) {
-        var song: Song = Song()
-        var songList: Array<Song> = [] 
+    func searchSongByTitle(searchString: String, limit: Int) {
+        var song: SongItem = SongItem()
+        self.songs.removeAll()
         let expectedCharSet = NSCharacterSet.URLQueryAllowedCharacterSet()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         let mySearchString =  searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(mySearchString)&limit=10"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
+        guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(mySearchString)&limit=\(limit)"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
             searchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil else {
                 print("search string is nil")
                 return
@@ -63,24 +63,29 @@ extension SearchServicesViewModel {
                             let jsonResponse = try NSJSONSerialization.JSONObjectWithData(newData, options: [] )
                             guard jsonResponse.objectForKey("results") != nil else {
                                 print(" response dic nil")
-                                songList.removeAll()
-                                return songList = Array<Song>()
+                               // songList.removeAll()
+                                return self.songs  = Array<SongItem>()
                             }
+                            
+                           // print(jsonResponse.objectForKey("results"))
                             
                             if let  responseArray = jsonResponse.objectForKey("results") as? NSMutableArray {
                                 for item in responseArray {
-                                    song = Song( title: item.objectForKey("trackName" ) as? String,
-                                        artist: item.objectForKey("artistName" ) as? String,
-                                        album: item.objectForKey("collectionName" ) as? String,
-                                        songUrl: item.objectForKey("previewUrl" ) as? String,
-                                        coverUrl: item.objectForKey("artworkUrl100" ) as? String,
-                                        songLength: item.objectForKey("trackTimeMillis" ) as? String ,
-                                        price: item.objectForKey("trackPrice" ) as? Float )
-                                    songList.append(song)
+                                    song = SongItem()
+                                        song.title = item.objectForKey("trackName" ) as? String
+                                        song.artist = item.objectForKey("artistName" ) as? String
+                                        song.album = item.objectForKey("collectionName" ) as? String
+                                        song.songUrl = item.objectForKey("previewUrl" ) as? String
+                                        song.coverUrl = item.objectForKey("artworkUrl100" ) as? String
+                                        song.songLength = item.objectForKey("trackTimeMillis" ) as? NSNumber
+                                        song.price = item.objectForKey("trackPrice" ) as? Float
+                                    self.songs.append(song)
                                 }
                             }
+                            self.songs.last(10)
+                            //print(self.songs[0])
                             print("date receptionate !!!")
-                            self.songs = songList
+                            //self.songs = songList
                         }
                         catch {
                             print("eroare primire date")

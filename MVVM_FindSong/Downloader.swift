@@ -14,6 +14,7 @@ protocol Downloader: NSURLSessionDelegate, AVAudioPlayerDelegate {
 
  
 }
+/*
 
 extension Downloader {
 
@@ -208,3 +209,7 @@ extension Downloader {
     }
 
 }
+ 
+ 
+ 
+*/ 
