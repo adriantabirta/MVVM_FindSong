@@ -8,7 +8,7 @@
 
 import Foundation
 
-var morseCodeDict = [  " ": "  ",
+public var morseCodeDict = [  " ": "  ",
                        "a": ".-",
                        "b": "-...",
                        "c": "-.-.",
