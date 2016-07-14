@@ -21,13 +21,14 @@ class ListViewController: UIViewController, AppleSongSearch {
     let searchBar = UISearchBar()
     var songList: Array<Song>  = []
     
+    let modelView: ListVCViewModel
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init() {
-       
+    init(modelView: ListVCViewModel) {
+       self.modelView = modelView
       super.init(nibName: "ListViewController", bundle: nil)
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
@@ -68,6 +69,7 @@ extension ListViewController: UISearchBarDelegate {
             return
         }
         self.songList = searchSongByTitle(songtitle)
+        searchSongByTitle2("Carlas dreams")
         self.myTable.reloadData()
     }
 }
@@ -83,7 +85,7 @@ extension ListViewController: UITableViewDelegate {
           searchBar.resignFirstResponder()
         let dvc: DetailViewController
         
-        dvc = DetailViewController(song: songList[indexPath.row])
+        dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
         
     }
@@ -98,7 +100,7 @@ extension ListViewController: UITableViewDelegate {
     {
         if editingStyle == .Delete
         {
-            songList.removeAtIndex(indexPath.row)
+            modelView.removeSongAtIndex(indexPath.row)
             self.myTable.reloadData()
         }
     }
@@ -112,11 +114,23 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songList.count
+        return modelView.songs.count  //songList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
+       
+        let item = modelView.songAtIndex(indexPath.row) // songs[indexPath.row]
+        cell.title?.text = item.artist
+        cell.songAlbum?.text = item.album
+        cell.songLength?.text = item.songLength
+        //cell.coverImg?.image = item.i
+        guard let url = item.coverUrl else {
+            return cell
+        }
+        cell.coverImg?.downloadImage(url)
+        
+        /*
         cell.title?.text = songList[indexPath.row].title
         cell.songAlbum?.text = songList[indexPath.row].album
         
@@ -140,6 +154,8 @@ extension ListViewController: UITableViewDataSource {
 
         
  
+        return cell
+ */
         return cell
     }
 }

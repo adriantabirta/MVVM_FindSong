@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import MediaPlayer
 import Foundation
 import AudioToolbox
+import MediaPlayer
 
-class DetailViewController: UIViewController, Player {
+
+
+class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
 
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
@@ -20,7 +22,7 @@ class DetailViewController: UIViewController, Player {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var songLength: UILabel!
     
-    var song: Song
+    var song: ListVCViewModel.Item
     var delegate: Player?
     var torchOn: Bool = false
     var isPlaying: Bool = false
@@ -28,7 +30,7 @@ class DetailViewController: UIViewController, Player {
     private  let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
  
     
-    init(song: Song) {
+    init(song: ListVCViewModel.Item) {
         self.song = song
         self.audioPlayer =  AVAudioPlayer()
         super.init(nibName: "DetailViewController", bundle: nil)
@@ -45,9 +47,9 @@ class DetailViewController: UIViewController, Player {
         initPlayer()
         self.titleLbl?.text = song.title
         self.albumLbl?.text = song.album
-        self.priceLbl?.text = song.price!.toStingAndDolarSing()
+        self.priceLbl?.text = song.price
         self.songLength?.text = song.songLength
-        self.playBtn.nsDownloadImage(NSURL(string:song.coverUrl! as String )!)
+        self.playBtn.nsDownloadImage(song.coverUrl!)
     }
     
     @IBAction func playTapped(sender: AnyObject) {
@@ -92,13 +94,12 @@ class DetailViewController: UIViewController, Player {
     
         do{
             guard let url = self.song.songUrl,
-            fileURL = NSURL(string:url),
-            soundData = NSData(contentsOfURL:fileURL) else { return }
+            soundData = NSData(contentsOfURL:url) else { return }
             audioPlayer = try AVAudioPlayer(data: soundData)
             audioPlayer.prepareToPlay()
             audioPlayer.volume = 1.0
             audioPlayer.delegate = self
-            audioPlayer.play()
+            //audioPlayer.play()
         }
         catch let error as NSError {
             print("Error init player")
@@ -106,10 +107,63 @@ class DetailViewController: UIViewController, Player {
         
     }
     
+    func morse() {
+    
+    //
+        for(var i=0; i<song.title?.characters.count; i+=1) {
+        
+            let str: String = morseCodeDict.objectForKey("a") as! String
+            for char in str.characters {
+                print(char)
+                switch char {
+                case " " :
+                    print("space")
+                    
+                    
+                case ".":
+                    print("dot")
+                    
+                    
+                case "-":
+                    print("line")
+                    
+                    
+                default: break
+                    
+                    
+                    
+                }
+                
+            }
+            
+          /*
+            switch song.title?.startIndex.advancedBy(i) {
+            case " ": {
+                
+                }
+                
+            case ".": {
+                
+                }
+            default: {
+                
+                }
+                
+            }
+            
+            */
+        }
+        
+    }
+    
+    
+    func playDot() {}
+    
+    func playLine() {}
+    
+    func playSpace() {}
+    
 
 }
 
-extension DetailViewController: AVAudioPlayerDelegate {
 
- 
-}

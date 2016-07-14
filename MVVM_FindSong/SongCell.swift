@@ -11,7 +11,6 @@ import Foundation
 
 class SongCell: UITableViewCell  {
 
-    
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var songAlbum: UILabel!

@@ -29,7 +29,9 @@ extension AppleSongSearch {
         var songList: Array<Song> = []
         let expectedCharSet = NSCharacterSet.URLQueryAllowedCharacterSet()
         
-        guard searchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil, let urlPath: String = "https://itunes.apple.com/search?term=\(searchString)&limit=10", url: NSURL = NSURL(string: urlPath)  else {
+         let mySearchString =  searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        guard mySearchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil, let urlPath: String = "https://itunes.apple.com/search?term=\(mySearchString)&limit=10", url: NSURL = NSURL(string: urlPath)  else {
               print(" roare la crearea url-lui")
                 songList.removeAll()
                 return songList
@@ -89,12 +91,14 @@ extension AppleSongSearch {
     
     
     func searchSongByTitle2(searchString: String) -> Array<Song>{
-        var song: Song
+       // var song: Song
         var songList: Array<Song> = []
         let expectedCharSet = NSCharacterSet.URLQueryAllowedCharacterSet()
-        let queue: NSOperationQueue = NSOperationQueue()
+      //  let queue: NSOperationQueue = NSOperationQueue()
     
-        guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(searchString)&limit=10"),  request:NSURLRequest = NSURLRequest(URL: url) where
+        let mySearchString =  searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(mySearchString)&limit=10"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
             searchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil else {
             print("search string is nil")
             return songList
@@ -104,7 +108,25 @@ extension AppleSongSearch {
 
         do {
             
-           // NSURLSession.datatask
+            let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+           // let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "GET"
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: {
+                data, response, error  in
+                
+                if let response = response as? NSHTTPURLResponse {
+                    if response.statusCode == 200 {
+                    
+                        print("AM PRIMIT \(data)")
+                    }
+                }
+                
+            })
+            task.resume()
+            
+          //  NSURLSession.da
 //                try NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: {
 //                   response, data, error  in
 //                })
