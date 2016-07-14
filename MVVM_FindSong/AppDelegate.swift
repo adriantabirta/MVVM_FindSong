@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         window?.makeKeyAndVisible()
-        let vc = ListViewController()
+        let ss = SearchServicesViewModel()
+        let vm  = ListVCViewModel(searchServices: ss)
+        let vc = ListViewController(modelView: vm)
         window?.rootViewController = UINavigationController(rootViewController: vc)
         
         

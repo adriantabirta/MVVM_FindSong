@@ -8,21 +8,55 @@
 import UIKit
 import Foundation
 
-class ListVCViewModel {
+public struct SongItem {
     
-  // private let searchServices: ViewModelSearchServices
-   private var item: Item
-    var songs: Array<Song>
+    var title: String?
+    var artist: String?
+    var album: String?
+    var songUrl: NSURL?
+    var coverUrl: NSURL?
+    var songLength: String?
+    var price: String?
+    var image: UIImage?
+}
+
+protocol ListVCViewModelDelegate {
+    func updateDataInTable()
+}
+
+class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
     
-      init() {
-        //super.init()
-        //downloadInfo()
-        songs = []
-       // searchServices = ViewModelSearchServices()
-        item = Item()
+    private var item: SongItem = SongItem()
+    var songs: Array<Song> =  [] {
+        didSet {
+            print("setat in model view array-ul, cheama delegatul")
+            self.listDelegate?.updateDataInTable()
+        }
+    }
+    var searchService: SearchServicesViewModel = SearchServicesViewModel()
+    var searchDelegate: SearchServicesDelegate?
+    var listDelegate: ListVCViewModelDelegate?
+    
+    init(searchServices: SearchServicesViewModel) {
+        self.searchService = searchServices
+        self.searchService.delegate = self
+        
     }
     
-    func songAtIndex(index: Int) ->Item {
+    func updateData() {
+       self.songs = searchService.songs
+       print("in view model ")
+    }
+    
+    func updateDataInTable() {
+        
+    }
+    
+    func getSongsByName(searchText: String){
+      searchService.searchSongByTitle2(searchText)
+    }
+    
+    func songAtIndex(index: Int) ->SongItem {
      
         item.title = songs[index].title
         item.artist = songs[index].title
@@ -35,9 +69,13 @@ class ListVCViewModel {
         item.songUrl = finalUrl
         
         guard let some: NSString = songs[index].songLength, sec: Int32 = some.intValue / 1000 else {
+            
             print("song lenght nil")
             return item
         }
+        
+        print(some)
+        
         let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Minute, .Second], fromDate: date)
@@ -58,23 +96,12 @@ class ListVCViewModel {
         item.price = price2
         item.image = UIImage() // ?? //songs[index.row].coverUrl
        
+        print("itemul returnat \(item)")
         return item
     }
     
     func removeSongAtIndex(index: Int) {
         songs.removeAtIndex(index)
-    }
-    
-    internal struct Item {
-    
-        var title: String?
-        var artist: String?
-        var album: String?
-        var songUrl: NSURL?
-        var coverUrl: NSURL?
-        var songLength: String?
-        var price: String?
-        var image: UIImage?
     }
  
 }

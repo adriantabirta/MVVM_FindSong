@@ -9,20 +9,13 @@ import MediaPlayer
 import AVFoundation
 import Foundation
 
-protocol Player: NSURLSessionDelegate, AVAudioPlayerDelegate {
+protocol Downloader: NSURLSessionDelegate, AVAudioPlayerDelegate {
     
-//   private var activeDownloads: [String: Download] = [:]// {get set }
-//   private var downloadsSession: NSURLSession // {get set}
-    
-//    func playSong(song: Song)
-//    func pauseSong()
-//    func stopSong()
-  
 
  
 }
 
-extension Player {
+extension Downloader {
 
   
     
@@ -33,29 +26,6 @@ extension Player {
             (path, error) in
         }
         
-       // var activeDownloads: [String: Download]
-        
-//       let downloadsSession: NSURLSession =  {let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("bgSessionConfiguration")
-//        let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-//        return session
-//        }()
-//        
-//        if let urlString = song.songUrl, url =  NSURL(string: urlString) {
-//            // 1
-//            let download = Download(url: urlString)
-//            // 2
-//            download.downloadTask = downloadsSession.downloadTaskWithURL(url)
-//            // 3
-//            download.downloadTask!.resume()
-//            // 4
-//            download.isDownloading = true
-//            // 5
-//           // activeDownloads[download.url] = download
-//        }
-        
-        //check if exist
-        //download
-        // play
     }
     
     func pauseSong(){
@@ -92,7 +62,7 @@ extension Player {
     
 }
 
-extension Player {
+extension Downloader {
 
      func loadFileAsync(url: NSURL, completion:(path:String, error:NSError!) -> Void) {
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first
@@ -170,7 +140,7 @@ extension Player {
 }
 
 
-extension Player {
+extension Downloader {
 
     func play(songUrl: String) {
     

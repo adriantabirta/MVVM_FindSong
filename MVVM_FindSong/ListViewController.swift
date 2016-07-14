@@ -11,7 +11,8 @@ import AVFoundation
 import UIKit
 
 
-class ListViewController: UIViewController, AppleSongSearch {
+
+class ListViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var findBtn: UIButton!
@@ -21,15 +22,21 @@ class ListViewController: UIViewController, AppleSongSearch {
     let searchBar = UISearchBar()
     var songList: Array<Song>  = []
     
+    var dvc: DetailViewController
     let modelView: ListVCViewModel
+    var listDelegate: ListVCViewModelDelegate?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     init(modelView: ListVCViewModel) {
-       self.modelView = modelView
-      super.init(nibName: "ListViewController", bundle: nil)
+        self.modelView = modelView
+        let item : SongItem = SongItem()
+        self.dvc = DetailViewController(song: item)
+        super.init(nibName: "ListViewController", bundle: nil)
+        // self.listDelegate = self
+        self.modelView.listDelegate = self
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
         
@@ -44,8 +51,8 @@ class ListViewController: UIViewController, AppleSongSearch {
      override func viewDidLoad() {
         super.viewDidLoad()
         creaSearchBar()
+        
     }
-    
     
     func creaSearchBar() {
         searchBar.showsCancelButton = false
@@ -55,6 +62,18 @@ class ListViewController: UIViewController, AppleSongSearch {
         self.navigationItem.titleView = searchBar
     }
     
+}
+
+extension ListViewController: ListVCViewModelDelegate {
+
+    func updateDataInTable() {
+                print(" RELOAD MY TABLE")
+        dispatch_async(dispatch_get_main_queue()) {
+            self.myTable.reloadData()
+        }
+       
+                
+    }
 }
 
 extension ListViewController: UISearchBarDelegate {
@@ -68,9 +87,7 @@ extension ListViewController: UISearchBarDelegate {
             print("nil song title")
             return
         }
-        self.songList = searchSongByTitle(songtitle)
-        searchSongByTitle2("Carlas dreams")
-        self.myTable.reloadData()
+        self.modelView.getSongsByName(songtitle)
     }
 }
 
@@ -82,12 +99,9 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-          searchBar.resignFirstResponder()
-        let dvc: DetailViewController
-        
+        searchBar.resignFirstResponder()
         dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
-        
     }
     
     
@@ -128,34 +142,8 @@ extension ListViewController: UITableViewDataSource {
         guard let url = item.coverUrl else {
             return cell
         }
-        cell.coverImg?.downloadImage(url)
-        
-        /*
-        cell.title?.text = songList[indexPath.row].title
-        cell.songAlbum?.text = songList[indexPath.row].album
-        
-        guard let url = songList[indexPath.row].coverUrl  else {
-            return cell
-        }
-          cell.coverImg.downloadImage(NSURL(string:url)!)
-        
-        guard let some: NSString = songList[indexPath.row].songLength, sec: Int32 = some.intValue / 1000 else {
-            return cell
-        }
-        
-        //let sec = some.intValue
-        
-       // let secounds = NSString(string: songList[indexPath.row].songLength!).intValue / 1000
-       let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([ .Minute, .Second], fromDate: date)
-        print(components)
-        cell.songLength?.text =  String(format: "%d:%d", components.minute, components.second)
+        //cell.coverImg?.downloadImage(url)
 
-        
- 
-        return cell
- */
         return cell
     }
 }

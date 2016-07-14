@@ -8,16 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */; };
-		33A0EB1E1D36CC0500110B52 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1D1D36CC0500110B52 /* CellViewModel.swift */; };
 		33A0EB201D36CC1A00110B52 /* ListVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */; };
-		33A0EB241D36D31400110B52 /* ViewModelSearchServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB231D36D31400110B52 /* ViewModelSearchServices.swift */; };
+		33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */; };
 		841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */; };
-		841C0FCA1D35135900110803 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC91D35135900110803 /* Download.swift */; };
-		841C0FCC1D351B8200110803 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FCB1D351B8200110803 /* Player.swift */; };
+		841C0FCC1D351B8200110803 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FCB1D351B8200110803 /* Downloader.swift */; };
 		844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */; };
 		844823C01D2FEA4C00EDB678 /* MVVM_FindSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */; };
 		844823CE1D2FEB4400EDB678 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CD1D2FEB4400EDB678 /* Song.swift */; };
-		844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */; };
 		844823D21D2FEEC500EDB678 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 844823D11D2FEEC500EDB678 /* File */; };
 		844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823D71D2FF44600EDB678 /* ListViewController.xib */; };
 		844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D91D2FF47B00EDB678 /* ListViewController.swift */; };
@@ -43,12 +40,10 @@
 
 /* Begin PBXFileReference section */
 		33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseDictionary.swift; sourceTree = "<group>"; };
-		33A0EB1D1D36CC0500110B52 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVCViewModel.swift; sourceTree = "<group>"; };
-		33A0EB231D36D31400110B52 /* ViewModelSearchServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelSearchServices.swift; sourceTree = "<group>"; };
+		33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchServicesViewModel.swift; sourceTree = "<group>"; };
 		841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsHelper.swift; sourceTree = "<group>"; };
-		841C0FC91D35135900110803 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
-		841C0FCB1D351B8200110803 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		841C0FCB1D351B8200110803 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = MVVM_FindSong/Downloader.swift; sourceTree = "<group>"; };
 		844823A71D2FEA4C00EDB678 /* MVVM_FindSong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_FindSong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844823B61D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +51,6 @@
 		844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_FindSongTests.swift; sourceTree = "<group>"; };
 		844823C11D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844823CD1D2FEB4400EDB678 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSongSearch.swift; sourceTree = "<group>"; };
 		844823D11D2FEEC500EDB678 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		844823D71D2FF44600EDB678 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		844823D91D2FF47B00EDB678 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +85,7 @@
 		8448239E1D2FEA4C00EDB678 = {
 			isa = PBXGroup;
 			children = (
+				841C0FCB1D351B8200110803 /* Downloader.swift */,
 				33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */,
 				844823D11D2FEEC500EDB678 /* File */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
@@ -134,9 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				844823CD1D2FEB4400EDB678 /* Song.swift */,
-				841C0FCB1D351B8200110803 /* Player.swift */,
-				841C0FC91D35135900110803 /* Download.swift */,
-				844823CF1D2FEDA500EDB678 /* AppleSongSearch.swift */,
 				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 			);
 			name = Model;
@@ -145,9 +137,8 @@
 		844823CB1D2FEB1000EDB678 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				33A0EB1D1D36CC0500110B52 /* CellViewModel.swift */,
 				33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */,
-				33A0EB231D36D31400110B52 /* ViewModelSearchServices.swift */,
+				33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -298,15 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */,
-				841C0FCA1D35135900110803 /* Download.swift in Sources */,
-				33A0EB1E1D36CC0500110B52 /* CellViewModel.swift in Sources */,
 				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
 				841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */,
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
-				844823D01D2FEDA500EDB678 /* AppleSongSearch.swift in Sources */,
-				841C0FCC1D351B8200110803 /* Player.swift in Sources */,
-				33A0EB241D36D31400110B52 /* ViewModelSearchServices.swift in Sources */,
+				841C0FCC1D351B8200110803 /* Downloader.swift in Sources */,
+				33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */,
 				33A0EB201D36CC1A00110B52 /* ListVCViewModel.swift in Sources */,
 				33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */,
 				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,

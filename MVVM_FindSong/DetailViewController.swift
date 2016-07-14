@@ -22,7 +22,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var songLength: UILabel!
     
-    var song: ListVCViewModel.Item
+    var song: SongItem
     var delegate: Player?
     var torchOn: Bool = false
     var isPlaying: Bool = false
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     private  let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
  
     
-    init(song: ListVCViewModel.Item) {
+    init(song: SongItem) {
         self.song = song
         self.audioPlayer =  AVAudioPlayer()
         super.init(nibName: "DetailViewController", bundle: nil)
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
         self.albumLbl?.text = song.album
         self.priceLbl?.text = song.price
         self.songLength?.text = song.songLength
-        self.playBtn.nsDownloadImage(song.coverUrl!)
+      //  self.playBtn.nsDownloadImage(song.coverUrl!)
     }
     
     @IBAction func playTapped(sender: AnyObject) {
@@ -102,7 +102,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
             //audioPlayer.play()
         }
         catch let error as NSError {
-            print("Error init player")
+            print("Error init player \(error)")
         }
         
     }
@@ -110,8 +110,9 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate, Player {
     func morse() {
     
     //
-        for(var i=0; i<song.title?.characters.count; i+=1) {
+        for var i = 0; i<song.title?.characters.count; i += 1 {
         
+    
             let str: String = morseCodeDict.objectForKey("a") as! String
             for char in str.characters {
                 print(char)
