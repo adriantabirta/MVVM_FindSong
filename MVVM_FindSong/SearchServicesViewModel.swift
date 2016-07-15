@@ -69,12 +69,25 @@ extension SearchServicesViewModel {
                                         song.album = item.objectForKey("collectionName" ) as? String
                                         song.songUrl = item.objectForKey("previewUrl" ) as? String
                                         song.coverUrl = item.objectForKey("artworkUrl100" ) as? String
+                                        song.artistUrl = item.objectForKey("artistViewUrl" ) as? String
+                                        song.albumUrl = item.objectForKey("collectionViewUrl" ) as? String
                                         song.songLength = item.objectForKey("trackTimeMillis" ) as? NSNumber
                                         song.price = item.objectForKey("trackPrice" ) as? Float
                                     self.songs.append(song)
                                 }
                             }
                             self.songs.last(10)
+                            
+                          //  let temp = self.songs.reverse()
+                          //  self.songs.removeAll()
+                           
+                        
+                           // for index in 0..<9 {
+                            //    self.songs[8] = temp.o
+                          //  }
+                            
+                           
+                            
                             print("date receptionate !!!")
                         }
                         catch {

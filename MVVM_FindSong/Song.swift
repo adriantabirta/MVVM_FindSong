@@ -16,6 +16,8 @@ public struct SongItem {
     var album: String?
     var songUrl: String?
     var coverUrl: String?
+    var artistUrl: String?
+    var albumUrl: String?
     var songLength: NSNumber?
     var price: Float?
     var image: UIImage?

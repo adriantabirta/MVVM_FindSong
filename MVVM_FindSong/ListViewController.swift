@@ -20,12 +20,16 @@ class ListViewController: UIViewController {
     @IBOutlet weak var myTable: UITableView!
     
     let searchBar = UISearchBar()
-    var songList: Array<SongItem>  = []
-    
     var dvc: DetailViewController
     let modelView: ListVCViewModel
     var listDelegate: ListVCViewModelDelegate?
 
+    lazy var tapRecognizer: UITapGestureRecognizer = {
+        var recognizer = UITapGestureRecognizer(target:self, action: #selector(ListViewController.dismissKeyboard))
+        return recognizer
+    }()
+
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,15 +39,16 @@ class ListViewController: UIViewController {
         let item : SongItem = SongItem()
         self.dvc = DetailViewController(song: item)
         super.init(nibName: "ListViewController", bundle: nil)
-        // self.listDelegate = self
-        self.modelView.listDelegate = self
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
         
-        songList  = []
         let nib = UINib(nibName: "SongCell", bundle: nil)
         self.myTable.registerNib(nib, forCellReuseIdentifier: "Cell1")
 
+     
+        self.myTable.scrollEnabled = false
+        self.searchBar.delegate = self
+        self.modelView.listDelegate = self
         self.myTable.delegate = self
         self.myTable.dataSource = self
   
@@ -52,12 +57,16 @@ class ListViewController: UIViewController {
      override func viewDidLoad() {
         super.viewDidLoad()
         creaSearchBar()
-        
+    }
+    
+    func dismissKeyboard() {
+        print("dismiss keyboard")
+        self.searchBar.resignFirstResponder()
     }
     
     func creaSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Enter song name"
+        searchBar.placeholder = "Song name or artist"
         searchBar.text = ""
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
@@ -72,19 +81,22 @@ extension ListViewController: ListVCViewModelDelegate {
         dispatch_async(dispatch_get_main_queue()) {
             self.myTable.reloadData()
         }
-       
-                
     }
 }
 
+
 extension ListViewController: UISearchBarDelegate {
 
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        view.removeGestureRecognizer(tapRecognizer)
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-       
         searchBar.resignFirstResponder()
-        self.songList.removeAll()
-        
-     
         self.modelView.getSongsByName(searchBarText())
     }
     
@@ -94,6 +106,20 @@ extension ListViewController: UISearchBarDelegate {
             return ""
         }
         return songtitle
+    }
+    
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var size = myTable.contentOffset.y
+        //size += 150
+        print(size)
+        if myTable.contentOffset.y > 450  {
+             print("load more ")
+            myTable.scrollEnabled = false
+            modelView.songs.removeAll()
+            myTable.reloadData()
+            modelView.loadMore()
+        }
     }
 }
 
@@ -125,15 +151,6 @@ extension ListViewController: UITableViewDelegate {
             self.myTable.reloadData()
         }
     }
-
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.size.height + 150 {
-            modelView.getSongsByName(searchBarText())
-        }
-    }
 }
 
 
@@ -144,7 +161,15 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return modelView.songs.count  //songList.count
+       
+        if modelView.songs.count == 0 {
+            self.myTable.separatorStyle = .None
+            self.myTable.scrollEnabled = false
+            self.myTable.userInteractionEnabled = false
+        }
+         self.myTable.scrollEnabled = true
+        self.myTable.userInteractionEnabled = true
+        return modelView.songs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

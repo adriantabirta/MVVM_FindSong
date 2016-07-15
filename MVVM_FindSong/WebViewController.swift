@@ -14,7 +14,7 @@ class WebViewController : UIViewController {
     var searchString : String?
     
     init(string: String) {
-        print(string)
+       // print(string)
         self.searchString = string
         super.init(nibName: "WebViewController", bundle: nil)
         edgesForExtendedLayout = .None
@@ -28,7 +28,7 @@ class WebViewController : UIViewController {
         super.viewDidLoad()
 
         guard let str: String = searchString, str2: String = str.stringByReplacingOccurrencesOfString(" ", withString: "+"),
-            url = NSURL(string: "https://www.google.com/search?q=\(str2)") else { return }
+        url = NSURL(string: str2) else { return }
         webView.loadRequest(NSURLRequest(URL:url ))
     }
     

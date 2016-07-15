@@ -82,26 +82,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0T-zQ-ZGG">
-                    <rect key="frame" x="200" y="542" width="200" height="50"/>
-                    <color key="backgroundColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="59f-4J-cIV"/>
-                        <constraint firstAttribute="height" constant="50" id="MFV-OL-uU2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
-                    <state key="normal" title="Play Morse">
-                        <color key="titleColor" red="0.95749056180000003" green="0.98509080500000001" blue="0.90736134660000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="10"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="playMorse:" destination="-1" eventType="touchUpInside" id="CL8-JF-zbf"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWC-B1-PBN">
                     <rect key="frame" x="0.0" y="245" width="600" height="45"/>
                     <color key="backgroundColor" red="0.72766272189349113" green="0.78830128205128203" blue="0.66702416173570012" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,6 +112,26 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QOH-UB-jgP">
                     <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                 </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0T-zQ-ZGG">
+                    <rect key="frame" x="200" y="542" width="200" height="50"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="59f-4J-cIV"/>
+                        <constraint firstAttribute="height" constant="50" id="MFV-OL-uU2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                    <state key="normal" title="Play Morse">
+                        <color key="titleColor" red="0.95749056180000003" green="0.98509080500000001" blue="0.90736134660000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="playMorse:" destination="-1" eventType="touchUpInside" id="CL8-JF-zbf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.95749056177680558" green="0.98509080497382195" blue="0.90736134661930834" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -168,7 +168,7 @@
                     <include reference="VOG-pL-gLK"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="1492" y="401"/>
+            <point key="canvasLocation" x="1771" y="397"/>
         </view>
     </objects>
     <resources>

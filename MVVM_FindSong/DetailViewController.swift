@@ -77,14 +77,14 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func artistTapped(sender: AnyObject) {
-        guard let myString = artistBtn.titleLabel?.text, wvc : WebViewController = WebViewController(string: myString) else {
+        guard let myString = song.artistUrl, wvc : WebViewController = WebViewController(string: myString) else {
             return
         }
         self.navigationController?.pushViewController(wvc, animated: true)
     }
     
     @IBAction func albumTapped(sender: AnyObject) {
-        guard let myString = albumBtn.titleLabel?.text, wvc : WebViewController = WebViewController(string: myString) else {
+        guard let myString = song.albumUrl, wvc : WebViewController = WebViewController(string: myString) else {
             return
         }
         self.navigationController?.pushViewController(wvc, animated: true)

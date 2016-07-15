@@ -56,6 +56,8 @@ class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
         item.songUrl = temp.songUrl
         item.songLength = temp.songLength
         item.coverUrl = temp.coverUrl
+        item.artistUrl = temp.artistUrl
+        item.albumUrl = temp.albumUrl
         item.price = temp.price
         item.image = UIImage()
         return item
