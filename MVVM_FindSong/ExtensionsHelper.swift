@@ -10,20 +10,20 @@ import Foundation
 
 extension UIImageView {
     
-    public func downloadImage(url: NSURL) {
+    public func downloadImage(urlString: String) {
         
+        guard let url = NSURL(string: urlString) else { return }
         let session = NSURLSession.sharedSession()
         let task = session.downloadTaskWithURL(url) {
             
             (url: NSURL?, res: NSURLResponse?, e:NSError?) in
-            let data = NSData(contentsOfURL:url!)
-            let imageDonloaded = UIImage(data: data!)
-            print(" imagine descarcata")
-            
+            guard let url2: NSURL = url, data = NSData(contentsOfURL:url2), imageDonloaded = UIImage(data: data)   else {
+                print("image download  nil")
+                return
+            }
             dispatch_async(dispatch_get_main_queue()) {
                 self.image = imageDonloaded
             }
-            
         }
         task.resume()
     }
@@ -31,25 +31,23 @@ extension UIImageView {
 
 extension UIButton  {
 
-    public func nsDownloadImage(url: NSURL)  {
-        
+    public func nsDownloadImage(urlString: String)  {
+
+        guard let url = NSURL(string: urlString) else { return }
         let session = NSURLSession.sharedSession()
-        var imageDonloaded: UIImage = UIImage()
         let task = session.downloadTaskWithURL(url) {
             
             (url: NSURL?, res: NSURLResponse?, e:NSError?) in
-            let data = NSData(contentsOfURL:url!)
-             imageDonloaded = UIImage(data: data!)!
-            print(" imagine descarcata")
-            
+            guard let url2: NSURL = url, data = NSData(contentsOfURL:url2), imageDonloaded = UIImage(data: data)   else {
+                print("image download  nil")
+                return
+            }
+           // print(" imagine descarcata")
             dispatch_async(dispatch_get_main_queue()) {
              self.setImage(imageDonloaded, forState: UIControlState.Normal)
-            
             }
-            
         }
         task.resume()
-      
     }
 }
 
@@ -81,7 +79,7 @@ public extension NSNumber {
         let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Minute, .Second], fromDate: date)
-        print(components)
+        //print(components)
         let songLenght = String(format: "%d:%d", components.minute, components.second)
         
         return songLenght
@@ -90,9 +88,9 @@ public extension NSNumber {
 }
 
 
+
 public extension String  {
     
-  
     func insert(string:String,ind:Int) -> String {
         return  String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count-ind))
     }
@@ -101,8 +99,6 @@ public extension String  {
     
         return NSURL(fileURLWithPath: self)
     }
-
-    
     
     public func conevrtToTime() ->String {
      
@@ -111,35 +107,11 @@ public extension String  {
         let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Minute, .Second], fromDate: date)
-        print(components)
+       // print(components)
         let songLenght = String(format: "%d:%d", components.minute, components.second)
        
         return songLenght
     }
     
-    public func downloadImageFromSelf() -> UIImage {
-        
-        guard let url = NSURL(string: self) else {
-         print(" nil la download image from self- string")
-            return UIImage()
-        }
-        let session = NSURLSession.sharedSession()
-        var imageDonloaded: UIImage = UIImage()
-        let task = session.downloadTaskWithURL(url) {
-            
-            (url: NSURL?, res: NSURLResponse?, e:NSError?) in
-            let data = NSData(contentsOfURL:url!)
-            imageDonloaded = UIImage(data: data!)!
-            print(" imagine descarcata")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                //self.setImage(imageDonloaded, forState: UIControlState.Normal)
-               // return imageDonloaded
-            }
-            
-        }
-        task.resume()
-     return imageDonloaded
-    }
 }
 

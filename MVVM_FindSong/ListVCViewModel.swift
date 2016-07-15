@@ -20,7 +20,6 @@ class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
     private var searchString: String = ""
     var songs: Array<SongItem> =  [] {
         didSet {
-            print("setat in model view array-ul, cheama delegatul")
             self.listDelegate?.updateDataInTable()
         }
     }
@@ -36,12 +35,9 @@ class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
     
     func updateData() {
        self.songs = searchService.songs
-       print("in view model ")
     }
     
-    func updateDataInTable() {
-        
-    }
+    func updateDataInTable() {}
     
     func getSongsByName(searchText: String){
         self.searchString = searchText
@@ -54,14 +50,13 @@ class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
     
     func songAtIndex(index: Int) ->SongItem {
         let temp  = songs[index]
-        item.title = temp.title//songs[index].title
+        item.title = temp.title
         item.artist = temp.artist
         item.album = temp.album
         item.songUrl = temp.songUrl
-        //guard let some = temp.songLength else { return item }
-        item.songLength = temp.songLength //conevrtToTime()
+        item.songLength = temp.songLength
         item.coverUrl = temp.coverUrl
-        item.price = temp.price //converWithDollarSign()
+        item.price = temp.price
         item.image = UIImage()
         return item
     }

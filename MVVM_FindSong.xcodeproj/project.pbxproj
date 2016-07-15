@@ -24,6 +24,9 @@
 		845DDAF41D36554500477F71 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845DDAF31D36554500477F71 /* Media.xcassets */; };
 		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
 		849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849322221D33CFB600A0AF97 /* DetailViewController.xib */; };
+		849F67C21D38CF760049ABCB /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 849F67C11D38CF760049ABCB /* play-btn.png */; };
+		849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F67C31D38D1660049ABCB /* WebViewController.xib */; };
+		849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F67C51D38D1760049ABCB /* WebViewController.swift */; };
 		84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C31D34DDA6003FCD2B /* defaultCover60.png */; };
 		84AE51C61D34DDA6003FCD2B /* defaultCover200.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C41D34DDA6003FCD2B /* defaultCover200.png */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		845DDAF31D36554500477F71 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		849322221D33CFB600A0AF97 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		849F67C11D38CF760049ABCB /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-btn.png"; sourceTree = "<group>"; };
+		849F67C31D38D1660049ABCB /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		849F67C51D38D1760049ABCB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		84AE51C31D34DDA6003FCD2B /* defaultCover60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover60.png; sourceTree = "<group>"; };
 		84AE51C41D34DDA6003FCD2B /* defaultCover200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover200.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +91,7 @@
 		8448239E1D2FEA4C00EDB678 = {
 			isa = PBXGroup;
 			children = (
+				849F67C11D38CF760049ABCB /* play-btn.png */,
 				841C0FCB1D351B8200110803 /* Downloader.swift */,
 				33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */,
 				844823D11D2FEEC500EDB678 /* File */,
@@ -152,6 +159,8 @@
 				844823D71D2FF44600EDB678 /* ListViewController.xib */,
 				849322201D33CFA000A0AF97 /* DetailViewController.swift */,
 				849322221D33CFB600A0AF97 /* DetailViewController.xib */,
+				849F67C51D38D1760049ABCB /* WebViewController.swift */,
+				849F67C31D38D1660049ABCB /* WebViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -265,6 +274,8 @@
 			files = (
 				844823D21D2FEEC500EDB678 /* File in Resources */,
 				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
+				849F67C21D38CF760049ABCB /* play-btn.png in Resources */,
+				849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */,
 				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
 				844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */,
@@ -289,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */,
+				849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */,
 				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
 				841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */,

@@ -14,19 +14,15 @@ protocol SearchServicesDelegate {
 }
 
 class SearchServicesViewModel: SearchServicesDelegate {
-    
+    var delegate: SearchServicesDelegate?
     var songs: Array<SongItem> = []  {
         didSet {
-            print(" delegate services setat !!!")
              delegate?.updateData()
              UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
-    var delegate: SearchServicesDelegate?
-  
-    func updateData() {
-        print("update func in services")
-    }
+    
+    func updateData() { }
 }
 
 extension SearchServicesViewModel {
@@ -62,13 +58,9 @@ extension SearchServicesViewModel {
                         do {
                             let jsonResponse = try NSJSONSerialization.JSONObjectWithData(newData, options: [] )
                             guard jsonResponse.objectForKey("results") != nil else {
-                                print(" response dic nil")
-                               // songList.removeAll()
                                 return self.songs  = Array<SongItem>()
                             }
-                            
-                           // print(jsonResponse.objectForKey("results"))
-                            
+    
                             if let  responseArray = jsonResponse.objectForKey("results") as? NSMutableArray {
                                 for item in responseArray {
                                     song = SongItem()
@@ -83,9 +75,7 @@ extension SearchServicesViewModel {
                                 }
                             }
                             self.songs.last(10)
-                            //print(self.songs[0])
                             print("date receptionate !!!")
-                            //self.songs = songList
                         }
                         catch {
                             print("eroare primire date")

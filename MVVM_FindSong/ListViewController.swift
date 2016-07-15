@@ -106,7 +106,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
-        print(modelView.songAtIndex(indexPath.row))
+       // print(modelView.songAtIndex(indexPath.row))
         dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -125,15 +125,7 @@ extension ListViewController: UITableViewDelegate {
             self.myTable.reloadData()
         }
     }
-    
-//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
-//        footerView.backgroundColor = UIColor.blackColor()
-//        
-//        return footerView
-//    }
-    
-    
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -158,10 +150,14 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
        
-        let item = modelView.songAtIndex(indexPath.row) // songs[indexPath.row]
+        let item = modelView.songAtIndex(indexPath.row)
+        guard let imgUrl = item.coverUrl else {
+            return cell
+        }
+        cell.coverImg.downloadImage(imgUrl)
         cell.title?.text = item.title
         cell.songAlbum?.text = item.artist
-        //cell.songLength?.text = item.songLength
+        cell.songLength?.text = item.songLength?.conevrtToTime()
         return cell
     }
 }
