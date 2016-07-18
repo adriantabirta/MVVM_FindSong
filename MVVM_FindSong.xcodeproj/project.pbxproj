@@ -29,6 +29,8 @@
 		849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F67C51D38D1760049ABCB /* WebViewController.swift */; };
 		84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C31D34DDA6003FCD2B /* defaultCover60.png */; };
 		84AE51C61D34DDA6003FCD2B /* defaultCover200.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C41D34DDA6003FCD2B /* defaultCover200.png */; };
+		84F9C7A41D3D215E009C5934 /* MorseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9C7A31D3D215E009C5934 /* MorseCode.swift */; };
+		84F9C7B11D3D21D5009C5934 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9C7B01D3D21D5009C5934 /* DeviceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,8 @@
 		849F67C51D38D1760049ABCB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		84AE51C31D34DDA6003FCD2B /* defaultCover60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover60.png; sourceTree = "<group>"; };
 		84AE51C41D34DDA6003FCD2B /* defaultCover200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover200.png; sourceTree = "<group>"; };
+		84F9C7A31D3D215E009C5934 /* MorseCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseCode.swift; sourceTree = "<group>"; };
+		84F9C7B01D3D21D5009C5934 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */,
+				84F9C7B21D3D21D9009C5934 /* Utils */,
 				844823CA1D2FEB0300EDB678 /* Model */,
 				844823CB1D2FEB1000EDB678 /* ViewModel */,
 				844823CC1D2FEB1A00EDB678 /* View */,
@@ -241,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				844823CD1D2FEB4400EDB678 /* Song.swift */,
-				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -307,6 +311,16 @@
 				846CC99B1D3CD2A100E1046D /* KingfisherTests-OSX.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84F9C7B21D3D21D9009C5934 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
+				84F9C7A31D3D215E009C5934 /* MorseCode.swift */,
+				84F9C7B01D3D21D5009C5934 /* DeviceManager.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,6 +536,8 @@
 				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
 				841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */,
+				84F9C7B11D3D21D5009C5934 /* DeviceManager.swift in Sources */,
+				84F9C7A41D3D215E009C5934 /* MorseCode.swift in Sources */,
 				844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */,
 				841C0FCC1D351B8200110803 /* Downloader.swift in Sources */,
 				33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */,
