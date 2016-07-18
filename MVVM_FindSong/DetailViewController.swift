@@ -89,6 +89,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
             }
             
             //isPlayingMorse = !isPlayingMorse
+            //
         }
 
     }
