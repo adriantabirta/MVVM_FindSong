@@ -61,7 +61,9 @@ extension SearchServicesViewModel {
                                 return self.songs  = Array<SongItem>()
                             }
     
+                            
                             if let  responseArray = jsonResponse.objectForKey("results") as? NSMutableArray {
+                                var temp : Array<SongItem> = []
                                 for item in responseArray {
                                     song = SongItem()
                                         song.title = item.objectForKey("trackName" ) as? String
@@ -73,22 +75,21 @@ extension SearchServicesViewModel {
                                         song.albumUrl = item.objectForKey("collectionViewUrl" ) as? String
                                         song.songLength = item.objectForKey("trackTimeMillis" ) as? NSNumber
                                         song.price = item.objectForKey("trackPrice" ) as? Float
-                                    self.songs.append(song)
+                                    temp.append(song)
+                                    //self.songs.append(song)
                                 }
+                                
+                                if temp.count > 10 {
+                                    print("mai mult de 10")
+                                    self.songs = temp.getLastTenItems()
+                                } else {
+                                  self.songs = temp
+                                }
+                                
+                                  print("date receptionate !!! \(temp.count) elemente")
                             }
-                            self.songs.last(10)
-                            
-                          //  let temp = self.songs.reverse()
-                          //  self.songs.removeAll()
-                           
-                        
-                           // for index in 0..<9 {
-                            //    self.songs[8] = temp.o
-                          //  }
-                            
-                           
-                            
-                            print("date receptionate !!!")
+
+                          
                         }
                         catch {
                             print("eroare primire date")

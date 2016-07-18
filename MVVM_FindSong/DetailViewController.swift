@@ -26,6 +26,8 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     var song: SongItem
     var torchOn: Bool = false
     var isPlaying: Bool = false
+    var isPlayingMorse: Bool = false
+    var morseThread: NSThread?
     var token : dispatch_once_t = 0
     private var audioPlayer: AVAudioPlayer
     private  let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -51,14 +53,10 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
         self.albumBtn.setTitle(song.album, forState: UIControlState.Normal)
         self.priceLbl?.text = song.price?.converWithDollarSign()
         self.songLength?.text = song.songLength?.conevrtToTime()
-        guard let url = song.coverUrl else { return }
+        guard let urlStr = song.coverUrl, url = NSURL(string: urlStr) else { return }
         self.playBtn.enabled = false
-        self.playBtn.nsDownloadImage(url)
-        
-        
-       // self.playBtn.setImage(UIImage(named: "play-btn.png"), forState: UIControlState.Disabled)
-        //playBtn(UIImage(named: "play-btn.png"), forState: UIControlState.Disabled)
-        
+        //self.playBtn.nsDownloadImage(url)
+        self.playBtn.kf_setImageWithURL(url, forState: UIControlState.Normal)
     }
     
     @IBAction func playTapped(sender: AnyObject) {
@@ -73,54 +71,53 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func playMorse(sender: AnyObject) {
-        morse()
+      
+        self.morseThread = NSThread(target:self, selector:#selector(DetailViewController.morse), object:nil)
+        
+        if let thread = self.morseThread {
+            
+            if isPlayingMorse == true {
+                thread.cancel()
+                self.playMorseBtn.setTitle("Start Morse", forState: UIControlState.Normal)
+                 //isPlayingMorse = false
+                
+            }
+            else {
+                thread.start()
+                self.playMorseBtn.setTitle("Stop Morse", forState: UIControlState.Normal)
+                isPlayingMorse = true
+            }
+            
+            //isPlayingMorse = !isPlayingMorse
+        }
+
     }
     
     @IBAction func artistTapped(sender: AnyObject) {
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: (self.song.artistUrl)!)!)
+        /*
         guard let myString = song.artistUrl, wvc : WebViewController = WebViewController(string: myString) else {
             return
         }
         self.navigationController?.pushViewController(wvc, animated: true)
+        */
     }
     
     @IBAction func albumTapped(sender: AnyObject) {
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: (self.song.albumUrl)!)!)
+        /*
         guard let myString = song.albumUrl, wvc : WebViewController = WebViewController(string: myString) else {
             return
         }
         self.navigationController?.pushViewController(wvc, animated: true)
+        */
     }
     
     func initPlayer() {
     
         self.activityIndicator.startAnimating()
-   /*
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-        dispatch_async(backgroundQueue, {
-            print("This is run on the background queue")
-            do{
-                guard let urlStr =  self.song.songUrl, url = NSURL(string: urlStr), soundData =  NSData(contentsOfURL:url) else {
-                    print("nil url song")
-                    return
-                }
-                self.audioPlayer = try AVAudioPlayer(data: soundData)
-                self.audioPlayer.delegate = self
-                self.audioPlayer.volume = 1.0
-                self.audioPlayer.prepareToPlay()
-                // audioPlayer.play()
-            }
-            catch let error as NSError {
-                print("Error init player \(error)")
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                print("This is run on the main queue, after the previous code in outer block")
-                  self.playBtn.enabled = true
-            })
-        })
-        */
-        
-        
         
         dispatch_async(dispatch_get_main_queue()) {
         do{
@@ -145,8 +142,7 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    
-    
+ 
     func morse() {
         guard let t = song.title else { return }
 

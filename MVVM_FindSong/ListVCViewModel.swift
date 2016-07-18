@@ -34,7 +34,8 @@ class ListVCViewModel: SearchServicesDelegate , ListVCViewModelDelegate {
     }
     
     func updateData() {
-       self.songs = searchService.songs
+        self.songs.removeAll()
+        self.songs = searchService.songs
     }
     
     func updateDataInTable() {}

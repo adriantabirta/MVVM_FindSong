@@ -8,48 +8,7 @@
 import UIKit
 import Foundation
 
-extension UIImageView {
-    
-    public func downloadImage(urlString: String) {
-        
-        guard let url = NSURL(string: urlString) else { return }
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(url) {
-            
-            (url: NSURL?, res: NSURLResponse?, e:NSError?) in
-            guard let url2: NSURL = url, data = NSData(contentsOfURL:url2), imageDonloaded = UIImage(data: data)   else {
-                print("image download  nil")
-                return
-            }
-            dispatch_async(dispatch_get_main_queue()) {
-                self.image = imageDonloaded
-            }
-        }
-        task.resume()
-    }
-}
 
-extension UIButton  {
-
-    public func nsDownloadImage(urlString: String)  {
-
-        guard let url = NSURL(string: urlString) else { return }
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(url) {
-            
-            (url: NSURL?, res: NSURLResponse?, e:NSError?) in
-            guard let url2: NSURL = url, data = NSData(contentsOfURL:url2), imageDonloaded = UIImage(data: data)   else {
-                print("image download  nil")
-                return
-            }
-           // print(" imagine descarcata")
-            dispatch_async(dispatch_get_main_queue()) {
-             self.setImage(imageDonloaded, forState: UIControlState.Normal)
-            }
-        }
-        task.resume()
-    }
-}
 
 extension CollectionType {
     func last(count:Int) -> [Self.Generator.Element] {
@@ -59,6 +18,22 @@ extension CollectionType {
         } else {
             return Array(self.reverse()[0...count - 1].reverse())
         }
+    }
+}
+
+public extension  Array  {
+
+    
+    func getLastTenItems() ->  Array  {
+        print("get last 10 items")
+        var lastTen: Array = []
+        var i: Int = 0
+        
+        repeat {
+            lastTen.append(self.reverse()[i])
+            i += 1
+        } while  i < 10
+        return lastTen
     }
 }
 
@@ -84,7 +59,6 @@ public extension NSNumber {
         
         return songLenght
     }
-    
 }
 
 

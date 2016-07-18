@@ -21,9 +21,9 @@ Project tasks:
     Clicking on “Morse” the application should interpret Song name into Morse code using vibration and flashlight.
 
 
-1. search dont load data on table view
+1. search dont load data on table - √
 2. chash image
 3. while loading song dont do it in main thread,
-4. load link behind album and artist.
+4. load link behind album and artist. - √
 5. disable button to play morse and check to not freez view
 6. song time 0:0 -> 00:00

@@ -22,9 +22,9 @@
 		844823E01D338B3100EDB678 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823DF1D338B3100EDB678 /* SongCell.xib */; };
 		844823E21D338B4700EDB678 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823E11D338B4700EDB678 /* SongCell.swift */; };
 		845DDAF41D36554500477F71 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845DDAF31D36554500477F71 /* Media.xcassets */; };
+		846CC99E1D3CD2AF00E1046D /* Kingfisher.framework in CopyFrameworks */ = {isa = PBXBuildFile; fileRef = 846CC9851D3CD2A100E1046D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
 		849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849322221D33CFB600A0AF97 /* DetailViewController.xib */; };
-		849F67C21D38CF760049ABCB /* play-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 849F67C11D38CF760049ABCB /* play-btn.png */; };
 		849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F67C31D38D1660049ABCB /* WebViewController.xib */; };
 		849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F67C51D38D1760049ABCB /* WebViewController.swift */; };
 		84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C31D34DDA6003FCD2B /* defaultCover60.png */; };
@@ -39,7 +39,112 @@
 			remoteGlobalIDString = 844823A61D2FEA4C00EDB678;
 			remoteInfo = MVVM_FindSong;
 		};
+		846CC9841D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D351AD2D09F00CFC3EB;
+			remoteInfo = "Kingfisher-iOS";
+		};
+		846CC9861D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D13F49D61BEDA67C00CE335D;
+			remoteInfo = "Kingfisher-tvOS";
+		};
+		846CC9881D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B2944481C3D01B20088C3E7;
+			remoteInfo = "Kingfisher-OSX";
+		};
+		846CC98A1D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D16799EB1C4E74460020FD12;
+			remoteInfo = "Kingfisher-watchOS";
+		};
+		846CC98C1D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D0B1AD2CFA600CFC3EB;
+			remoteInfo = "Kingfisher-Demo";
+		};
+		846CC98E1D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D13F49C21BEDA53F00CE335D;
+			remoteInfo = "Kingfisher-tvOS-Demo";
+		};
+		846CC9901D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B2944551C3D03880088C3E7;
+			remoteInfo = "Kingfisher-OSX-Demo";
+		};
+		846CC9921D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1679A391C4E78B20020FD12;
+			remoteInfo = "Kingfisher-watchOS-Demo";
+		};
+		846CC9941D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1679A451C4E78B20020FD12;
+			remoteInfo = "Kingfisher-watchOS-Demo Extension";
+		};
+		846CC9961D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D1ED2D3F1AD2D09F00CFC3EB;
+			remoteInfo = KingfisherTests;
+		};
+		846CC9981D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4B37667F1C478F940001443F;
+			remoteInfo = "KingfisherTests-tvOS";
+		};
+		846CC99A1D3CD2A100E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D10EC2311C3D632300A4211C;
+			remoteInfo = "KingfisherTests-OSX";
+		};
+		846CC99C1D3CD2A600E1046D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D1ED2D341AD2D09F00CFC3EB;
+			remoteInfo = "Kingfisher-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		846CC94B1D3CC4A300E1046D /* CopyFrameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				846CC99E1D3CD2AF00E1046D /* Kingfisher.framework in CopyFrameworks */,
+			);
+			name = CopyFrameworks;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseDictionary.swift; sourceTree = "<group>"; };
@@ -61,9 +166,9 @@
 		844823DF1D338B3100EDB678 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		844823E11D338B4700EDB678 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		845DDAF31D36554500477F71 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = Kingfisher/Kingfisher.xcodeproj; sourceTree = "<group>"; };
 		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		849322221D33CFB600A0AF97 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		849F67C11D38CF760049ABCB /* play-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-btn.png"; sourceTree = "<group>"; };
 		849F67C31D38D1660049ABCB /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		849F67C51D38D1760049ABCB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		84AE51C31D34DDA6003FCD2B /* defaultCover60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover60.png; sourceTree = "<group>"; };
@@ -91,7 +196,7 @@
 		8448239E1D2FEA4C00EDB678 = {
 			isa = PBXGroup;
 			children = (
-				849F67C11D38CF760049ABCB /* play-btn.png */,
+				846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */,
 				841C0FCB1D351B8200110803 /* Downloader.swift */,
 				33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */,
 				844823D11D2FEEC500EDB678 /* File */,
@@ -185,6 +290,25 @@
 			path = MVVM_FindSong;
 			sourceTree = "<group>";
 		};
+		846CC9761D3CD2A100E1046D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				846CC9851D3CD2A100E1046D /* Kingfisher.framework */,
+				846CC9871D3CD2A100E1046D /* Kingfisher.framework */,
+				846CC9891D3CD2A100E1046D /* Kingfisher.framework */,
+				846CC98B1D3CD2A100E1046D /* Kingfisher.framework */,
+				846CC98D1D3CD2A100E1046D /* Kingfisher-Demo.app */,
+				846CC98F1D3CD2A100E1046D /* Kingfisher-tvOS-Demo.app */,
+				846CC9911D3CD2A100E1046D /* Kingfisher-OSX-Demo.app */,
+				846CC9931D3CD2A100E1046D /* Kingfisher-watchOS-Demo.app */,
+				846CC9951D3CD2A100E1046D /* Kingfisher-watchOS-Demo Extension.appex */,
+				846CC9971D3CD2A100E1046D /* KingfisherTests.xctest */,
+				846CC9991D3CD2A100E1046D /* KingfisherTests-tvOS.xctest */,
+				846CC99B1D3CD2A100E1046D /* KingfisherTests-OSX.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,10 +319,12 @@
 				844823A31D2FEA4C00EDB678 /* Sources */,
 				844823A41D2FEA4C00EDB678 /* Frameworks */,
 				844823A51D2FEA4C00EDB678 /* Resources */,
+				846CC94B1D3CC4A300E1046D /* CopyFrameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				846CC99D1D3CD2A600E1046D /* PBXTargetDependency */,
 			);
 			name = MVVM_FindSong;
 			productName = MVVM_FindSong;
@@ -259,6 +385,12 @@
 			mainGroup = 8448239E1D2FEA4C00EDB678;
 			productRefGroup = 844823A81D2FEA4C00EDB678 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 846CC9761D3CD2A100E1046D /* Products */;
+					ProjectRef = 846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				844823A61D2FEA4C00EDB678 /* MVVM_FindSong */,
@@ -267,6 +399,93 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		846CC9851D3CD2A100E1046D /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = 846CC9841D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9871D3CD2A100E1046D /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = 846CC9861D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9891D3CD2A100E1046D /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = 846CC9881D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC98B1D3CD2A100E1046D /* Kingfisher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Kingfisher.framework;
+			remoteRef = 846CC98A1D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC98D1D3CD2A100E1046D /* Kingfisher-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-Demo.app";
+			remoteRef = 846CC98C1D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC98F1D3CD2A100E1046D /* Kingfisher-tvOS-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-tvOS-Demo.app";
+			remoteRef = 846CC98E1D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9911D3CD2A100E1046D /* Kingfisher-OSX-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-OSX-Demo.app";
+			remoteRef = 846CC9901D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9931D3CD2A100E1046D /* Kingfisher-watchOS-Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kingfisher-watchOS-Demo.app";
+			remoteRef = 846CC9921D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9951D3CD2A100E1046D /* Kingfisher-watchOS-Demo Extension.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = "Kingfisher-watchOS-Demo Extension.appex";
+			remoteRef = 846CC9941D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9971D3CD2A100E1046D /* KingfisherTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KingfisherTests.xctest;
+			remoteRef = 846CC9961D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC9991D3CD2A100E1046D /* KingfisherTests-tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "KingfisherTests-tvOS.xctest";
+			remoteRef = 846CC9981D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		846CC99B1D3CD2A100E1046D /* KingfisherTests-OSX.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "KingfisherTests-OSX.xctest";
+			remoteRef = 846CC99A1D3CD2A100E1046D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		844823A51D2FEA4C00EDB678 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -274,7 +493,6 @@
 			files = (
 				844823D21D2FEEC500EDB678 /* File in Resources */,
 				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
-				849F67C21D38CF760049ABCB /* play-btn.png in Resources */,
 				849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */,
 				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
@@ -328,6 +546,11 @@
 			isa = PBXTargetDependency;
 			target = 844823A61D2FEA4C00EDB678 /* MVVM_FindSong */;
 			targetProxy = 844823BC1D2FEA4C00EDB678 /* PBXContainerItemProxy */;
+		};
+		846CC99D1D3CD2A600E1046D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Kingfisher-iOS";
+			targetProxy = 846CC99C1D3CD2A600E1046D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

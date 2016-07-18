@@ -9,7 +9,9 @@
 import Foundation
 import AVFoundation
 import UIKit
+import Kingfisher
 
+//imageView.kf_setImageWithURL(NSURL(string: "http://your_image_url.png")!)
 
 
 class ListViewController: UIViewController {
@@ -110,10 +112,10 @@ extension ListViewController: UISearchBarDelegate {
     
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var size = myTable.contentOffset.y
+       // let size = myTable.contentOffset.y
         //size += 150
-        print(size)
-        if myTable.contentOffset.y > 450  {
+        //print(size)
+        if myTable.contentOffset.y > 400  {
              print("load more ")
             myTable.scrollEnabled = false
             modelView.songs.removeAll()
@@ -175,11 +177,13 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
        
+       // print(indexPath.row)
         let item = modelView.songAtIndex(indexPath.row)
-        guard let imgUrl = item.coverUrl else {
+        guard let imgUrlStr = item.coverUrl, url = NSURL(string: imgUrlStr) else {
             return cell
         }
-        cell.coverImg.downloadImage(imgUrl)
+      //  cell.coverImg.downloadImage(imgUrl)
+        cell.coverImg.kf_setImageWithURL(url)
         cell.title?.text = item.title
         cell.songAlbum?.text = item.artist
         cell.songLength?.text = item.songLength?.conevrtToTime()

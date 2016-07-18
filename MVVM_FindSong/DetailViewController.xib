@@ -109,9 +109,6 @@
                         <action selector="albumTapped:" destination="-1" eventType="touchUpInside" id="kuL-FZ-CeI"/>
                     </connections>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QOH-UB-jgP">
-                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                </activityIndicatorView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0T-zQ-ZGG">
                     <rect key="frame" x="200" y="542" width="200" height="50"/>
                     <color key="backgroundColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,10 +129,13 @@
                         <action selector="playMorse:" destination="-1" eventType="touchUpInside" id="CL8-JF-zbf"/>
                     </connections>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QOH-UB-jgP">
+                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <color key="color" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.95749056177680558" green="0.98509080497382195" blue="0.90736134661930834" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="QOH-UB-jgP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="98" id="32j-Kc-eF6"/>
                 <constraint firstItem="fA2-33-x1u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3L6-NX-1OP"/>
                 <constraint firstItem="A9r-Ib-pTp" firstAttribute="top" secondItem="zic-sK-a0G" secondAttribute="bottom" constant="8" id="3U9-pw-frY"/>
                 <constraint firstItem="LWC-B1-PBN" firstAttribute="top" secondItem="A9r-Ib-pTp" secondAttribute="bottom" constant="8" id="4kS-6H-Pqs"/>
@@ -149,14 +149,15 @@
                 <constraint firstAttribute="bottom" secondItem="C0T-zQ-ZGG" secondAttribute="bottom" constant="8" id="kBl-WH-vUR"/>
                 <constraint firstItem="C0T-zQ-ZGG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="obv-dh-4NM"/>
                 <constraint firstItem="LWC-B1-PBN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wZS-YG-4PH"/>
+                <constraint firstItem="QOH-UB-jgP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="89" id="yh1-KC-Y3m"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="QOH-UB-jgP"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="32j-Kc-eF6"/>
                     <exclude reference="VOG-pL-gLK"/>
+                    <exclude reference="yh1-KC-Y3m"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -164,8 +165,8 @@
                     <include reference="QOH-UB-jgP"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="32j-Kc-eF6"/>
                     <include reference="VOG-pL-gLK"/>
+                    <include reference="yh1-KC-Y3m"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="1771" y="397"/>
