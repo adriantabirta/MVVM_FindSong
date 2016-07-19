@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vm  = ListVCViewModel(searchServices: ss)
         let vc = ListViewController(modelView: vm)
         window?.rootViewController = UINavigationController(rootViewController: vc)
-        
-        
         return true
     }
 

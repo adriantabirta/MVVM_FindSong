@@ -32,9 +32,7 @@ extension SearchServicesViewModel {
         self.songs.removeAll()
         let expectedCharSet = NSCharacterSet.URLQueryAllowedCharacterSet()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
         let mySearchString =  searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
         guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(mySearchString)&limit=\(limit)"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
             searchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil else {
                 print("search string is nil")
@@ -60,7 +58,6 @@ extension SearchServicesViewModel {
                             guard jsonResponse.objectForKey("results") != nil else {
                                 return self.songs  = Array<SongItem>()
                             }
-    
                             
                             if let  responseArray = jsonResponse.objectForKey("results") as? NSMutableArray {
                                 var temp : Array<SongItem> = []
@@ -76,7 +73,6 @@ extension SearchServicesViewModel {
                                         song.songLength = item.objectForKey("trackTimeMillis" ) as? NSNumber
                                         song.price = item.objectForKey("trackPrice" ) as? Float
                                     temp.append(song)
-                                    //self.songs.append(song)
                                 }
                                 
                                 if temp.count > 10 {
@@ -85,11 +81,8 @@ extension SearchServicesViewModel {
                                 } else {
                                   self.songs = temp
                                 }
-                                
                                   print("date receptionate !!! \(temp.count) elemente")
                             }
-
-                          
                         }
                         catch {
                             print("eroare primire date")
@@ -99,8 +92,6 @@ extension SearchServicesViewModel {
                 
             })
             task.resume()
-        }catch {
-            
-        }
+        }catch { }
     }
 }

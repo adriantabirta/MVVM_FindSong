@@ -11,8 +11,6 @@ import Foundation
 import AudioToolbox
 import MediaPlayer
 
-
-
 class DetailViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBOutlet weak var playBtn: UIButton!
@@ -30,15 +28,11 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     var isPlayingMorse: Bool = false
     var morseThread: NSThread?
     var token : dispatch_once_t = 0
-    private var audioPlayer: AVAudioPlayer
-    //private  let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
- 
-    
+    private var audioPlayer: AVAudioPlayer = AVAudioPlayer()
+  
     init(song: SongItem) {
         self.song = song
-        self.audioPlayer =  AVAudioPlayer()
         super.init(nibName: "DetailViewController", bundle: nil)
-        // initPlayer()
         edgesForExtendedLayout = .None
     }
     
@@ -48,34 +42,34 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initPlayer()
+        loadPlayer()
         self.activityIndicator.hidesWhenStopped = true
         self.artistBtn.setTitle(song.artist, forState: UIControlState.Normal)
         self.albumBtn.setTitle(song.album, forState: UIControlState.Normal)
         self.priceLbl?.text = song.price?.converWithDollarSign()
-        self.songLength?.text = song.songLength?.conevrtToTime()
+        guard let val : Int32 = song.songLength?.intValue else {
+            return
+        }
+        let timeInterval = NSTimeInterval(val/1000)
+        self.songLength?.text = timeInterval.minutesSeconds
         guard let urlStr = song.coverUrl, url = NSURL(string: urlStr) else { return }
         self.playBtn.enabled = false
-        //self.playBtn.nsDownloadImage(url)
         self.playBtn.kf_setImageWithURL(url, forState: UIControlState.Normal)
         guard let str = song.artist else { return }
         self.morseCode = MorseCode(string: str )
     }
     
     @IBAction func playTapped(sender: AnyObject) {
-
         if isPlaying {
             audioPlayer.pause()
             isPlaying = false
-        }else {
+        } else {
             audioPlayer.play()
             isPlaying = true
         }
     }
     
     @IBAction func playMorse(sender: AnyObject) {
-      
-  
         if let morseCode = self.morseCode {
             if morseCode.isNowPlaying() {
                 morseCode.stopMorse()
@@ -91,63 +85,51 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func artistTapped(sender: AnyObject) {
-        
         UIApplication.sharedApplication().openURL(NSURL(string: (self.song.artistUrl)!)!)
-        /*
-        guard let myString = song.artistUrl, wvc : WebViewController = WebViewController(string: myString) else {
-            return
-        }
-        self.navigationController?.pushViewController(wvc, animated: true)
-        */
     }
     
     @IBAction func albumTapped(sender: AnyObject) {
-        
         UIApplication.sharedApplication().openURL(NSURL(string: (self.song.albumUrl)!)!)
-        /*
-        guard let myString = song.albumUrl, wvc : WebViewController = WebViewController(string: myString) else {
-            return
-        }
-        self.navigationController?.pushViewController(wvc, animated: true)
-        */
     }
     
-    func initPlayer() {
-    
+    func loadPlayer() {
         self.activityIndicator.startAnimating()
-        
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            self.initMusicPlayer()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.playBtn.enabled = true
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    func initMusicPlayer() {
         do{
             guard let urlStr =  self.song.songUrl, url = NSURL(string: urlStr), soundData =  NSData(contentsOfURL:url) else {
                 print("nil url song")
                 return
             }
+            self.audioPlayer =  AVAudioPlayer()
             self.audioPlayer = try AVAudioPlayer(data: soundData)
             self.audioPlayer.delegate = self
             self.audioPlayer.volume = 1.0
             self.audioPlayer.prepareToPlay()
-           // audioPlayer.play()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.playBtn.enabled = true
+                self.activityIndicator.stopAnimating()
+            }
         }
         catch let error as NSError {
             print("Error init player \(error)")
         }
-        }
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            self.playBtn.enabled = true
-            self.activityIndicator.stopAnimating()
-        }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidDisappear(animated: Bool) {
         print("dispare !!!")
         if self.morseCode?.isNowPlaying() == true {
         self.morseCode?.stopMorse()
         }
-    
     }
-    
-
 }
 
 

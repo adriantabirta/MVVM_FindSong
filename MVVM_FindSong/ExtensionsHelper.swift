@@ -8,9 +8,8 @@
 import UIKit
 import Foundation
 
-
-
 extension CollectionType {
+    
     func last(count:Int) -> [Self.Generator.Element] {
         let selfCount = self.count as! Int
         if selfCount <= count - 1 {
@@ -23,7 +22,6 @@ extension CollectionType {
 
 public extension  Array  {
 
-    
     func getLastTenItems() ->  Array  {
         print("get last 10 items")
         var lastTen: Array = []
@@ -44,24 +42,18 @@ public extension Float {
     }
 }
 
-
 public extension NSNumber {
 
     public func conevrtToTime() ->String {
-        
         let string = NSString(format: "%d", self)
         let sec = string.intValue / 1000
         let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Minute, .Second], fromDate: date)
-        //print(components)
         let songLenght = String(format: "%d:%d", components.minute, components.second)
-        
         return songLenght
     }
 }
-
-
 
 public extension String  {
     
@@ -70,22 +62,42 @@ public extension String  {
     }
     
     func toUrl() ->NSURL {
-    
         return NSURL(fileURLWithPath: self)
     }
     
     public func conevrtToTime() ->String {
-     
         let string = NSString(string: self)
         let sec = string.intValue / 1000
         let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Minute, .Second], fromDate: date)
-       // print(components)
         let songLenght = String(format: "%d:%d", components.minute, components.second)
-       
         return songLenght
     }
     
+}
+
+extension NSTimeInterval {
+    
+    /// Minues : Seconds : Miliseconds time interval format
+    var minuteSecondMS: String {
+        return String(format:"%d:%02d.%03d", minute , second, millisecond)
+    }
+    /// Minues : Seconds time interval format
+    var minutesSeconds: String {
+        return String(format:"%d:%02d", minute , second)
+    }
+    /// Minues time interval format
+    var minute: Int {
+        return Int((self/60.0)%60)
+    }
+    /// Seconds time interval format
+    var second: Int {
+        return Int(self % 60)
+    }
+    /// Miliseconds time interval format
+    var millisecond: Int {
+        return Int(self*1000 % 1000 )
+    }
 }
 

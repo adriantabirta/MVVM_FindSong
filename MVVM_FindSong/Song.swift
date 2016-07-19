@@ -22,17 +22,3 @@ public struct SongItem {
     var price: Float?
     var image: UIImage?
 }
-
-//public struct SongItem2 {
-//    
-//    var title: String?
-//    var artist: String?
-//    var album: String?
-//    var songUrl: String?
-//    var coverUrl: String?
-//    var songLength: String
-//    var price: String?
-//    var image: UIImage?
-//}
-//
-

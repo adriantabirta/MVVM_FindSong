@@ -14,7 +14,6 @@ import AVFoundation
 
 class DeviceManager: NSObject {
     
-
     class func vibrate() {
         // Vibration
         if UIDevice.currentDevice().model == "iPhone" {

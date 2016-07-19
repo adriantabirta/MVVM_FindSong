@@ -16,7 +16,6 @@ class MorseCode: NSObject {
     private var isPlaying: Bool = false
     private var endPlayingHandler: (() -> ())?
     
-
     init(string: String) {
         super.init()
         self.morseString = MorseCode.getMorseStringFromString(string)
@@ -29,7 +28,6 @@ class MorseCode: NSObject {
         self.isPlaying = true
     }
     
-  
     func stopMorse() {
         self.playThread?.cancel()
         self.isPlaying = false
@@ -39,12 +37,14 @@ class MorseCode: NSObject {
         return self.isPlaying
     }
     
-  
     func playMorseThreadAction() {
+        
         for character in self.morseString.characters {
+            print(self.isNowPlaying())
             if !self.isPlaying {
                 return
             }
+            print(self.isNowPlaying())
             
             var numberOfBips = 1
             if character == "-" {
@@ -77,10 +77,8 @@ class MorseCode: NSObject {
             handler()
         }
     }
-    
 
     static func getMorseStringFromString(string: String) -> String {
-        
         var morseString = ""
         for character in string.characters {
             morseString.appendContentsOf(getMorseCodeFromCharacter(character))
@@ -183,49 +181,3 @@ class MorseCode: NSObject {
             return ""
         }    }
 }
-
-
-/* 
- 
- func playDot() {
- do {
- try device.lockForConfiguration()
- try device.setTorchModeOnWithLevel(1.0)
- device.torchMode = AVCaptureTorchMode.On
- AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
- NSThread.sleepForTimeInterval(0.1)
- device.torchMode = AVCaptureTorchMode.Off
- device.unlockForConfiguration()
- } catch {
- 
- }
- 
- }
- 
- func playLine() {
- 
- do {
- try device.lockForConfiguration()
- try device.setTorchModeOnWithLevel(1.0)
- device.torchMode = AVCaptureTorchMode.On
- AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
- NSThread.sleepForTimeInterval(0.3)
- device.torchMode = AVCaptureTorchMode.Off
- device.unlockForConfiguration()
- } catch {
- 
- }
- }
- 
- override func viewWillDisappear(animated: Bool) {
- if audioPlayer.data != nil {
- self.audioPlayer.stop()
- }
- }
- 
- 
- func playSpace() {
- NSThread.sleepForTimeInterval(0.7)
- }
- 
- */

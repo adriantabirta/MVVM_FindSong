@@ -15,21 +15,4 @@ class SongCell: UITableViewCell  {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var songAlbum: UILabel!
     @IBOutlet weak var songLength: UILabel!
-    
-
-
-//    required init?(coder aDecoder: NSCoder) {
-//        
-//    }
-//
-//    
-//    convenience init(item: SongItem){
-//   
-//        super.init()
-//      //  super.init(CGRect)
-//       // self.coverImg.image =
-//        self.title.text = item.title
-//        self.songAlbum.text = item.album
-//        self.songLength.text = item.songLength
-//    }
 }

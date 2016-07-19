@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */; };
 		33A0EB201D36CC1A00110B52 /* ListVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */; };
 		33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */; };
 		841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */; };
@@ -25,8 +24,6 @@
 		846CC99E1D3CD2AF00E1046D /* Kingfisher.framework in CopyFrameworks */ = {isa = PBXBuildFile; fileRef = 846CC9851D3CD2A100E1046D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
 		849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849322221D33CFB600A0AF97 /* DetailViewController.xib */; };
-		849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F67C31D38D1660049ABCB /* WebViewController.xib */; };
-		849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F67C51D38D1760049ABCB /* WebViewController.swift */; };
 		84AE51C51D34DDA6003FCD2B /* defaultCover60.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C31D34DDA6003FCD2B /* defaultCover60.png */; };
 		84AE51C61D34DDA6003FCD2B /* defaultCover200.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE51C41D34DDA6003FCD2B /* defaultCover200.png */; };
 		84F9C7A41D3D215E009C5934 /* MorseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9C7A31D3D215E009C5934 /* MorseCode.swift */; };
@@ -149,11 +146,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseDictionary.swift; sourceTree = "<group>"; };
 		33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVCViewModel.swift; sourceTree = "<group>"; };
 		33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchServicesViewModel.swift; sourceTree = "<group>"; };
 		841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsHelper.swift; sourceTree = "<group>"; };
-		841C0FCB1D351B8200110803 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = MVVM_FindSong/Downloader.swift; sourceTree = "<group>"; };
+		841C0FCB1D351B8200110803 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		844823A71D2FEA4C00EDB678 /* MVVM_FindSong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM_FindSong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844823B61D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,8 +167,6 @@
 		846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = Kingfisher/Kingfisher.xcodeproj; sourceTree = "<group>"; };
 		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		849322221D33CFB600A0AF97 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		849F67C31D38D1660049ABCB /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		849F67C51D38D1760049ABCB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		84AE51C31D34DDA6003FCD2B /* defaultCover60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover60.png; sourceTree = "<group>"; };
 		84AE51C41D34DDA6003FCD2B /* defaultCover200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultCover200.png; sourceTree = "<group>"; };
 		84F9C7A31D3D215E009C5934 /* MorseCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseCode.swift; sourceTree = "<group>"; };
@@ -201,8 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */,
-				841C0FCB1D351B8200110803 /* Downloader.swift */,
-				33A0EB1B1D36CB8B00110B52 /* MorseDictionary.swift */,
 				844823D11D2FEEC500EDB678 /* File */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				845DDAF51D36586800477F71 /* images */,
@@ -255,6 +247,7 @@
 			children = (
 				33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */,
 				33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */,
+				841C0FCB1D351B8200110803 /* Downloader.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -268,8 +261,6 @@
 				844823D71D2FF44600EDB678 /* ListViewController.xib */,
 				849322201D33CFA000A0AF97 /* DetailViewController.swift */,
 				849322221D33CFB600A0AF97 /* DetailViewController.xib */,
-				849F67C51D38D1760049ABCB /* WebViewController.swift */,
-				849F67C31D38D1660049ABCB /* WebViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -316,9 +307,9 @@
 		84F9C7B21D3D21D9009C5934 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 				84F9C7A31D3D215E009C5934 /* MorseCode.swift */,
 				84F9C7B01D3D21D5009C5934 /* DeviceManager.swift */,
+				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -507,7 +498,6 @@
 			files = (
 				844823D21D2FEEC500EDB678 /* File in Resources */,
 				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
-				849F67C41D38D1660049ABCB /* WebViewController.xib in Resources */,
 				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,
 				844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */,
@@ -532,7 +522,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */,
-				849F67C61D38D1760049ABCB /* WebViewController.swift in Sources */,
 				844823E21D338B4700EDB678 /* SongCell.swift in Sources */,
 				844823CE1D2FEB4400EDB678 /* Song.swift in Sources */,
 				841C0FC81D34E2EE00110803 /* ExtensionsHelper.swift in Sources */,
@@ -542,7 +531,6 @@
 				841C0FCC1D351B8200110803 /* Downloader.swift in Sources */,
 				33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */,
 				33A0EB201D36CC1A00110B52 /* ListVCViewModel.swift in Sources */,
-				33A0EB1C1D36CB8B00110B52 /* MorseDictionary.swift in Sources */,
 				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

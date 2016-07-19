@@ -11,9 +11,6 @@ import AVFoundation
 import UIKit
 import Kingfisher
 
-//imageView.kf_setImageWithURL(NSURL(string: "http://your_image_url.png")!)
-
-
 class ListViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
@@ -30,7 +27,6 @@ class ListViewController: UIViewController {
         var recognizer = UITapGestureRecognizer(target:self, action: #selector(ListViewController.dismissKeyboard))
         return recognizer
     }()
-
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,16 +39,13 @@ class ListViewController: UIViewController {
         super.init(nibName: "ListViewController", bundle: nil)
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
-        
         let nib = UINib(nibName: "SongCell", bundle: nil)
         self.myTable.registerNib(nib, forCellReuseIdentifier: "Cell1")
-
-     
         self.myTable.scrollEnabled = false
         self.searchBar.delegate = self
-        self.modelView.listDelegate = self
         self.myTable.delegate = self
         self.myTable.dataSource = self
+        self.modelView.listDelegate = self
   
     }
     
@@ -110,11 +103,7 @@ extension ListViewController: UISearchBarDelegate {
         return songtitle
     }
     
-
     func scrollViewDidScroll(scrollView: UIScrollView) {
-       // let size = myTable.contentOffset.y
-        //size += 150
-        //print(size)
         if myTable.contentOffset.y > 400  {
              print("load more ")
             myTable.scrollEnabled = false
@@ -134,19 +123,15 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
-       // print(modelView.songAtIndex(indexPath.row))
         dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
-    {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete
         {
             modelView.removeSongAtIndex(indexPath.row)
@@ -163,7 +148,6 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         if modelView.songs.count == 0 {
             self.myTable.separatorStyle = .None
             self.myTable.scrollEnabled = false
@@ -176,17 +160,18 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
-       
-       // print(indexPath.row)
         let item = modelView.songAtIndex(indexPath.row)
         guard let imgUrlStr = item.coverUrl, url = NSURL(string: imgUrlStr) else {
             return cell
         }
-      //  cell.coverImg.downloadImage(imgUrl)
         cell.coverImg.kf_setImageWithURL(url)
         cell.title?.text = item.title
         cell.songAlbum?.text = item.artist
-        cell.songLength?.text = item.songLength?.conevrtToTime()
+        guard let val : Int32 = item.songLength?.intValue else {
+            return cell
+        }
+        let timeInterval = NSTimeInterval(val/1000)
+        cell.songLength?.text = timeInterval.minutesSeconds
         return cell
     }
 }
