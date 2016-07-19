@@ -20,6 +20,7 @@
 		844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823DB1D33859E00EDB678 /* Launch Screen.storyboard */; };
 		844823E01D338B3100EDB678 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823DF1D338B3100EDB678 /* SongCell.xib */; };
 		844823E21D338B4700EDB678 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823E11D338B4700EDB678 /* SongCell.swift */; };
+		845D30B11D3E23E000DED1FE /* DetailVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D30B01D3E23E000DED1FE /* DetailVCViewModel.swift */; };
 		845DDAF41D36554500477F71 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845DDAF31D36554500477F71 /* Media.xcassets */; };
 		846CC99E1D3CD2AF00E1046D /* Kingfisher.framework in CopyFrameworks */ = {isa = PBXBuildFile; fileRef = 846CC9851D3CD2A100E1046D /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		849322211D33CFA000A0AF97 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849322201D33CFA000A0AF97 /* DetailViewController.swift */; };
@@ -163,6 +164,7 @@
 		844823DB1D33859E00EDB678 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		844823DF1D338B3100EDB678 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		844823E11D338B4700EDB678 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		845D30B01D3E23E000DED1FE /* DetailVCViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVCViewModel.swift; sourceTree = "<group>"; };
 		845DDAF31D36554500477F71 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kingfisher.xcodeproj; path = Kingfisher/Kingfisher.xcodeproj; sourceTree = "<group>"; };
 		849322201D33CFA000A0AF97 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */,
 				33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */,
 				841C0FCB1D351B8200110803 /* Downloader.swift */,
+				845D30B01D3E23E000DED1FE /* DetailVCViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				841C0FCC1D351B8200110803 /* Downloader.swift in Sources */,
 				33A0EB241D36D31400110B52 /* SearchServicesViewModel.swift in Sources */,
 				33A0EB201D36CC1A00110B52 /* ListVCViewModel.swift in Sources */,
+				845D30B11D3E23E000DED1FE /* DetailVCViewModel.swift in Sources */,
 				844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

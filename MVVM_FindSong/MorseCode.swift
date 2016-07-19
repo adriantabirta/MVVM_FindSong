@@ -179,5 +179,6 @@ class MorseCode: NSObject {
             return ""
         default:
             return ""
-        }    }
+        }
+    }
 }

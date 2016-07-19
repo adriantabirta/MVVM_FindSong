@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -51,33 +52,25 @@
             <constraints>
                 <constraint firstItem="PRx-Xe-mKe" firstAttribute="leading" secondItem="W1r-wy-uAw" secondAttribute="trailing" constant="8" id="2rn-At-y0q"/>
                 <constraint firstAttribute="bottom" secondItem="TCc-6r-4be" secondAttribute="bottom" constant="12" id="5UX-xI-WUX"/>
-                <constraint firstAttribute="bottom" secondItem="W1r-wy-uAw" secondAttribute="bottom" constant="8" id="6Gr-tX-ffQ"/>
                 <constraint firstItem="TCc-6r-4be" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="bottom" constant="8" id="960-Gn-VhM"/>
                 <constraint firstItem="TCc-6r-4be" firstAttribute="leading" secondItem="W1r-wy-uAw" secondAttribute="trailing" constant="8" id="I5l-5n-ZwN"/>
                 <constraint firstAttribute="trailing" secondItem="PRx-Xe-mKe" secondAttribute="trailing" constant="8" id="IuH-UB-83t"/>
                 <constraint firstItem="W1r-wy-uAw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Ksd-v9-Te0"/>
-                <constraint firstAttribute="trailing" secondItem="2ju-Bx-IiI" secondAttribute="trailing" constant="8" id="LcA-LM-qGd"/>
+                <constraint firstAttribute="trailingMargin" secondItem="2ju-Bx-IiI" secondAttribute="trailing" id="LcA-LM-qGd"/>
                 <constraint firstItem="W1r-wy-uAw" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="top" id="WC9-sD-gGc"/>
                 <constraint firstAttribute="bottom" secondItem="2ju-Bx-IiI" secondAttribute="bottom" constant="12" id="WIa-Za-IJb"/>
-                <constraint firstItem="W1r-wy-uAw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="mnO-Rx-7bj"/>
                 <constraint firstItem="2ju-Bx-IiI" firstAttribute="leading" secondItem="TCc-6r-4be" secondAttribute="trailing" constant="8" id="vNJ-Kf-tjB"/>
                 <constraint firstItem="PRx-Xe-mKe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="yLn-uK-BOQ"/>
                 <constraint firstItem="2ju-Bx-IiI" firstAttribute="top" secondItem="PRx-Xe-mKe" secondAttribute="bottom" constant="12" id="zjm-XI-sZM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="6Gr-tX-ffQ"/>
-                    <exclude reference="mnO-Rx-7bj"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="coverImg" destination="W1r-wy-uAw" id="Bi9-S5-wuc"/>
                 <outlet property="songAlbum" destination="TCc-6r-4be" id="u0c-JT-4aR"/>
                 <outlet property="songLength" destination="2ju-Bx-IiI" id="lPK-N6-LtF"/>
                 <outlet property="title" destination="PRx-Xe-mKe" id="yCz-ff-qeZ"/>
             </connections>
-            <point key="canvasLocation" x="1459" y="531.5"/>
+            <point key="canvasLocation" x="1715" y="435.5"/>
         </view>
     </objects>
     <resources>

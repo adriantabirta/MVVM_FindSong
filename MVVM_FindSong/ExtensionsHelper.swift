@@ -5,76 +5,64 @@
 //  Created by Adrian TABIRTA on 7/12/16.
 //  Copyright © 2016 Adrian TABIRTA. All rights reserved.
 //
+
 import UIKit
 import Foundation
 
-extension CollectionType {
+func convertToMinAndSec(timeString: NSNumber) -> String {
     
-    func last(count:Int) -> [Self.Generator.Element] {
-        let selfCount = self.count as! Int
-        if selfCount <= count - 1 {
-            return Array(self)
-        } else {
-            return Array(self.reverse()[0...count - 1].reverse())
-        }
-    }
+  return ""
 }
 
-public extension  Array  {
+extension  Array  {
 
     func getLastTenItems() ->  Array  {
         print("get last 10 items")
-        var lastTen: Array = []
-        var i: Int = 0
         
+       let range = self.count - 10..<self.count
+         let temp = self[range]
+        print("ultimile 10 rezultate \(temp)")
+        return Array( temp )
+        
+      /*
+        var lastTen: Array = []
+        var i = 0
+        // TODO:  Use Array method for extracting subset
         repeat {
             lastTen.append(self.reverse()[i])
             i += 1
         } while  i < 10
         return lastTen
+        
+        */
     }
 }
 
-public extension Float {
+extension Float {
 
     func converWithDollarSign() -> String {
+        // TODO: NSCurrencyFormatter
         return String(format: "%0.2f $", self)
     }
-}
-
-public extension NSNumber {
-
-    public func conevrtToTime() ->String {
-        let string = NSString(format: "%d", self)
-        let sec = string.intValue / 1000
-        let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([ .Minute, .Second], fromDate: date)
-        let songLenght = String(format: "%d:%d", components.minute, components.second)
-        return songLenght
+    
+    var asLocaleCurrency:String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale.currentLocale()
+        return formatter.stringFromNumber(self)!
     }
 }
 
-public extension String  {
+// TODO: Revize public declarations
+extension String  {
     
-    func insert(string:String,ind:Int) -> String {
+    func insert(string:String, ind:Int) -> String {
         return  String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count-ind))
     }
     
-    func toUrl() ->NSURL {
+    func toUrl() -> NSURL {
         return NSURL(fileURLWithPath: self)
     }
-    
-    public func conevrtToTime() ->String {
-        let string = NSString(string: self)
-        let sec = string.intValue / 1000
-        let date: NSDate = NSDate(timeIntervalSince1970:NSTimeInterval( sec ))
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([ .Minute, .Second], fromDate: date)
-        let songLenght = String(format: "%d:%d", components.minute, components.second)
-        return songLenght
-    }
-    
 }
 
 extension NSTimeInterval {
@@ -89,7 +77,7 @@ extension NSTimeInterval {
     }
     /// Minues time interval format
     var minute: Int {
-        return Int((self/60.0)%60)
+        return Int((self / 60.0) % 60)
     }
     /// Seconds time interval format
     var second: Int {
@@ -97,7 +85,17 @@ extension NSTimeInterval {
     }
     /// Miliseconds time interval format
     var millisecond: Int {
-        return Int(self*1000 % 1000 )
+        return Int(self * 1000 % 1000 )
     }
+}
+
+
+extension CollectionType {
+    /// Returns the element at the specified index iff it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Generator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+    
+ 
 }
 

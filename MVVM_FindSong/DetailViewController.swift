@@ -11,7 +11,7 @@ import Foundation
 import AudioToolbox
 import MediaPlayer
 
-class DetailViewController: UIViewController, AVAudioPlayerDelegate {
+class DetailViewController: UIViewController {
 
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var playMorseBtn: UIButton!
@@ -23,17 +23,12 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     var song: SongItem
     var morseCode: MorseCode?
-    var torchOn: Bool = false
-    var isPlaying: Bool = false
-    var isPlayingMorse: Bool = false
-    var morseThread: NSThread?
-    var token : dispatch_once_t = 0
     private var audioPlayer: AVAudioPlayer = AVAudioPlayer()
   
     init(song: SongItem) {
         self.song = song
         super.init(nibName: "DetailViewController", bundle: nil)
-        edgesForExtendedLayout = .None
+   
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,28 +39,15 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         loadPlayer()
         self.activityIndicator.hidesWhenStopped = true
-        self.artistBtn.setTitle(song.artist, forState: UIControlState.Normal)
-        self.albumBtn.setTitle(song.album, forState: UIControlState.Normal)
-        self.priceLbl?.text = song.price?.converWithDollarSign()
-        guard let val : Int32 = song.songLength?.intValue else {
-            return
-        }
-        let timeInterval = NSTimeInterval(val/1000)
-        self.songLength?.text = timeInterval.minutesSeconds
-        guard let urlStr = song.coverUrl, url = NSURL(string: urlStr) else { return }
-        self.playBtn.enabled = false
-        self.playBtn.kf_setImageWithURL(url, forState: UIControlState.Normal)
-        guard let str = song.artist else { return }
-        self.morseCode = MorseCode(string: str )
+        edgesForExtendedLayout = .None
     }
     
+    /// init music player
     @IBAction func playTapped(sender: AnyObject) {
-        if isPlaying {
+        if audioPlayer.playing {
             audioPlayer.pause()
-            isPlaying = false
         } else {
             audioPlayer.play()
-            isPlaying = true
         }
     }
     
@@ -104,8 +86,10 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func initMusicPlayer() {
-        do{
-            guard let urlStr =  self.song.songUrl, url = NSURL(string: urlStr), soundData =  NSData(contentsOfURL:url) else {
+        do {
+            guard let urlStr =  self.song.songUrl,
+                url = NSURL(string: urlStr),
+                soundData =  NSData(contentsOfURL:url) else {
                 print("nil url song")
                 return
             }
@@ -127,9 +111,35 @@ class DetailViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidDisappear(animated: Bool) {
         print("dispare !!!")
         if self.morseCode?.isNowPlaying() == true {
-        self.morseCode?.stopMorse()
+            self.morseCode?.stopMorse()
         }
     }
 }
+
+
+extension DetailViewController : AVAudioPlayerDelegate {
+
+    //
+}
+
+extension DetailViewController {
+
+    func configureDetailView(song: SongItem) {
+        self.artistBtn.setTitle(song.artist, forState: UIControlState.Normal)
+        self.albumBtn.setTitle(song.album, forState: UIControlState.Normal)
+        guard let urlStr = song.coverUrl, url = NSURL(string: urlStr) else { return }
+        self.playBtn.enabled = false
+        self.playBtn.kf_setImageWithURL(url, forState: UIControlState.Normal)
+        //self.priceLbl?.text = song.price?.converWithDollarSign()
+        guard let time = song.songLength else { return }
+        self.songLength?.text = convertToMinAndSec(time)
+        guard let str = song.artist else { return }
+        self.morseCode = MorseCode(string: str )
+       
+        self.priceLbl?.text = song.price?.asLocaleCurrency
+        
+    }
+}
+
 
 

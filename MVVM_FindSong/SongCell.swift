@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+// TODO: make autolayout with less magic numbers
 class SongCell: UITableViewCell  {
 
     @IBOutlet weak var coverImg: UIImageView!
@@ -16,3 +17,21 @@ class SongCell: UITableViewCell  {
     @IBOutlet weak var songAlbum: UILabel!
     @IBOutlet weak var songLength: UILabel!
 }
+
+
+extension SongCell {
+
+    func configureCellForSong(song: SongItem) {
+    
+        guard let imgUrlStr = song.coverUrl, url = NSURL(string: imgUrlStr) else {
+            return
+        }
+        self.coverImg.kf_setImageWithURL(url)
+        self.title?.text = song.title
+        self.songAlbum?.text = song.artist
+        guard let time = song.songLength else { return }
+        self.songLength?.text = convertToMinAndSec(time)
+    }
+ }
+ 
+ 

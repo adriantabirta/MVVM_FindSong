@@ -9,20 +9,20 @@ import UIKit
 import Foundation
 
 protocol SearchServicesDelegate {
-    
-    func updateData ()
+    /**
+     Called when searchServices get gata from API
+     */
+    func dataRecieved ()
 }
 
-class SearchServicesViewModel: SearchServicesDelegate {
+class SearchServicesViewModel {
     var delegate: SearchServicesDelegate?
     var songs: Array<SongItem> = []  {
         didSet {
-             delegate?.updateData()
+             delegate?.dataRecieved()
              UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
-    
-    func updateData() { }
 }
 
 extension SearchServicesViewModel {
@@ -38,7 +38,6 @@ extension SearchServicesViewModel {
                 print("search string is nil")
                 return
         }
-        
         
         do {
             let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -95,3 +94,4 @@ extension SearchServicesViewModel {
         }catch { }
     }
 }
+

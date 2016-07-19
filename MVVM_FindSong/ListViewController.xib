@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListViewController" customModule="MVVM_FindSong" customModuleProvider="target">
             <connections>
-                <outlet property="myTable" destination="Grs-gT-Ev0" id="xk6-S5-KeA"/>
+                <outlet property="tableView" destination="Grs-gT-Ev0" id="KyV-yx-W3E"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Nhj-zl-nfU"/>
             </connections>
         </placeholder>
@@ -32,7 +32,7 @@
                 <constraint firstAttribute="bottom" secondItem="Grs-gT-Ev0" secondAttribute="bottom" id="Plc-sa-Dfr"/>
                 <constraint firstItem="Grs-gT-Ev0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yhm-Jb-X81"/>
             </constraints>
-            <point key="canvasLocation" x="746" y="355"/>
+            <point key="canvasLocation" x="674" y="206"/>
         </view>
     </objects>
 </document>

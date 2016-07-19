@@ -16,12 +16,11 @@ class ListViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var findBtn: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var myTable: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-    let searchBar = UISearchBar()
-    var dvc: DetailViewController
-    let modelView: ListVCViewModel
-    var listDelegate: ListVCViewModelDelegate?
+    var searchBar : UISearchBar
+    unowned var modelView : ListVCViewModel
+    var listDelegate : ListVCViewModelDelegate?
 
     lazy var tapRecognizer: UITapGestureRecognizer = {
         var recognizer = UITapGestureRecognizer(target:self, action: #selector(ListViewController.dismissKeyboard))
@@ -32,26 +31,31 @@ class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(modelView: ListVCViewModel) {
-        self.modelView = modelView
-        let item : SongItem = SongItem()
-        self.dvc = DetailViewController(song: item)
+    init(xib: String) {
+        self.searchBar = UISearchBar()
+        let searchServices = SearchServicesViewModel()
+        self.modelView = ListVCViewModel(searchServices: searchServices)
+        
+       
+
         super.init(nibName: "ListViewController", bundle: nil)
-        self.view.backgroundColor = UIColor.lightGrayColor()
-        edgesForExtendedLayout = .None
-        let nib = UINib(nibName: "SongCell", bundle: nil)
-        self.myTable.registerNib(nib, forCellReuseIdentifier: "Cell1")
-        self.myTable.scrollEnabled = false
-        self.searchBar.delegate = self
-        self.myTable.delegate = self
-        self.myTable.dataSource = self
-        self.modelView.listDelegate = self
-  
+        
+
     }
     
      override func viewDidLoad() {
         super.viewDidLoad()
         creaSearchBar()
+        self.view.backgroundColor = UIColor.lightGrayColor()
+        edgesForExtendedLayout = .None
+        self.tableView.scrollEnabled = false
+        self.searchBar.delegate = self
+       self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+         let nib = UINib(nibName: "SongCell", bundle: nil)
+         self.tableView.registerNib(nib, forCellReuseIdentifier: "Cell1")
     }
     
     func dismissKeyboard() {
@@ -60,21 +64,22 @@ class ListViewController: UIViewController {
     }
     
     func creaSearchBar() {
+        searchBar  = UISearchBar()
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Song name or artist"
         searchBar.text = ""
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
-    
 }
 
 extension ListViewController: ListVCViewModelDelegate {
 
-    func updateDataInTable() {
+    // TODO: Revise naming of delegate methods
+    func onDataRecieve() {
         print("TableView is reloaded")
         dispatch_async(dispatch_get_main_queue()) {
-            self.myTable.reloadData()
+            self.tableView.reloadData()
         }
     }
 }
@@ -95,7 +100,7 @@ extension ListViewController: UISearchBarDelegate {
         self.modelView.getSongsByName(searchBarText())
     }
     
-    func searchBarText() ->String {
+    func searchBarText() -> String {
         guard let songtitle = searchBar.text else {
             print("nil song title")
             return ""
@@ -103,27 +108,30 @@ extension ListViewController: UISearchBarDelegate {
         return songtitle
     }
     
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if myTable.contentOffset.y > 400  {
+        if tableView.contentOffset.y > 400  {
              print("load more ")
-            myTable.scrollEnabled = false
+            tableView.scrollEnabled = false
             modelView.songs.removeAll()
-            myTable.reloadData()
-            modelView.loadMore()
+            tableView.reloadData()
+            self.modelView.getSongsByName(searchBarText(), limitSearch: 1)
         }
     }
 }
 
 
 extension ListViewController: UITableViewDelegate {
-
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // TODO: Try using UITableViewAutomaticDimension
         return 75
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
-        dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
+        let dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
+        dvc.configureDetailView(modelView.songAtIndex(indexPath.row))
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -135,7 +143,7 @@ extension ListViewController: UITableViewDelegate {
         if editingStyle == .Delete
         {
             modelView.removeSongAtIndex(indexPath.row)
-            self.myTable.reloadData()
+            self.tableView.reloadData()
         }
     }
 }
@@ -143,35 +151,36 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: Move this code out of here
+        // in reload function ???
         if modelView.songs.count == 0 {
-            self.myTable.separatorStyle = .None
-            self.myTable.scrollEnabled = false
-            self.myTable.userInteractionEnabled = false
+            self.tableView.separatorStyle = .None
+            self.tableView.scrollEnabled = false
+            self.tableView.userInteractionEnabled = false
         }
-         self.myTable.scrollEnabled = true
-        self.myTable.userInteractionEnabled = true
+        self.tableView.scrollEnabled = true
+        self.tableView.userInteractionEnabled = true
         return modelView.songs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! SongCell
-        let item = modelView.songAtIndex(indexPath.row)
-        guard let imgUrlStr = item.coverUrl, url = NSURL(string: imgUrlStr) else {
-            return cell
+        // TODO: Remove any force unwrapping
+        guard let cell  = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as? SongCell else {
+            print(" cellForRowAtIndexPath nil")
+           let cell2 =  UITableViewCell()
+            return  cell2
         }
-        cell.coverImg.kf_setImageWithURL(url)
-        cell.title?.text = item.title
-        cell.songAlbum?.text = item.artist
-        guard let val : Int32 = item.songLength?.intValue else {
-            return cell
-        }
-        let timeInterval = NSTimeInterval(val/1000)
-        cell.songLength?.text = timeInterval.minutesSeconds
+        cell.configureCellForSong(modelView.songAtIndex(indexPath.row))
         return cell
+    }
+}
+
+extension ListViewController {
+
+    
+    func configurateListVCWithModel(model: ListVCViewModel) {
+        self.modelView = model
+        self.modelView.listDelegate = self
     }
 }

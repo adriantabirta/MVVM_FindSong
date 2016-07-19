@@ -20,6 +20,9 @@ Project tasks:
     Clicking on the Artist or Album title, the app should load the link behind it.
     Clicking on “Morse” the application should interpret Song name into Morse code using vibration and flashlight.
 
+========================================================
+                    TO DO:
+========================================================
 
 1. search dont load data on table - √
 2. chash image - √
