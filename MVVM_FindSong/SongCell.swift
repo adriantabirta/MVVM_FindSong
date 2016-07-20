@@ -22,15 +22,17 @@ class SongCell: UITableViewCell  {
 extension SongCell {
 
     func configureCellForSong(song: SongItem) {
-    
         guard let imgUrlStr = song.coverUrl, url = NSURL(string: imgUrlStr) else {
             return
         }
-        self.coverImg.kf_setImageWithURL(url)
+        self.coverImg?.kf_setImageWithURL(url)
         self.title?.text = song.title
         self.songAlbum?.text = song.artist
-        guard let time = song.songLength else { return }
+        guard let time = song.songLength else {
+            return
+        }
         self.songLength?.text = convertToMinAndSec(time)
+      //  self.songLength?.text = "dada"
     }
  }
  

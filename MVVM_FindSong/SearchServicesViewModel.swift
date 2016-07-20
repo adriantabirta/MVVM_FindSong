@@ -8,15 +8,21 @@
 import UIKit
 import Foundation
 
-protocol SearchServicesDelegate {
+protocol SearchServicesDelegate : class {
     /**
      Called when searchServices get gata from API
      */
     func dataRecieved ()
 }
 
+
+
 class SearchServicesViewModel {
-    var delegate: SearchServicesDelegate?
+    
+    static let sharedInstance = SearchServicesViewModel()
+    private init() { }
+    
+    weak var delegate : SearchServicesDelegate?
     var songs: Array<SongItem> = []  {
         didSet {
              delegate?.dataRecieved()
@@ -74,6 +80,7 @@ extension SearchServicesViewModel {
                                     temp.append(song)
                                 }
                                 
+                                
                                 if temp.count > 10 {
                                     print("mai mult de 10")
                                     self.songs = temp.getLastTenItems()
@@ -94,4 +101,12 @@ extension SearchServicesViewModel {
         }catch { }
     }
 }
+
+class MyClass {
+    static let sharedInstance = MyClass()
+    var title = ""
+    private init() { }
+}
+
+
 

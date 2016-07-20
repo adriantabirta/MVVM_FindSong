@@ -11,30 +11,21 @@ import Foundation
 
 func convertToMinAndSec(timeString: NSNumber) -> String {
     
-  return ""
+    let nas = timeString.intValue / 1000
+    let some = NSTimeInterval(NSNumber(int: nas))
+    //print( String(format: "%f", some) )
+    //timeString/1000
+  return some.minutesSeconds
 }
 
 extension  Array  {
 
     func getLastTenItems() ->  Array  {
         print("get last 10 items")
-        
        let range = self.count - 10..<self.count
          let temp = self[range]
         print("ultimile 10 rezultate \(temp)")
         return Array( temp )
-        
-      /*
-        var lastTen: Array = []
-        var i = 0
-        // TODO:  Use Array method for extracting subset
-        repeat {
-            lastTen.append(self.reverse()[i])
-            i += 1
-        } while  i < 10
-        return lastTen
-        
-        */
     }
 }
 
@@ -53,7 +44,6 @@ extension Float {
     }
 }
 
-// TODO: Revize public declarations
 extension String  {
     
     func insert(string:String, ind:Int) -> String {
@@ -69,6 +59,7 @@ extension NSTimeInterval {
     
     /// Minues : Seconds : Miliseconds time interval format
     var minuteSecondMS: String {
+        print("converted format: \( String(format:"%d:%02d.%03d", minute , second, millisecond))")
         return String(format:"%d:%02d.%03d", minute , second, millisecond)
     }
     /// Minues : Seconds time interval format
@@ -95,7 +86,5 @@ extension CollectionType {
     subscript (safe index: Index) -> Generator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
-    
- 
 }
 

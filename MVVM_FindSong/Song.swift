@@ -20,5 +20,4 @@ public struct SongItem {
     var albumUrl: String?
     var songLength: NSNumber?
     var price: Float?
-    var image: UIImage?
 }

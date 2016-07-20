@@ -8,12 +8,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="MVVM_FindSong" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="QOH-UB-jgP" id="him-95-bCS"/>
-                <outlet property="albumBtn" destination="fA2-33-x1u" id="T3f-ve-uCu"/>
-                <outlet property="artistBtn" destination="LWC-B1-PBN" id="aFf-sN-BHA"/>
-                <outlet property="playBtn" destination="zic-sK-a0G" id="xCh-5a-Msg"/>
-                <outlet property="playMorseBtn" destination="C0T-zQ-ZGG" id="5id-BG-x4R"/>
-                <outlet property="priceLbl" destination="nkF-mW-vFp" id="BiD-P6-hzp"/>
-                <outlet property="songLength" destination="X0v-pT-AGr" id="inX-cp-Y19"/>
+                <outlet property="albumButton" destination="fA2-33-x1u" id="gTl-jL-U98"/>
+                <outlet property="artistButton" destination="LWC-B1-PBN" id="54A-X7-xvG"/>
+                <outlet property="playButton" destination="zic-sK-a0G" id="QOy-bR-AST"/>
+                <outlet property="playMorseButton" destination="C0T-zQ-ZGG" id="eW8-VH-ITa"/>
+                <outlet property="priceLabel" destination="nkF-mW-vFp" id="l77-W1-bUh"/>
+                <outlet property="songLengthLabel" destination="X0v-pT-AGr" id="xYH-Bd-k5b"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MkO-20-kKI"/>
             </connections>
         </placeholder>
@@ -22,25 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zic-sK-a0G">
-                    <rect key="frame" x="200" y="8" width="200" height="200"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="cpK-fK-5U5"/>
-                        <constraint firstAttribute="width" constant="200" id="wgU-cI-Bya"/>
-                    </constraints>
-                    <state key="normal" image="defaultCover200.png">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="10"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="playTapped:" destination="-1" eventType="touchUpInside" id="mvc-bx-sGf"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9r-Ib-pTp" userLabel="ContainerView">
                     <rect key="frame" x="200" y="216" width="200" height="21"/>
                     <subviews>
@@ -133,6 +114,25 @@
                     <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                     <color key="color" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                 </activityIndicatorView>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zic-sK-a0G">
+                    <rect key="frame" x="200" y="8" width="200" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="cpK-fK-5U5"/>
+                        <constraint firstAttribute="width" constant="200" id="wgU-cI-Bya"/>
+                    </constraints>
+                    <state key="normal" image="defaultCover200.png">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="playTapped:" destination="-1" eventType="touchUpInside" id="mvc-bx-sGf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.95749056177680558" green="0.98509080497382195" blue="0.90736134661930834" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -169,7 +169,7 @@
                     <include reference="yh1-KC-Y3m"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="2089" y="287"/>
+            <point key="canvasLocation" x="2123" y="289"/>
         </view>
     </objects>
     <resources>

@@ -9,28 +9,29 @@ import UIKit
 import Foundation
 
 
-protocol ListVCViewModelDelegate {
+protocol ListVCViewModelDelegate : class {
     func onDataRecieve()
 }
 
 class ListVCViewModel {
+    
+    let searchService: SearchServicesViewModel?
+    weak var listDelegate: ListVCViewModelDelegate?
     
     private var item = SongItem()
     private var limit = 10
     private var searchString = ""
     var songs: Array<SongItem> =  [] {
         didSet {
+            print("setat in view model")
             self.listDelegate?.onDataRecieve()
         }
     }
-    // TODO: Revise var/let usage all over the code
-    let searchService: SearchServicesViewModel //= SearchServicesViewModel()
-    //let searchDelegate: SearchServicesDelegate?
-    var listDelegate: ListVCViewModelDelegate?
     
-    init(searchServices: SearchServicesViewModel) {
-        self.searchService = searchServices
-        self.searchService.delegate = self
+  
+    init() {
+        self.searchService = SearchServicesViewModel.sharedInstance
+        self.searchService?.delegate = self
     }
    
     /**
@@ -43,11 +44,9 @@ class ListVCViewModel {
     func getSongsByName(searchText: String, limitSearch : Int = 0) {
         self.searchString = searchText
         if limitSearch > 0 { self.limit += 10 }
-        searchService.searchSongByTitle(searchText,  limit: self.limit)
+      //  searchService?.searchSongByTitle(searchText,  limit: self.limit)
+        SearchServicesViewModel.sharedInstance.searchSongByTitle(searchText, limit: self.limit)
     }
-    
-    // TODO: Remove this unuseful construction
-    // TODO: Define a subscript for Array which will return `safely` the object at index
     
     /**
      Get `safely` song at index, if it`s out of range than return nil
@@ -80,6 +79,8 @@ extension ListVCViewModel : SearchServicesDelegate {
 
     func dataRecieved() {
         self.songs.removeAll()
-        self.songs = searchService.songs
+        //guard  let some = searchService?.songs else { return }
+       // self.songs = some
+        self.songs =  SearchServicesViewModel.sharedInstance.songs
     }
 }

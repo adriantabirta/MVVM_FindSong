@@ -13,14 +13,11 @@ import Kingfisher
 
 class ListViewController: UIViewController {
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var findBtn: UIButton!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     var searchBar : UISearchBar
-    unowned var modelView : ListVCViewModel
-    var listDelegate : ListVCViewModelDelegate?
+    var modelView : ListVCViewModel
+    weak var listDelegate : ListVCViewModelDelegate?
 
     lazy var tapRecognizer: UITapGestureRecognizer = {
         var recognizer = UITapGestureRecognizer(target:self, action: #selector(ListViewController.dismissKeyboard))
@@ -31,16 +28,10 @@ class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(xib: String) {
+    init(xibName: String) {
         self.searchBar = UISearchBar()
-        let searchServices = SearchServicesViewModel()
-        self.modelView = ListVCViewModel(searchServices: searchServices)
-        
-       
-
+        self.modelView = ListVCViewModel()
         super.init(nibName: "ListViewController", bundle: nil)
-        
-
     }
     
      override func viewDidLoad() {
@@ -48,14 +39,16 @@ class ListViewController: UIViewController {
         creaSearchBar()
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
-        self.tableView.scrollEnabled = false
+        self.modelView.listDelegate = self
         self.searchBar.delegate = self
-       self.tableView.delegate = self
+        self.tableView.scrollEnabled = false
+        self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 75.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-         let nib = UINib(nibName: "SongCell", bundle: nil)
-         self.tableView.registerNib(nib, forCellReuseIdentifier: "Cell1")
+        let nib = UINib(nibName: "SongCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "Cell1")
     }
     
     func dismissKeyboard() {
@@ -75,7 +68,6 @@ class ListViewController: UIViewController {
 
 extension ListViewController: ListVCViewModelDelegate {
 
-    // TODO: Revise naming of delegate methods
     func onDataRecieve() {
         print("TableView is reloaded")
         dispatch_async(dispatch_get_main_queue()) {
@@ -108,6 +100,16 @@ extension ListViewController: UISearchBarDelegate {
         return songtitle
     }
     
+    func configTableViewForData() {
+        if modelView.songs.count == 0 {
+            self.tableView.separatorStyle = .None
+            self.tableView.scrollEnabled = false
+            self.tableView.userInteractionEnabled = false
+        }
+        self.tableView.scrollEnabled = true
+        self.tableView.userInteractionEnabled = true
+    }
+    
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if tableView.contentOffset.y > 400  {
@@ -122,16 +124,10 @@ extension ListViewController: UISearchBarDelegate {
 
 
 extension ListViewController: UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // TODO: Try using UITableViewAutomaticDimension
-        return 75
-    }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
-        let dvc = DetailViewController(song: modelView.songAtIndex(indexPath.row))
-        dvc.configureDetailView(modelView.songAtIndex(indexPath.row))
+        let dvc  = DetailViewController(xibName: "DetailViewController", songIndex: indexPath.row)
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -140,8 +136,9 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        print("row")
         if editingStyle == .Delete
-        {
+        {   print("row")
             modelView.removeSongAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
@@ -152,20 +149,11 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Move this code out of here
-        // in reload function ???
-        if modelView.songs.count == 0 {
-            self.tableView.separatorStyle = .None
-            self.tableView.scrollEnabled = false
-            self.tableView.userInteractionEnabled = false
-        }
-        self.tableView.scrollEnabled = true
-        self.tableView.userInteractionEnabled = true
+        configTableViewForData()
         return modelView.songs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // TODO: Remove any force unwrapping
         guard let cell  = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as? SongCell else {
             print(" cellForRowAtIndexPath nil")
            let cell2 =  UITableViewCell()
@@ -178,7 +166,6 @@ extension ListViewController: UITableViewDataSource {
 
 extension ListViewController {
 
-    
     func configurateListVCWithModel(model: ListVCViewModel) {
         self.modelView = model
         self.modelView.listDelegate = self
