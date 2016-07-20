@@ -13,9 +13,7 @@ func convertToMinAndSec(timeString: NSNumber) -> String {
     
     let nas = timeString.intValue / 1000
     let some = NSTimeInterval(NSNumber(int: nas))
-    //print( String(format: "%f", some) )
-    //timeString/1000
-  return some.minutesSeconds
+    return some.minutesSeconds
 }
 
 extension  Array  {
@@ -82,8 +80,15 @@ extension NSTimeInterval {
 
 
 extension CollectionType {
-    /// Returns the element at the specified index iff it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Generator.Element? {
+    /**
+     Returns the element at the specified index iff it is within bounds, otherwise nil.
+
+     
+     - parameter index: Index for check
+     
+     - returns: element at index if exist 
+     */
+        subscript (safe index: Index) -> Generator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }

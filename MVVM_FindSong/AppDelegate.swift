@@ -12,15 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let tintColor =  UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    
+        let tintColor =  UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.tintColor = UIColor.whiteColor()
         UISearchBar.appearance().barTintColor = tintColor
         UINavigationBar.appearance().barTintColor = tintColor
-    
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         window?.makeKeyAndVisible()
 

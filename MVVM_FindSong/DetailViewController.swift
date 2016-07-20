@@ -87,7 +87,11 @@ class DetailViewController: UIViewController {
          guard let url = modelview?.getAlbumtUrl() else { return }
         UIApplication.sharedApplication().openURL(url)
     }
-    
+}
+
+
+extension DetailViewController : AVAudioPlayerDelegate {
+
     func loadPlayer() {
         self.activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
@@ -98,11 +102,7 @@ class DetailViewController: UIViewController {
             }
         }
     }
-}
-
-
-extension DetailViewController : AVAudioPlayerDelegate {
-
+    
     func initMusicPlayer() {
         do {
             guard let urlStr = modelview?.getSongUrl(),

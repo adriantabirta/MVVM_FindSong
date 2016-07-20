@@ -36,7 +36,6 @@ class ListVCViewModel {
    
     /**
      Get fisrt 10 songs from API
-     
      - parameter searchText: artist or song name
      - parameter limitSearch: when is not set will return default 10 song items. 
         If is greater than 0 than will return default 10 + 10 songs each time when fung will be called
@@ -50,9 +49,7 @@ class ListVCViewModel {
     
     /**
      Get `safely` song at index, if it`s out of range than return nil
-     
      - parameter index: song index
-     
      - returns: SongItem
      */
     func songAtIndex(index: Int) -> SongItem {
@@ -66,7 +63,6 @@ class ListVCViewModel {
     
     /**
      Remove song at index, if doesn`t exist then return nil
-     
      - parameter index: object index
      */
     func removeSongAtIndex(index: Int) {
@@ -79,8 +75,6 @@ extension ListVCViewModel : SearchServicesDelegate {
 
     func dataRecieved() {
         self.songs.removeAll()
-        //guard  let some = searchService?.songs else { return }
-       // self.songs = some
         self.songs =  SearchServicesViewModel.sharedInstance.songs
     }
 }

@@ -14,7 +14,7 @@
 		844823AB1D2FEA4C00EDB678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */; };
 		844823C01D2FEA4C00EDB678 /* MVVM_FindSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */; };
 		844823CE1D2FEB4400EDB678 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823CD1D2FEB4400EDB678 /* Song.swift */; };
-		844823D21D2FEEC500EDB678 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 844823D11D2FEEC500EDB678 /* File */; };
+		844823D21D2FEEC500EDB678 /* Conditions in Resources */ = {isa = PBXBuildFile; fileRef = 844823D11D2FEEC500EDB678 /* Conditions */; };
 		844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844823D71D2FF44600EDB678 /* ListViewController.xib */; };
 		844823DA1D2FF47B00EDB678 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844823D91D2FF47B00EDB678 /* ListViewController.swift */; };
 		844823DC1D33859E00EDB678 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844823DB1D33859E00EDB678 /* Launch Screen.storyboard */; };
@@ -158,7 +158,7 @@
 		844823BF1D2FEA4C00EDB678 /* MVVM_FindSongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_FindSongTests.swift; sourceTree = "<group>"; };
 		844823C11D2FEA4C00EDB678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844823CD1D2FEB4400EDB678 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		844823D11D2FEEC500EDB678 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		844823D11D2FEEC500EDB678 /* Conditions */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Conditions; sourceTree = "<group>"; };
 		844823D71D2FF44600EDB678 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		844823D91D2FF47B00EDB678 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		844823DB1D33859E00EDB678 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -197,9 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				846CC9751D3CD2A100E1046D /* Kingfisher.xcodeproj */,
-				844823D11D2FEEC500EDB678 /* File */,
+				844823D11D2FEEC500EDB678 /* Conditions */,
 				844823A91D2FEA4C00EDB678 /* MVVM_FindSong */,
 				845DDAF51D36586800477F71 /* images */,
+				84F9C7B21D3D21D9009C5934 /* Utils */,
 				845DDAF61D36588300477F71 /* Resources */,
 				844823BE1D2FEA4C00EDB678 /* MVVM_FindSongTests */,
 				844823A81D2FEA4C00EDB678 /* Products */,
@@ -219,10 +220,11 @@
 			isa = PBXGroup;
 			children = (
 				844823AA1D2FEA4C00EDB678 /* AppDelegate.swift */,
-				84F9C7B21D3D21D9009C5934 /* Utils */,
+				8448E7191D3FBEF70068DDC4 /* ReusableCell */,
+				8448E7171D3FBE980068DDC4 /* ListVC */,
+				8448E7181D3FBEA70068DDC4 /* DetailVC */,
 				844823CA1D2FEB0300EDB678 /* Model */,
-				844823CB1D2FEB1000EDB678 /* ViewModel */,
-				844823CC1D2FEB1A00EDB678 /* View */,
+				844823CB1D2FEB1000EDB678 /* API_Services */,
 			);
 			path = MVVM_FindSong;
 			sourceTree = "<group>";
@@ -244,28 +246,42 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		844823CB1D2FEB1000EDB678 /* ViewModel */ = {
+		844823CB1D2FEB1000EDB678 /* API_Services */ = {
+			isa = PBXGroup;
+			children = (
+				841C0FCB1D351B8200110803 /* Downloader.swift */,
+				33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */,
+			);
+			name = API_Services;
+			sourceTree = "<group>";
+		};
+		8448E7171D3FBE980068DDC4 /* ListVC */ = {
 			isa = PBXGroup;
 			children = (
 				33A0EB1F1D36CC1A00110B52 /* ListVCViewModel.swift */,
-				845D30B01D3E23E000DED1FE /* DetailVCViewModel.swift */,
-				33A0EB231D36D31400110B52 /* SearchServicesViewModel.swift */,
-				841C0FCB1D351B8200110803 /* Downloader.swift */,
+				844823D91D2FF47B00EDB678 /* ListViewController.swift */,
+				844823D71D2FF44600EDB678 /* ListViewController.xib */,
 			);
-			name = ViewModel;
+			name = ListVC;
 			sourceTree = "<group>";
 		};
-		844823CC1D2FEB1A00EDB678 /* View */ = {
+		8448E7181D3FBEA70068DDC4 /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				845D30B01D3E23E000DED1FE /* DetailVCViewModel.swift */,
+				849322201D33CFA000A0AF97 /* DetailViewController.swift */,
+				849322221D33CFB600A0AF97 /* DetailViewController.xib */,
+			);
+			name = DetailVC;
+			sourceTree = "<group>";
+		};
+		8448E7191D3FBEF70068DDC4 /* ReusableCell */ = {
 			isa = PBXGroup;
 			children = (
 				844823E11D338B4700EDB678 /* SongCell.swift */,
 				844823DF1D338B3100EDB678 /* SongCell.xib */,
-				844823D91D2FF47B00EDB678 /* ListViewController.swift */,
-				844823D71D2FF44600EDB678 /* ListViewController.xib */,
-				849322201D33CFA000A0AF97 /* DetailViewController.swift */,
-				849322221D33CFB600A0AF97 /* DetailViewController.xib */,
 			);
-			name = View;
+			name = ReusableCell;
 			sourceTree = "<group>";
 		};
 		845DDAF51D36586800477F71 /* images */ = {
@@ -315,6 +331,7 @@
 				841C0FC71D34E2EE00110803 /* ExtensionsHelper.swift */,
 			);
 			name = Utils;
+			path = MVVM_FindSong;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,7 +516,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844823D21D2FEEC500EDB678 /* File in Resources */,
+				844823D21D2FEEC500EDB678 /* Conditions in Resources */,
 				849322231D33CFB600A0AF97 /* DetailViewController.xib in Resources */,
 				844823E01D338B3100EDB678 /* SongCell.xib in Resources */,
 				844823D81D2FF44600EDB678 /* ListViewController.xib in Resources */,

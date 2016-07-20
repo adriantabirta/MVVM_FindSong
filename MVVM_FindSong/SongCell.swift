@@ -32,7 +32,6 @@ extension SongCell {
             return
         }
         self.songLength?.text = convertToMinAndSec(time)
-      //  self.songLength?.text = "dada"
     }
  }
  

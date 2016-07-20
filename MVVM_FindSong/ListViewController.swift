@@ -155,9 +155,7 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell  = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as? SongCell else {
-            print(" cellForRowAtIndexPath nil")
-           let cell2 =  UITableViewCell()
-            return  cell2
+            return   UITableViewCell()
         }
         cell.configureCellForSong(modelView.songAtIndex(indexPath.row))
         return cell

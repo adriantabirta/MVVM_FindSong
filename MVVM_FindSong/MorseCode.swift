@@ -21,6 +21,11 @@ class MorseCode: NSObject {
         self.morseString = MorseCode.getMorseStringFromString(string)
     }
     
+    /**
+     Flash add vibrate morse codes for string
+     
+     - parameter endPlayingHandler: Called when function complete
+     */
     func playMorse(endPlayingHandler: () -> ()) {
         self.endPlayingHandler = endPlayingHandler
         self.playThread = NSThread(target: self, selector: #selector(MorseCode.playMorseThreadAction), object: nil)
@@ -86,99 +91,63 @@ class MorseCode: NSObject {
         return morseString
     }
 
+    /**
+        Transform a letter in morse code [. and -]
+     
+     - parameter character: Character that needs to be converted
+     
+     - returns: An array with with [. and -]
+     */
     static func getMorseCodeFromCharacter(character: Character) -> String {
         
         switch(character) {
-            
         //Letters
-        case "a", "A" :
-            return ".-"
-        case "b", "B" :
-            return "-..."
-        case "c", "C":
-            return "-.-."
-        case "d", "D":
-            return "-.."
-        case "e","E":
-            return  "."
-        case "f","F":
-            return "..-."
-        case "g","G":
-            return "--."
-        case "h","H":
-            return "...."
-        case "i","I":
-            return ".."
-        case "j","J":
-            return ".---"
-        case "K","k":
-            return "-.-"
-        case "l","L":
-            return ".-.."
-        case "m","M":
-            return "--"
-        case "n","N":
-            return "-."
-        case "o","O":
-            return "---"
-        case "p","P":
-            return ".--."
-        case "q","Q":
-            return "--.-"
-        case "r","R":
-            return ".-."
-        case "s","S":
-            return "..."
-        case "t","T":
-            return "-"
-        case "u","U":
-            return "..-"
-        case "v","V":
-            return "...-"
-        case "w","W":
-            return ".--"
-        case "x","X":
-            return "-..-"
-        case "y","Y":
-            return "-.--"
-        case "z","Z":
-            return "--.."
-            
+        case "a", "A" : return ".-"
+        case "b", "B" : return "-..."
+        case "c", "C" : return "-.-."
+        case "d", "D" : return "-.."
+        case "e", "E" : return  "."
+        case "f", "F" : return "..-."
+        case "g", "G" : return "--."
+        case "h", "H" : return "...."
+        case "i", "I" : return ".."
+        case "j", "J" : return ".---"
+        case "K", "k" : return "-.-"
+        case "l", "L" : return ".-.."
+        case "m", "M" : return "--"
+        case "n", "N" : return "-."
+        case "o", "O" : return "---"
+        case "p", "P" : return ".--."
+        case "q", "Q" : return "--.-"
+        case "r", "R" : return ".-."
+        case "s", "S" : return "..."
+        case "t", "T" : return "-"
+        case "u", "U" : return "..-"
+        case "v", "V" : return "...-"
+        case "w", "W" : return ".--"
+        case "x", "X" : return "-..-"
+        case "y", "Y" : return "-.--"
+        case "z", "Z" : return "--.."
+
         //Numbers
-        case "1":
-            return ".----"
-        case "2":
-            return "..---"
-        case "3":
-            return "...--"
-        case "4":
-            return "....-"
-        case "5":
-            return "....."
-        case "6":
-            return "-...."
-        case "7":
-            return "--..."
-        case "8":
-            return "---.."
-        case "9":
-            return "----."
-        case "0":
-            return "-----"
+        case "1" : return ".----"
+        case "2" : return "..---"
+        case "3" : return "...--"
+        case "4" : return "....-"
+        case "5" : return "....."
+        case "6" : return "-...."
+        case "7" : return "--..."
+        case "8" : return "---.."
+        case "9" : return "----."
+        case "0" : return "-----"
             
         //Other symbols
-        case "(":
-            return "-.--.-"
-        case ")":
-            return "-.--.-"
-        case ",":
-            return "--..--"
-        case ".":
-            return ".-.-.-"
-        case " ":
-            return ""
-        default:
-            return ""
+        case "(" : return "-.--.-"
+        case ")" : return "-.--.-"
+        case "," : return "--..--"
+        case "." : return ".-.-.-"
+        case " " : return ""
+        default: return ""
         }
     }
 }

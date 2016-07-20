@@ -20,15 +20,16 @@ protocol SearchServicesDelegate : class {
 class SearchServicesViewModel {
     
     static let sharedInstance = SearchServicesViewModel()
-    private init() { }
-    
     weak var delegate : SearchServicesDelegate?
+    private let apiLink = "https://itunes.apple.com/search?term="
     var songs: Array<SongItem> = []  {
         didSet {
              delegate?.dataRecieved()
              UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
+    
+    private init() { }
 }
 
 extension SearchServicesViewModel {
@@ -39,7 +40,7 @@ extension SearchServicesViewModel {
         let expectedCharSet = NSCharacterSet.URLQueryAllowedCharacterSet()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         let mySearchString =  searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        guard let url = NSURL(string: "https://itunes.apple.com/search?term=\(mySearchString)&limit=\(limit)"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
+        guard let url = NSURL(string: "\(apiLink)\(mySearchString)&limit=\(limit)"),  request: NSMutableURLRequest = NSMutableURLRequest(URL: url) where
             searchString.stringByAddingPercentEncodingWithAllowedCharacters(expectedCharSet) != nil else {
                 print("search string is nil")
                 return
