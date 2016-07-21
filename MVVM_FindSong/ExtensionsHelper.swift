@@ -17,23 +17,18 @@ func convertToMinAndSec(timeString: NSNumber) -> String {
 }
 
 extension  Array  {
-
+    
     func getLastTenItems() ->  Array  {
-        print("get last 10 items")
-       let range = self.count - 10..<self.count
-         let temp = self[range]
-        print("ultimile 10 rezultate \(temp)")
+       // print("get last 10 items")
+        let range = self.count - 10..<self.count
+        let temp = self[range]
+     //   print("ultimile 10 rezultate \(temp)")
         return Array( temp )
     }
 }
 
 extension Float {
 
-    func converWithDollarSign() -> String {
-        // TODO: NSCurrencyFormatter
-        return String(format: "%0.2f $", self)
-    }
-    
     var asLocaleCurrency:String {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .CurrencyStyle
@@ -82,13 +77,13 @@ extension NSTimeInterval {
 extension CollectionType {
     /**
      Returns the element at the specified index iff it is within bounds, otherwise nil.
-
+     
      
      - parameter index: Index for check
      
-     - returns: element at index if exist 
+     - returns: element at index if exist
      */
-        subscript (safe index: Index) -> Generator.Element? {
+    subscript (safe index: Index) -> Generator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }

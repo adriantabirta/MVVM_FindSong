@@ -9,28 +9,24 @@ import UIKit
 import Foundation
 
 
-protocol ListVCViewModelDelegate : class {
+protocol ListViewModelDelegate : class {
     func onDataRecieve()
 }
 
-class ListVCViewModel {
+class ListViewModel {
     
-    let searchService: SearchServicesViewModel?
-    weak var listDelegate: ListVCViewModelDelegate?
+    let searchService: APIServices?
+    weak var listDelegate: ListViewModelDelegate?
     
     private var item = SongItem()
     private var limit = 10
     private var searchString = ""
     var songs: Array<SongItem> =  [] {
-        didSet {
-            print("setat in view model")
-            self.listDelegate?.onDataRecieve()
-        }
+        didSet { self.listDelegate?.onDataRecieve() }
     }
     
-  
     init() {
-        self.searchService = SearchServicesViewModel.sharedInstance
+        self.searchService = APIServices.sharedInstance
         self.searchService?.delegate = self
     }
    
@@ -43,8 +39,11 @@ class ListVCViewModel {
     func getSongsByName(searchText: String, limitSearch : Int = 0) {
         self.searchString = searchText
         if limitSearch > 0 { self.limit += 10 }
-      //  searchService?.searchSongByTitle(searchText,  limit: self.limit)
-        SearchServicesViewModel.sharedInstance.searchSongByTitle(searchText, limit: self.limit)
+        APIServices.sharedInstance.searchSongByTitle(searchText, limit: self.limit)
+    }
+    
+    func getSearchText() -> String {
+        return self.searchString
     }
     
     /**
@@ -71,10 +70,10 @@ class ListVCViewModel {
     }
 }
 
-extension ListVCViewModel : SearchServicesDelegate {
+extension ListViewModel : APIServicesDelegate {
 
     func dataRecieved() {
         self.songs.removeAll()
-        self.songs =  SearchServicesViewModel.sharedInstance.songs
+        self.songs =  APIServices.sharedInstance.songs
     }
 }

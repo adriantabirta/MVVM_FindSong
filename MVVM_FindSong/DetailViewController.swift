@@ -22,12 +22,13 @@ class DetailViewController: UIViewController {
     @IBOutlet  var activityIndicator: UIActivityIndicatorView!
     
     var morseCode : MorseCode?
-    let modelview : DetailVCViewModel?
+    var modelview : DetailViewModel?
+    let songIndex : Int
     private var audioPlayer: AVAudioPlayer = AVAudioPlayer()
-  
-    init(xibName: String,  songIndex: Int) {
-        self.modelview = DetailVCViewModel(songIndex: songIndex)
-        super.init(nibName: xibName, bundle: nil)
+
+     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, songNr songAtIndex: Int) {
+        self.songIndex = songAtIndex
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,9 +40,10 @@ class DetailViewController: UIViewController {
         self.activityIndicator.hidesWhenStopped = true
         edgesForExtendedLayout = .None
         loadPlayer()
-        
+        self.modelview = DetailViewModel(songIndex: self.songIndex)
         self.artistButton?.setTitle( modelview?.getArtistName(), forState: UIControlState.Normal)
         self.albumButton?.setTitle( modelview?.getAlbumName(), forState: UIControlState.Normal)
+        self.playButton.enabled = false
         self.playButton?.kf_setImageWithURL( modelview?.getCoverUrl(), forState: UIControlState.Normal)
         self.songLengthLabel?.text = modelview?.getSongLength()
         self.priceLabel?.text = modelview?.getPrice()

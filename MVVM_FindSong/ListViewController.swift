@@ -14,10 +14,11 @@ import Kingfisher
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var label: UILabel!
     
-    var searchBar : UISearchBar
-    var modelView : ListVCViewModel
-    weak var listDelegate : ListVCViewModelDelegate?
+    var modelView : ListViewModel
+    weak var listDelegate : ListViewModelDelegate?
 
     lazy var tapRecognizer: UITapGestureRecognizer = {
         var recognizer = UITapGestureRecognizer(target:self, action: #selector(ListViewController.dismissKeyboard))
@@ -27,11 +28,10 @@ class ListViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    init(xibName: String) {
-        self.searchBar = UISearchBar()
-        self.modelView = ListVCViewModel()
-        super.init(nibName: "ListViewController", bundle: nil)
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        self.modelView = ListViewModel()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
      override func viewDidLoad() {
@@ -39,8 +39,8 @@ class ListViewController: UIViewController {
         creaSearchBar()
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
+
         self.modelView.listDelegate = self
-        self.searchBar.delegate = self
         self.tableView.scrollEnabled = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -52,25 +52,39 @@ class ListViewController: UIViewController {
     }
     
     func dismissKeyboard() {
-        print("dismiss keyboard")
-        self.searchBar.resignFirstResponder()
+        print("dismiss keyboard")        
+        UIApplication.sharedApplication().sendAction( #selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
     }
-    
+
     func creaSearchBar() {
-        searchBar  = UISearchBar()
+        let searchBar = UISearchBar()
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Song name or artist"
+        searchBar.tintColor = UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
+        searchBar.barTintColor = UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
+        searchBar.backgroundColor = UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
         searchBar.text = ""
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
+    
+    func checkIfModelHaveSongs() {
+        if self.modelView.songs.count == 0 {
+            self.imageView.hidden = false
+            self.label.hidden = false
+        } else {
+            self.imageView.hidden = true
+            self.label.hidden = true
+        }
+    }
 }
 
-extension ListViewController: ListVCViewModelDelegate {
+extension ListViewController: ListViewModelDelegate {
 
     func onDataRecieve() {
         print("TableView is reloaded")
         dispatch_async(dispatch_get_main_queue()) {
+            self.checkIfModelHaveSongs()
             self.tableView.reloadData()
         }
     }
@@ -89,15 +103,8 @@ extension ListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.modelView.getSongsByName(searchBarText())
-    }
-    
-    func searchBarText() -> String {
-        guard let songtitle = searchBar.text else {
-            print("nil song title")
-            return ""
-        }
-        return songtitle
+        guard let some = searchBar.text else { return }
+        self.modelView.getSongsByName(some)
     }
     
     func configTableViewForData() {
@@ -110,14 +117,13 @@ extension ListViewController: UISearchBarDelegate {
         self.tableView.userInteractionEnabled = true
     }
     
-    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if tableView.contentOffset.y > 400  {
              print("load more ")
             tableView.scrollEnabled = false
             modelView.songs.removeAll()
             tableView.reloadData()
-            self.modelView.getSongsByName(searchBarText(), limitSearch: 1)
+            self.modelView.getSongsByName(modelView.getSearchText(), limitSearch: 1)
         }
     }
 }
@@ -126,8 +132,9 @@ extension ListViewController: UISearchBarDelegate {
 extension ListViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        searchBar.resignFirstResponder()
-        let dvc  = DetailViewController(xibName: "DetailViewController", songIndex: indexPath.row)
+        self.resignFirstResponder()
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let dvc  = DetailViewController.init(nibName: String(DetailViewController), bundle: NSBundle.mainBundle(), songNr: indexPath.row)
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -136,9 +143,8 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        print("row")
         if editingStyle == .Delete
-        {   print("row")
+        {
             modelView.removeSongAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
@@ -164,7 +170,7 @@ extension ListViewController: UITableViewDataSource {
 
 extension ListViewController {
 
-    func configurateListVCWithModel(model: ListVCViewModel) {
+    func configurateListVCWithModel(model: ListViewModel) {
         self.modelView = model
         self.modelView.listDelegate = self
     }
