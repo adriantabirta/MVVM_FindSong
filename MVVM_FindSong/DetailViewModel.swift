@@ -17,6 +17,7 @@ class DetailViewModel {
     }
     
     init(songIndex: Int) {
+        print("my index: \(songIndex)")
         self.songIndex = songIndex
     }
 
@@ -60,5 +61,29 @@ class DetailViewModel {
     func getSongLength () -> String {
         guard let some = APIServices.sharedInstance.songs[self.songIndex].songLength else { return "" }
         return convertToMinAndSec(some)
+    }
+    
+    
+    
+    func printall() {
+        print(getArtistName())
+        print(getSongUrl())
+        print(getCoverUrl())
+    }
+    
+    func saveSongWithUrl()  {
+        // do save
+        APIServices.sharedInstance.downloadAndSaveFileFromUrl(getSongUrl()) {
+            
+            ( path, error ) in
+            // print file directory or error
+            // save data in db & make UI stuff
+            print("download completion handler")
+            
+        }
+    }
+    
+    func deleteSongAtIndex(index: Int) {
+        // delete song from DB and locallly
     }
 }

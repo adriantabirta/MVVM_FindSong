@@ -15,18 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-        let tintColor =  UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.tintColor = UIColor.whiteColor()
-        UISearchBar.appearance().barTintColor = tintColor
-        UINavigationBar.appearance().barTintColor = tintColor
+        UISearchBar.appearance().barTintColor = tintRedColor
+        UINavigationBar.appearance().barTintColor = tintRedColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         window?.makeKeyAndVisible()
 
         ListViewController.init(nibName: String(ListViewController), bundle: NSBundle.mainBundle())
         let vc = ListViewController.init(nibName: String(ListViewController), bundle: NSBundle.mainBundle())
-
-        //UIViewController.init(nibName: String(ListViewController), bundle: NSBundle.mainBundle())  //ListViewController(xibName: "ListViewController")
         window?.rootViewController = UINavigationController(rootViewController: vc)
         return true
     }

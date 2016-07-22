@@ -143,7 +143,7 @@ extension APIServices {
     }
 }
 
-extension APIServices : NSURLSessionDelegate {
+extension APIServices : NSURLSessionDelegate, NSURLSessionDownloadDelegate  {
 
     /**
         Download file async for given url
@@ -161,8 +161,8 @@ extension APIServices : NSURLSessionDelegate {
             
             completion(path: destinationUrl.path!, error:nil)
         } else {
-            let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-            let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+            let sessionConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("bgSessionConfiguration") // defaultSessionConfiguration()
+            let session = NSURLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "GET"
             let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
@@ -190,8 +190,14 @@ extension APIServices : NSURLSessionDelegate {
         }
     }
     
-    
-    private func localFilePathForUrl(previewUrl: String) -> NSURL? {
+    /**
+     Check if file with URL is saved local
+     
+     - parameter previewUrl: File url
+     
+     - returns: Return local path if it`s saved else return nil
+     */
+     func localFilePathForUrl(previewUrl: String) -> NSURL? {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
         if let url = NSURL(string: previewUrl), lastPathComponent = url.lastPathComponent {
             let fullPath = documentsPath.stringByAppendingPathComponent(lastPathComponent)
@@ -211,15 +217,19 @@ extension APIServices : NSURLSessionDelegate {
         return false
     }
     
-    private func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         print("download finish")
     
     }
     
-    private func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
     print("\(totalBytesWritten) from: \(totalBytesExpectedToWrite)")
+        print()
     }
-
+    
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+        completionHandler(NSURLSessionResponseDisposition.Allow) //.Cancel,If you want to stop the download
+    }
     
 
 }

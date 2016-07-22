@@ -17,9 +17,11 @@ class DetailViewController: UIViewController {
     @IBOutlet  var playMorseButton: UIButton!
     @IBOutlet  var artistButton: UIButton!
     @IBOutlet  var albumButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
     @IBOutlet  var priceLabel: UILabel!
     @IBOutlet  var songLengthLabel: UILabel!
     @IBOutlet  var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var progress: UIProgressView!
     
     var morseCode : MorseCode?
     var modelview : DetailViewModel?
@@ -39,16 +41,23 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.activityIndicator.hidesWhenStopped = true
         edgesForExtendedLayout = .None
-        loadPlayer()
         self.modelview = DetailViewModel(songIndex: self.songIndex)
         self.artistButton?.setTitle( modelview?.getArtistName(), forState: UIControlState.Normal)
         self.albumButton?.setTitle( modelview?.getAlbumName(), forState: UIControlState.Normal)
+        
         self.playButton.enabled = false
+        self.playButton.layer.cornerRadius = 10
+        self.playButton.layer.borderColor = UIColor.grayColor().CGColor
+        self.playButton.layer.borderWidth = 2
+        self.playButton.layer.masksToBounds = true
         self.playButton?.kf_setImageWithURL( modelview?.getCoverUrl(), forState: UIControlState.Normal)
+        
         self.songLengthLabel?.text = modelview?.getSongLength()
         self.priceLabel?.text = modelview?.getPrice()
         guard let str = modelview?.getArtistName() else { return }
         self.morseCode = MorseCode(string: str )
+        
+        loadPlayer()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -89,6 +98,11 @@ class DetailViewController: UIViewController {
          guard let url = modelview?.getAlbumtUrl() else { return }
         UIApplication.sharedApplication().openURL(url)
     }
+    
+    @IBAction func saveTapped(sender: AnyObject) {
+        // save local
+        modelview?.saveSongWithUrl()
+    }
 }
 
 
@@ -97,12 +111,38 @@ extension DetailViewController : AVAudioPlayerDelegate {
     func loadPlayer() {
         self.activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            self.initMusicPlayer()
+            //self.initMusicPlayer()
+            self.playLocal()
             dispatch_async(dispatch_get_main_queue()) {
                 self.playButton.enabled = true
                 self.activityIndicator.stopAnimating()
             }
         }
+    }
+    
+    func playLocal() {
+    
+        do {
+            print( String( self.modelview?.getSongUrl()))
+            guard let some =  modelview?.getSongUrl(), urlStr = APIServices.sharedInstance.localFilePathForUrl( String(some)) else {
+                    print("nil local url song")
+                    return
+            }
+            print(urlStr)
+            self.audioPlayer =  AVAudioPlayer()
+            self.audioPlayer = try AVAudioPlayer(contentsOfURL: urlStr )
+            self.audioPlayer.delegate = self
+            self.audioPlayer.volume = 1.0
+            self.audioPlayer.prepareToPlay()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.playButton.enabled = true
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        catch let error as NSError {
+            print("Error init player \(error)")
+        }
+
     }
     
     func initMusicPlayer() {

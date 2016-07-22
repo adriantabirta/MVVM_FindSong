@@ -15,7 +15,6 @@ protocol ListViewModelDelegate : class {
 
 class ListViewModel {
     
-    let searchService: APIServices?
     weak var listDelegate: ListViewModelDelegate?
     
     private var item = SongItem()
@@ -26,8 +25,7 @@ class ListViewModel {
     }
     
     init() {
-        self.searchService = APIServices.sharedInstance
-        self.searchService?.delegate = self
+        APIServices.sharedInstance.delegate = self
     }
    
     /**
@@ -67,6 +65,16 @@ class ListViewModel {
     func removeSongAtIndex(index: Int) {
         guard  songs[safe: index] != nil else { return }
         songs.removeAtIndex(index)
+    }
+    
+    func getWebData() {
+        self.songs.removeAll()
+        self.songs =  APIServices.sharedInstance.songs
+    }
+    
+    func getLocalData() {
+        // load list of saved songs
+        self.songs.removeAll()
     }
 }
 

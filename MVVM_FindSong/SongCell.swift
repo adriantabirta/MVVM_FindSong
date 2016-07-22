@@ -16,7 +16,6 @@ class SongCell: UITableViewCell  {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var songAlbum: UILabel!
     @IBOutlet weak var songLength: UILabel!
-    @IBOutlet var saveButton: UIButton!
   
     private var songUrl = NSURL()
     private let modelview = SongCellModelView()
@@ -30,7 +29,6 @@ class SongCell: UITableViewCell  {
 extension SongCell {
     
     func configureCellForSong(song: SongItem) {
-        self.selectionStyle = UITableViewCellSelectionStyle.None
         guard let imgUrlStr = song.coverUrl, url = NSURL(string: imgUrlStr) else {
             return
         }
@@ -45,11 +43,6 @@ extension SongCell {
         self.songUrl = some
     }
     
-    @IBAction func saveSongForUrl(sender: AnyObject) {
-     //SongCellModelView.saveSongWithUrl(self.songUrl)
-        print("save song clicked")
-        modelview.saveSongWithUrl(self.songUrl)
-    }
 }
 
  

@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="imageView" destination="nHq-To-5C0" id="MHI-LU-y3M"/>
                 <outlet property="label" destination="SVL-yn-7QO" id="Mhs-50-TZy"/>
+                <outlet property="segmentedControl" destination="iNi-FL-udc" id="vvA-uz-dxX"/>
                 <outlet property="tableView" destination="Grs-gT-Ev0" id="BIm-ZX-gRi"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hIA-hj-BY1"/>
             </connections>
@@ -20,15 +21,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" style="plain" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Grs-gT-Ev0">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="28" width="600" height="572"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Ka5-jv-mfX"/>
                         <outlet property="delegate" destination="-1" id="dA4-TF-oo0"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No data                                          Enter song name in search bar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVL-yn-7QO">
-                    <rect key="frame" x="150" y="276" width="300" height="48"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iNi-FL-udc">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="29"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <segments>
+                        <segment title="Web"/>
+                        <segment title="Local"/>
+                    </segments>
+                    <color key="tintColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="segmentedButtonTap:" destination="-1" eventType="valueChanged" id="IGx-LV-u3Q"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No stored songs                                    Download some from web" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVL-yn-7QO">
+                    <rect key="frame" x="150" y="279" width="300" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="FtD-NB-F3Z"/>
                     </constraints>
@@ -36,8 +49,8 @@
                     <color key="textColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gram.png" translatesAutoresizingMaskIntoConstraints="NO" id="nHq-To-5C0">
-                    <rect key="frame" x="250" y="168" width="100" height="100"/>
+                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noWebIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="nHq-To-5C0">
+                    <rect key="frame" x="250" y="171" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="2R5-Da-7Zx"/>
                         <constraint firstAttribute="width" secondItem="nHq-To-5C0" secondAttribute="height" multiplier="1:1" id="XH9-jk-Y1u"/>
@@ -45,21 +58,24 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="iNi-FL-udc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Wu-Fv-f46"/>
                 <constraint firstItem="SVL-yn-7QO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2YZ-PC-BQ5"/>
                 <constraint firstAttribute="trailing" secondItem="Grs-gT-Ev0" secondAttribute="trailing" id="8KA-TJ-wr6"/>
                 <constraint firstItem="SVL-yn-7QO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Dg1-Tt-FwG"/>
                 <constraint firstItem="Grs-gT-Ev0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OFf-DF-TLF"/>
+                <constraint firstItem="iNi-FL-udc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OjF-3W-boH"/>
                 <constraint firstAttribute="bottom" secondItem="Grs-gT-Ev0" secondAttribute="bottom" id="Plc-sa-Dfr"/>
                 <constraint firstItem="SVL-yn-7QO" firstAttribute="top" secondItem="nHq-To-5C0" secondAttribute="bottom" constant="8" id="W6E-v7-Cen"/>
-                <constraint firstItem="Grs-gT-Ev0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yhm-Jb-X81"/>
                 <constraint firstItem="nHq-To-5C0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="enq-yq-wUV"/>
+                <constraint firstItem="Grs-gT-Ev0" firstAttribute="top" secondItem="iNi-FL-udc" secondAttribute="bottom" id="fNC-vI-Jw7"/>
+                <constraint firstAttribute="trailing" secondItem="iNi-FL-udc" secondAttribute="trailing" id="tQn-9W-eg2"/>
             </constraints>
-            <point key="canvasLocation" x="836" y="207"/>
+            <point key="canvasLocation" x="678" y="184"/>
         </view>
     </objects>
     <resources>
-        <image name="gram.png" width="150" height="150"/>
+        <image name="noWebIcon.png" width="150" height="150"/>
     </resources>
 </document>

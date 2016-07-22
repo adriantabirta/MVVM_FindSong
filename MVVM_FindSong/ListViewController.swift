@@ -13,6 +13,7 @@ import Kingfisher
 
 class ListViewController: UIViewController {
     
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
@@ -40,6 +41,14 @@ class ListViewController: UIViewController {
         self.view.backgroundColor = UIColor.lightGrayColor()
         edgesForExtendedLayout = .None
 
+        
+        self.segmentedControl.tintColor =  UIColor.whiteColor() //UIColor(red: 0.9686, green: 0.9137, blue: 0.4353, alpha: 1.0)
+        self.segmentedControl.layer.cornerRadius = 0.0;
+        self.segmentedControl.layer.borderColor = UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1).CGColor //UIColor.whiteColor().CGColor
+        self.segmentedControl.layer.backgroundColor = UIColor(red: 242/255, green: 71/255, blue: 63/255, alpha: 1).CGColor // UIColor.whiteColor().CGColor
+        self.segmentedControl.layer.borderWidth = 1.5
+        self.segmentedControl.layer.masksToBounds = true
+        
         self.modelView.listDelegate = self
         self.tableView.scrollEnabled = false
         self.tableView.delegate = self
@@ -77,6 +86,52 @@ class ListViewController: UIViewController {
             self.label.hidden = true
         }
     }
+    
+    func setupInfoView() {
+    
+        switch self.segmentedControl.selectedSegmentIndex {
+        case 0 :
+            if self.modelView.songs.count == 0 {
+                self.imageView.image = UIImage(named: noWebDataImageName)
+                self.label.text = noWebDataString
+                self.imageView.hidden = false
+                self.label.hidden = false
+            } else {
+                self.imageView.hidden = true
+                self.label.hidden = true
+            }
+        case 1 :
+            if self.modelView.songs.count == 0 {
+                self.imageView.image = UIImage(named: noLocalDataImageName)
+                 self.label.text = noLocalDataString
+                self.imageView.hidden = false
+                self.label.hidden = false
+            } else {
+                self.imageView.hidden = true
+                self.label.hidden = true
+            }
+            
+        default:
+            break
+        }
+    }
+    
+  
+    @IBAction func segmentedButtonTap(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0 :
+            print("load web data")
+              modelView.getWebData()
+              setupInfoView()
+        case 1 :
+            print("load local data")
+            modelView.getLocalData()
+            setupInfoView()
+        default:
+            print("nunu")
+        }
+    }
+    
 }
 
 extension ListViewController: ListViewModelDelegate {
@@ -84,7 +139,8 @@ extension ListViewController: ListViewModelDelegate {
     func onDataRecieve() {
         print("TableView is reloaded")
         dispatch_async(dispatch_get_main_queue()) {
-            self.checkIfModelHaveSongs()
+            self.setupInfoView()
+            //self.checkIfModelHaveSongs()
             self.tableView.reloadData()
         }
     }

@@ -13,6 +13,8 @@
                 <outlet property="playButton" destination="zic-sK-a0G" id="QOy-bR-AST"/>
                 <outlet property="playMorseButton" destination="C0T-zQ-ZGG" id="eW8-VH-ITa"/>
                 <outlet property="priceLabel" destination="nkF-mW-vFp" id="l77-W1-bUh"/>
+                <outlet property="progress" destination="tO0-K3-RJo" id="XTJ-pg-Bq3"/>
+                <outlet property="saveButton" destination="ka3-2Q-ruX" id="XVE-Tl-Kmh"/>
                 <outlet property="songLengthLabel" destination="X0v-pT-AGr" id="xYH-Bd-k5b"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MkO-20-kKI"/>
             </connections>
@@ -116,7 +118,7 @@
                 </activityIndicatorView>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zic-sK-a0G">
                     <rect key="frame" x="200" y="8" width="200" height="200"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.72766272190000003" green="0.78830128209999994" blue="0.66702416170000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="cpK-fK-5U5"/>
                         <constraint firstAttribute="width" constant="200" id="wgU-cI-Bya"/>
@@ -128,11 +130,33 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="playTapped:" destination="-1" eventType="touchUpInside" id="mvc-bx-sGf"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka3-2Q-ruX">
+                    <rect key="frame" x="0.0" y="346" width="600" height="40"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="SId-tD-Bfr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Save local">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="saveTapped:" destination="-1" eventType="touchUpInside" id="4aD-t9-XhC"/>
+                    </connections>
+                </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="tO0-K3-RJo">
+                    <rect key="frame" x="200" y="240" width="200" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="2ee-Ri-fKj"/>
+                    </constraints>
+                    <color key="progressTintColor" red="0.89411764709999997" green="0.18039215689999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="0.95749056177680558" green="0.98509080497382195" blue="0.90736134661930834" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -140,6 +164,7 @@
                 <constraint firstItem="A9r-Ib-pTp" firstAttribute="top" secondItem="zic-sK-a0G" secondAttribute="bottom" constant="8" id="3U9-pw-frY"/>
                 <constraint firstItem="LWC-B1-PBN" firstAttribute="top" secondItem="A9r-Ib-pTp" secondAttribute="bottom" constant="8" id="4kS-6H-Pqs"/>
                 <constraint firstAttribute="trailing" secondItem="fA2-33-x1u" secondAttribute="trailing" id="EHC-bd-GcP"/>
+                <constraint firstItem="tO0-K3-RJo" firstAttribute="top" secondItem="A9r-Ib-pTp" secondAttribute="bottom" constant="3" id="FBr-M6-vIh"/>
                 <constraint firstItem="fA2-33-x1u" firstAttribute="top" secondItem="LWC-B1-PBN" secondAttribute="bottom" constant="8" id="Tfa-1k-2am"/>
                 <constraint firstAttribute="trailing" secondItem="LWC-B1-PBN" secondAttribute="trailing" id="Unf-eE-ywR"/>
                 <constraint firstItem="QOH-UB-jgP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VOG-pL-gLK"/>
@@ -148,7 +173,11 @@
                 <constraint firstItem="zic-sK-a0G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gV5-fj-nHQ"/>
                 <constraint firstAttribute="bottom" secondItem="C0T-zQ-ZGG" secondAttribute="bottom" constant="8" id="kBl-WH-vUR"/>
                 <constraint firstItem="C0T-zQ-ZGG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="obv-dh-4NM"/>
+                <constraint firstItem="tO0-K3-RJo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pDH-y1-nzQ"/>
+                <constraint firstAttribute="trailing" secondItem="ka3-2Q-ruX" secondAttribute="trailing" id="uqG-k4-7On"/>
                 <constraint firstItem="LWC-B1-PBN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wZS-YG-4PH"/>
+                <constraint firstItem="ka3-2Q-ruX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wmJ-Io-PTk"/>
+                <constraint firstItem="ka3-2Q-ruX" firstAttribute="top" secondItem="fA2-33-x1u" secondAttribute="bottom" constant="8" symbolic="YES" id="yef-W6-Doi"/>
                 <constraint firstItem="QOH-UB-jgP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="89" id="yh1-KC-Y3m"/>
             </constraints>
             <variation key="default">
@@ -169,7 +198,7 @@
                     <include reference="yh1-KC-Y3m"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="2123" y="289"/>
+            <point key="canvasLocation" x="2113" y="299"/>
         </view>
     </objects>
     <resources>
